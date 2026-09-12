@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <meta name="csrf-token" content="<%= locals.csrfToken || '' %>">
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="chapter-workspace-layout">
+    
+    <!-- LEFT PANE: DYNAMIC CHAPTER NAVIGATOR -->
+    <aside class="chapter-nav-pane">
+      <div class="chapter-nav-header">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <a href="/penelitian" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.65rem;" title="Kembali ke Daftar Project">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Kembali
+          </a>
+          <span class="badge badge-primary" style="font-size: 0.75rem;"><%= project.research_type.toUpperCase() %></span>
+        </div>
+
+        <h4 style="font-size: 0.95rem; margin-bottom: 0.35rem; line-height: 1.3;" title="<%= project.title %>">
+          <%= project.title %>
+        </h4>
+        <div style="font-size: 0.775rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          <%= project.institution %>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+          <span>Progres Naskah</span>
+          <strong id="sidebarProgressText" style="color: var(--primary-600);"><%= project.progress %>%</strong>
+        </div>
+        <div class="progress-bar-container" style="height: 6px;">
+          <div class="progress-bar-fill" id="sidebarProgressBar" data-progress="<%= project.progress %>"></div>
+        </div>
+      </div>
+
+      <div class="chapter-list-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.85rem; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+          <span>Daftar BAB Naskah</span>
+          <button type="button" class="btn btn-secondary btn-sm" id="openAddChapterModalBtn" style="padding: 0.2rem 0.5rem; font-size: 0.725rem;" title="Tambah BAB Baru / Bagian Khusus">
+            + BAB Baru
+          </button>
+        </div>
+
+        <%
+          const isPrelim = (ch) => ch.group === 'preliminary' || String(ch.number).includes('0') || /sampul|persetujuan|pengesahan|orisinalitas|keaslian|pengantar|abstrak|daftar isi/i.test(ch.title);
+          const isPostlim = (ch) => ch.group === 'postliminary' || String(ch.number).includes('A') || /daftar pustaka|lampiran/i.test(ch.title);
+          
+          const prelimList = (chapters || []).filter(isPrelim);
+          const postlimList = (chapters || []).filter(isPostlim);
+          const coreList = (chapters || []).filter(ch => !isPrelim(ch) && !isPostlim(ch));
+        %>
+
+        <ul class="chapter-nav-list" id="chapterNavList">
+          <% if (prelimList.length > 0) { %>
+            <li class="chapter-group-header">
+              <span>Bagian Awal (Preliminary)</span>
+              <span class="chapter-group-badge"><%= prelimList.length %> Bagian</span>
+            </li>
+            <% prelimList.forEach(ch => { %>
+              <li>
+                <a href="/skripsi/<%= project.id %>?chapterId=<%= ch.id %>" class="chapter-nav-item <%= (activeChapter && activeChapter.id === ch.id) ? 'active' : '' %>" id="chapterNav_<%= ch.id %>">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                    <span class="chapter-num-badge" style="background: rgba(147, 51, 234, 0.1); color: #9333ea;">HAL <%= ch.number %></span>
+                    <span class="badge <%= ch.status === 'completed' ? 'badge-emerald' : ch.status === 'in_review' ? 'badge-amber' : 'badge-outline' %>" style="font-size: 0.65rem; padding: 0.15rem 0.45rem;">
+                      <%= ch.status === 'completed' ? 'Selesai' : ch.status === 'in_review' ? 'Bimbingan' : ch.status === 'revised' ? 'Revisi' : 'Draf' %>
+                    </span>
+                  </div>
+                  <div class="chapter-item-title"><%= ch.title %></div>
+                  <div class="chapter-item-meta">
+                    <span id="navWc_<%= ch.id %>"><%= ch.word_count || 0 %> kata</span>
+                    <span>&bull;</span>
+                    <span>~<%= Math.max(1, Math.ceil((ch.word_count || 0) / 300)) %> hal</span>
+                  </div>
+                </a>
+              </li>
+            <% }); %>
+          <% } %>
+
+          <% if (coreList.length > 0) { %>
+            <li class="chapter-group-header">
+              <span>Bagian Utama (Core Chapters)</span>
+              <span class="chapter-group-badge"><%= coreList.length %> BAB</span>
+            </li>
+            <% coreList.forEach(ch => { %>
+              <li>
+                <a href="/skripsi/<%= project.id %>?chapterId=<%= ch.id %>" class="chapter-nav-item <%= (activeChapter && activeChapter.id === ch.id) ? 'active' : '' %>" id="chapterNav_<%= ch.id %>">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                    <span class="chapter-num-badge">BAB <%= ch.number %></span>
+                    <span class="badge <%= ch.status === 'completed' ? 'badge-emerald' : ch.status === 'in_review' ? 'badge-amber' : 'badge-outline' %>" style="font-size: 0.65rem; padding: 0.15rem 0.45rem;">
+                      <%= ch.status === 'completed' ? 'Selesai' : ch.status === 'in_review' ? 'Bimbingan' : ch.status === 'revised' ? 'Revisi' : 'Draf' %>
+                    </span>
+                  </div>
+                  <div class="chapter-item-title"><%= ch.title %></div>
+                  <div class="chapter-item-meta">
+                    <span id="navWc_<%= ch.id %>"><%= ch.word_count || 0 %> kata</span>
+                    <span>&bull;</span>
+                    <span>~<%= Math.max(1, Math.ceil((ch.word_count || 0) / 300)) %> hal</span>
+                  </div>
+                </a>
+              </li>
+            <% }); %>
+          <% } %>
+
+          <% if (postlimList.length > 0) { %>
+            <li class="chapter-group-header">
+              <span>Bagian Akhir (Postliminary)</span>
+              <span class="chapter-group-badge"><%= postlimList.length %> Bagian</span>
+            </li>
+            <% postlimList.forEach(ch => { %>
+              <li>
+                <a href="/skripsi/<%= project.id %>?chapterId=<%= ch.id %>" class="chapter-nav-item <%= (activeChapter && activeChapter.id === ch.id) ? 'active' : '' %>" id="chapterNav_<%= ch.id %>">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                    <span class="chapter-num-badge" style="background: rgba(16, 185, 129, 0.1); color: #059669;"><%= ch.number %></span>
+                    <span class="badge <%= ch.status === 'completed' ? 'badge-emerald' : ch.status === 'in_review' ? 'badge-amber' : 'badge-outline' %>" style="font-size: 0.65rem; padding: 0.15rem 0.45rem;">
+                      <%= ch.status === 'completed' ? 'Selesai' : ch.status === 'in_review' ? 'Bimbingan' : ch.status === 'revised' ? 'Revisi' : 'Draf' %>
+                    </span>
+                  </div>
+                  <div class="chapter-item-title"><%= ch.title %></div>
+                  <div class="chapter-item-meta">
+                    <span id="navWc_<%= ch.id %>"><%= ch.word_count || 0 %> kata</span>
+                    <span>&bull;</span>
+                    <span>~<%= Math.max(1, Math.ceil((ch.word_count || 0) / 300)) %> hal</span>
+                  </div>
+                </a>
+              </li>
+            <% }); %>
+          <% } %>
+
+          <% if ((chapters || []).length === 0) { %>
+            <li style="padding: 1.5rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+              Belum ada bab yang terdaftar.
+            </li>
+          <% } %>
+        </ul>
+      </div>
+
+      <div class="chapter-nav-footer">
+        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.775rem;">
+          <span style="color: var(--text-muted);">Saldo Kredit:</span>
+          <% if (creditBalance === 'UNLIMITED') { %>
+            <span class="badge-unlimited" style="font-size: 0.725rem; padding: 0.15rem 0.5rem;">UNLIMITED</span>
+          <% } else { %>
+            <strong style="color: var(--primary-600);"><%= creditBalance %> Kredit</strong>
+          <% } %>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANE: ACADEMIC CHAPTER EDITOR -->
+    <main class="chapter-editor-pane">
+      <% if (activeChapter) { %>
+        <header class="chapter-editor-topbar">
+          <div class="editor-topbar-left">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <span class="badge badge-primary">BAB <%= activeChapter.number %></span>
+              <span class="sync-indicator" id="syncIndicator">
+                <span class="sync-dot"></span>
+                <span id="syncText">Tersimpan</span>
+              </span>
+            </div>
+            <input type="text" id="chapterTitleInput" class="chapter-title-inline-input" value="<%= activeChapter.title %>" placeholder="Judul Bab Penelitian...">
+          </div>
+
+          <div class="editor-topbar-right">
+            <button type="button" class="btn-ai-generator" id="openAiGenChapterBtn" title="Susun naskah bab ini secara otomatis dengan AI Mantra Riset">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>✨ AI Generator</span>
+            </button>
+
+            <select id="chapterStatusSelect" class="form-control" style="width: auto; padding: 0.45rem 0.75rem; font-size: 0.85rem;">
+              <option value="draft" <%= activeChapter.status === 'draft' ? 'selected' : '' %>>Status: Draf</option>
+              <option value="in_review" <%= activeChapter.status === 'in_review' ? 'selected' : '' %>>Status: Bimbingan</option>
+              <option value="revised" <%= activeChapter.status === 'revised' ? 'selected' : '' %>>Status: Revisi Dosen</option>
+              <option value="completed" <%= activeChapter.status === 'completed' ? 'selected' : '' %>>Status: Selesai</option>
+            </select>
+
+            <button type="button" class="btn btn-primary btn-sm" id="saveChapterBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Simpan Bab
+            </button>
+
+            <% if (chapters.length > 1) { %>
+              <form action="/chapter/<%= activeChapter.id %>/delete" method="POST" style="margin:0;" onsubmit="return confirmDeleteChapter(event, this)">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <button type="submit" class="btn btn-secondary btn-sm" style="color: var(--accent-rose);" title="Hapus Bab Ini">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+              </form>
+            <% } %>
+          </div>
+        </header>
+
+        <div class="chapter-toolbar">
+          <button type="button" class="toolbar-btn" data-format="h2" title="Sub-bab Utama (Heading 2)">
+            <strong>H2</strong> Sub-bab
+          </button>
+          <button type="button" class="toolbar-btn" data-format="h3" title="Anak Sub-bab (Heading 3)">
+            <strong>H3</strong> Bagian
+          </button>
+          <div class="toolbar-divider"></div>
+          <button type="button" class="toolbar-btn" data-format="bold" title="Tebal"><strong>B</strong></button>
+          <button type="button" class="toolbar-btn" data-format="italic" title="Miring"><em>I</em></button>
+          <button type="button" class="toolbar-btn" data-format="quote" title="Kutipan Ilmiah / Sitasi">“ ” Sitasi</button>
+          <button type="button" class="toolbar-btn" data-format="bullet" title="Daftar Poin">&bull; List</button>
+          <button type="button" class="toolbar-btn" data-format="table" title="Matriks Tabel">⊞ Matriks</button>
+          
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+            <span>Jumlah Kata: <strong id="liveWordCount" style="color: var(--text-main);"><%= activeChapter.word_count || 0 %></strong></span>
+            <span>Estimasi: <strong id="livePageCount" style="color: var(--text-main);">~<%= Math.max(1, Math.ceil((activeChapter.word_count || 0) / 300)) %></strong> Hal</span>
+          </div>
+        </div>
+
+        <div class="chapter-editor-body">
+          <textarea id="chapterContentArea" class="chapter-content-textarea" placeholder="Tuliskan naskah akademik bab Anda di sini secara terstruktur..." spellcheck="false"><%= activeChapter.content %></textarea>
+        </div>
+
+        <!-- BOTTOM STATUS & AI SHORTCUT DOCK -->
+        <footer class="chapter-editor-bottombar">
+          <div style="font-size: 0.775rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.75rem;">
+            <span>ID Bab: <code style="font-family: var(--font-mono); font-size: 0.75rem;"><%= activeChapter.id %></code></span>
+            <span>&bull;</span>
+            <span id="lastSavedAtText">Terakhir diperbarui: <%= new Date(activeChapter.updated_at).toLocaleTimeString('id-ID') %></span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <a href="/ai-writer?projectId=<%= project.id %>&chapterId=<%= activeChapter.id %>" class="btn btn-secondary btn-sm" title="Gunakan asisten AI Writer untuk mengembangkan argumen bab ini">
+              ✨ Buka di AI Writer
+            </a>
+            <a href="/parafrase" class="btn btn-secondary btn-sm" title="Perhalus bahasa ilmiah teks bab ini">
+              🔄 Parafrase Paragraf
+            </a>
+          </div>
+        </footer>
+
+      <% } else { %>
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 2rem;">
+          <div>
+            <h3>Pilih Bab untuk Memulai</h3>
+            <p>Pilih salah satu bab di sebelah kiri atau buat bab baru untuk melanjutkan riset.</p>
+          </div>
+        </div>
+      <% } %>
+    </main>
+
+  </div>
+
+  <!-- MODAL ADD CHAPTER -->
+  <div class="modal-backdrop-custom" id="addChapterModal">
+    <div class="modal-dialog-custom">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Tambah Bab Baru / Bagian Kustom</h3>
+          <button type="button" class="input-icon-btn" id="closeAddChapterBtn">&times;</button>
+        </div>
+        <form action="/skripsi/<%= project.id %>/chapter" method="POST">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+          <div class="card-body">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="new_chapter_number" class="form-label">Nomor / Tanda BAB *</label>
+                <input type="text" id="new_chapter_number" name="number" class="form-control" placeholder="Contoh: 6, 7, atau A" value="<%= (chapters ? chapters.length + 1 : 1) %>" required>
+              </div>
+              <div class="form-group">
+                <label for="new_chapter_title" class="form-label">Judul Lengkap BAB *</label>
+                <input type="text" id="new_chapter_title" name="title" class="form-control" placeholder="Contoh: BAB 6: Analisis Sensitivitas & Pembahasan Lanjutan" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="new_chapter_content" class="form-label">Kerangka Awal / Draf Paragraf (Opsional)</label>
+              <textarea id="new_chapter_content" name="content" class="form-control" rows="4" placeholder="Uraikan kerangka sub-bab yang ingin ditambahkan..."></textarea>
+            </div>
+          </div>
+          <div class="card-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button type="button" class="btn btn-secondary btn-sm" id="cancelAddChapterBtn">Batal</button>
+            <button type="submit" class="btn btn-primary btn-sm">Tambahkan Bab ke Naskah</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL AI CHAPTER GENERATOR (MANTRA RISET & PEDOMAN KAMPUS) -->
+  <% if (activeChapter) { %>
+    <div class="modal-backdrop-custom" id="aiGenChapterModal">
+      <div class="modal-dialog-custom" style="max-width: 650px; width: 95%;">
+        <div class="card">
+          <div class="card-header ai-modal-header-gradient" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h3 class="card-title" style="margin: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span>✨ AI Generator: <%= activeChapter.title %></span>
+              </h3>
+              <span style="font-size: 0.775rem; color: var(--text-muted);">
+                Penyusunan naskah terstruktur berbasis Pedoman Kampus Indonesia &amp; Formula Mantra Riset
+              </span>
+            </div>
+            <button type="button" class="input-icon-btn" id="closeAiGenModalBtn" aria-label="Tutup">&times;</button>
+          </div>
+
+          <div class="card-body" style="padding: 1.25rem 1.5rem;">
+            <div class="ai-gen-field-card">
+              <strong>Konteks Naskah:</strong>
+              <p><%= project.title %> (<%= project.research_type ? project.research_type.toUpperCase() : 'SKRIPSI' %> &bull; <%= project.institution %>)</p>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="aiGenTopicFocus" class="form-label">Fokus Pokok Bahasan / Sub-topik Bab *</label>
+              <input type="text" id="aiGenTopicFocus" class="form-control" value="<%= activeChapter.title %>" placeholder="Contoh: Analisis Kausalitas Variabel X terhadap Y...">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="aiGenInitialData" class="form-label">Data Pendukung / Catatan Khusus untuk Bab Ini</label>
+              <textarea id="aiGenInitialData" class="form-control" rows="3" placeholder="Masukkan data statistik, kutipan informan, fenomena masalah, atau catatan dosen pembimbing..."><%= project.initial_data || project.description || '' %></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1rem;">
+              <div class="form-group">
+                <label for="aiGenCitationStyle" class="form-label">Gaya Sitasi</label>
+                <select id="aiGenCitationStyle" class="form-control">
+                  <option value="apa7" <%= (!project.citation_style || project.citation_style === 'apa7') ? 'selected' : '' %>>APA 7th Edition</option>
+                  <option value="vancouver" <%= project.citation_style === 'vancouver' ? 'selected' : '' %>>Vancouver (Medis)</option>
+                  <option value="harvard" <%= project.citation_style === 'harvard' ? 'selected' : '' %>>Harvard</option>
+                  <option value="ieee" <%= project.citation_style === 'ieee' ? 'selected' : '' %>>IEEE</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="aiGenParagraphDepth" class="form-label">Tingkat Kedalaman</label>
+                <select id="aiGenParagraphDepth" class="form-control">
+                  <option value="standar" selected>Standar Akademik (~600-1000 kata)</option>
+                  <option value="komprehensif">Mendalam &amp; Komprehensif (~1200-2000 kata)</option>
+                  <option value="ringkas">Ringkas Padat (~300-500 kata)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: var(--bg-subtle); border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.8rem;">
+              <div>
+                <span style="color: var(--text-muted);">Biaya Komputasi AI:</span>
+                <% if (creditBalance === 'UNLIMITED') { %>
+                  <span class="badge-unlimited" style="margin-left: 0.35rem;">UNLIMITED (GRATIS)</span>
+                <% } else { %>
+                  <strong style="color: var(--primary-600); margin-left: 0.35rem;">10 Kredit</strong>
+                  <span style="color: var(--text-muted); font-size: 0.75rem;">(Saldo: <%= creditBalance %>)</span>
+                <% } %>
+              </div>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">🛡️ Model Akademik Bebas Halusinasi</span>
+            </div>
+
+            <div id="aiGenStatusAlert" style="display: none; margin-top: 1rem;" class="alert alert-info">
+              <div style="display: flex; align-items: center; gap: 0.65rem;">
+                <span class="ai-spinner"></span>
+                <span id="aiGenStatusMessage">Sedang merumuskan naskah bab dengan kaidah akademik...</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid var(--border-color); padding: 1rem 1.5rem;">
+            <button type="button" class="btn btn-secondary btn-sm" id="cancelAiGenModalBtn">Batal</button>
+            <button type="button" class="btn btn-primary btn-sm btn-ai-generator" id="executeAiGenBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Mulai Generate Bab Ini</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+  <script>
+    const activeChapterId = "<%= activeChapter ? activeChapter.id : '' %>";
+    const projectId = "<%= project.id %>";
+
+    const titleInput = document.getElementById('chapterTitleInput');
+    const contentArea = document.getElementById('chapterContentArea');
+    const statusSelect = document.getElementById('chapterStatusSelect');
+    const saveBtn = document.getElementById('saveChapterBtn');
+    const syncIndicator = document.getElementById('syncIndicator');
+    const syncText = document.getElementById('syncText');
+    const liveWordCount = document.getElementById('liveWordCount');
+    const livePageCount = document.getElementById('livePageCount');
+    const lastSavedAtText = document.getElementById('lastSavedAtText');
+
+    let isSaving = false;
+    let hasUnsavedChanges = false;
+    let autoSaveTimeout = null;
+
+    function calculateWords(text) {
+      if (!text) return 0;
+      return text.trim().split(/\s+/).filter(Boolean).length;
+    }
+
+    function updateCounters() {
+      if (!contentArea) return;
+      const count = calculateWords(contentArea.value);
+      if (liveWordCount) liveWordCount.innerText = count;
+      if (livePageCount) livePageCount.innerText = `~${Math.max(1, Math.ceil(count / 300))}`;
+      
+      const navWc = document.getElementById(`navWc_${activeChapterId}`);
+      if (navWc) navWc.innerText = `${count} kata`;
+    }
+
+    function setSyncState(state, customText) {
+      if (!syncIndicator || !syncText) return;
+      syncIndicator.className = 'sync-indicator ' + state;
+      syncText.innerText = customText || (state === 'saving' ? 'Menyimpan...' : state === 'unsaved' ? 'Belum disimpan' : 'Tersimpan');
+    }
+
+    async function saveChapterNow() {
+      if (!activeChapterId || isSaving) return;
+      isSaving = true;
+      setSyncState('saving');
+
+      const payload = {
+        title: titleInput ? titleInput.value : '',
+        number: "<%= activeChapter ? activeChapter.number : 1 %>",
+        content: contentArea ? contentArea.value : '',
+        status: statusSelect ? statusSelect.value : 'draft'
+      };
+
+      try {
+        const response = await fetch(`/chapter/${activeChapterId}/update`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': '<%= locals.csrfToken || "" %>'
+          },
+          body: JSON.stringify({
+            ...payload,
+            _csrf: '<%= locals.csrfToken || "" %>'
+          })
+        });
+
+        const resData = await response.json();
+        if (resData.success) {
+          hasUnsavedChanges = false;
+          setSyncState('saved');
+          if (lastSavedAtText) {
+            lastSavedAtText.innerText = `Terakhir disimpan: ${new Date().toLocaleTimeString('id-ID')}`;
+          }
+          if (resData.project_progress !== undefined) {
+            const pb = document.getElementById('sidebarProgressBar');
+            const pt = document.getElementById('sidebarProgressText');
+            if (pb) pb.style.width = `${resData.project_progress}%`;
+            if (pt) pt.innerText = `${resData.project_progress}%`;
+          }
+        } else {
+          setSyncState('unsaved', 'Gagal simpan');
+        }
+      } catch (err) {
+        console.error('[AUTOSAVE ERROR]', err);
+        setSyncState('unsaved', 'Koneksi terputus');
+      } finally {
+        isSaving = false;
+      }
+    }
+
+    function triggerAutoSaveDebounced() {
+      hasUnsavedChanges = true;
+      setSyncState('unsaved');
+      updateCounters();
+
+      if (autoSaveTimeout) clearTimeout(autoSaveTimeout);
+      autoSaveTimeout = setTimeout(() => {
+        saveChapterNow();
+      }, 2500);
+    }
+
+    if (contentArea) contentArea.addEventListener('input', triggerAutoSaveDebounced);
+    if (titleInput) titleInput.addEventListener('input', triggerAutoSaveDebounced);
+    if (statusSelect) statusSelect.addEventListener('change', saveChapterNow);
+    if (saveBtn) saveBtn.addEventListener('click', saveChapterNow);
+
+    // Toolbar formatting helper
+    document.querySelectorAll('.toolbar-btn[data-format]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!contentArea) return;
+        const fmt = btn.getAttribute('data-format');
+        const start = contentArea.selectionStart;
+        const end = contentArea.selectionEnd;
+        const selected = contentArea.value.substring(start, end);
+        let replacement = '';
+
+        if (fmt === 'bold') replacement = `**${selected || 'teks tebal'}**`;
+        else if (fmt === 'italic') replacement = `*${selected || 'teks miring'}*`;
+        else if (fmt === 'h2') replacement = `\n\n## ${selected || 'Sub-bab Baru'}\n`;
+        else if (fmt === 'h3') replacement = `\n\n### ${selected || 'Anak Sub-bab'}\n`;
+        else if (fmt === 'quote') replacement = `\n> "${selected || 'Kutipan teori atau pernyataan sumber ilmiah'}" (Nama Penulis, Tahun: Halaman)\n`;
+        else if (fmt === 'bullet') replacement = `\n- ${selected || 'Poin argumentasi ilmiah'}\n`;
+        else if (fmt === 'table') replacement = `\n\n| Variabel | Indikator | Sumber Teori |\n|---|---|---|\n| Contoh Variabel X | Indikator 1 | Peneliti et al. (2024) |\n\n`;
+
+        contentArea.setRangeText(replacement, start, end, 'end');
+        contentArea.focus();
+        triggerAutoSaveDebounced();
+      });
+    });
+
+    // Add Chapter Modal
+    const addModal = document.getElementById('addChapterModal');
+    const openAddBtn = document.getElementById('openAddChapterModalBtn');
+    const closeAddBtn = document.getElementById('closeAddChapterBtn');
+    const cancelAddBtn = document.getElementById('cancelAddChapterBtn');
+
+    function showAddModal() { if (addModal) addModal.classList.add('show'); }
+    function hideAddModal() { if (addModal) addModal.classList.remove('show'); }
+
+    if (openAddBtn) openAddBtn.addEventListener('click', showAddModal);
+    if (closeAddBtn) closeAddBtn.addEventListener('click', hideAddModal);
+    if (cancelAddBtn) cancelAddBtn.addEventListener('click', hideAddModal);
+
+    // AI Chapter Generator Modal & Logic
+    const aiGenModal = document.getElementById('aiGenChapterModal');
+    const openAiGenBtn = document.getElementById('openAiGenChapterBtn');
+    const closeAiGenBtn = document.getElementById('closeAiGenModalBtn');
+    const cancelAiGenBtn = document.getElementById('cancelAiGenModalBtn');
+    const executeAiGenBtn = document.getElementById('executeAiGenBtn');
+    const aiGenStatusAlert = document.getElementById('aiGenStatusAlert');
+    const aiGenStatusMessage = document.getElementById('aiGenStatusMessage');
+
+    function showAiGenModal() { if (aiGenModal) aiGenModal.classList.add('show'); }
+    function hideAiGenModal() { if (aiGenModal) aiGenModal.classList.remove('show'); }
+
+    if (openAiGenBtn) openAiGenBtn.addEventListener('click', showAiGenModal);
+    if (closeAiGenBtn) closeAiGenBtn.addEventListener('click', hideAiGenModal);
+    if (cancelAiGenBtn) cancelAiGenBtn.addEventListener('click', hideAiGenModal);
+
+    if (executeAiGenBtn) {
+      executeAiGenBtn.addEventListener('click', async () => {
+        if (!activeChapterId) return;
+
+        const topicFocus = document.getElementById('aiGenTopicFocus') ? document.getElementById('aiGenTopicFocus').value : '';
+        const initialData = document.getElementById('aiGenInitialData') ? document.getElementById('aiGenInitialData').value : '';
+        const citationStyle = document.getElementById('aiGenCitationStyle') ? document.getElementById('aiGenCitationStyle').value : 'apa7';
+        const paragraphCount = document.getElementById('aiGenParagraphDepth') ? document.getElementById('aiGenParagraphDepth').value : 'standar';
+
+        executeAiGenBtn.disabled = true;
+        if (aiGenStatusAlert) {
+          aiGenStatusAlert.className = 'alert alert-info';
+          aiGenStatusAlert.style.display = 'block';
+          if (aiGenStatusMessage) aiGenStatusMessage.innerText = 'Menyusun naskah akademik dengan formula Mantra Riset & Pedoman Kampus...';
+        }
+
+        try {
+          const res = await fetch('/api/ai/generate-chapter', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+              'X-CSRF-Token': '<%= locals.csrfToken || "" %>'
+            },
+            body: JSON.stringify({
+              projectId,
+              chapterId: activeChapterId,
+              sectionType: "<%= activeChapter ? (activeChapter.section_type || '') : '' %>",
+              topicFocus,
+              initialData,
+              citationStyle,
+              paragraphCount,
+              _csrf: '<%= locals.csrfToken || "" %>'
+            })
+          });
+
+          const data = await res.json();
+          if (data.success && data.content) {
+            if (contentArea) {
+              contentArea.value = data.content;
+              updateCounters();
+            }
+            if (statusSelect && data.chapter_status) {
+              statusSelect.value = data.chapter_status;
+            }
+            if (lastSavedAtText && data.last_updated) {
+              lastSavedAtText.innerText = `Terakhir disimpan: ${data.last_updated}`;
+            }
+            if (data.project_progress !== undefined) {
+              const pb = document.getElementById('sidebarProgressBar');
+              const pt = document.getElementById('sidebarProgressText');
+              if (pb) pb.style.width = `${data.project_progress}%`;
+              if (pt) pt.innerText = `${data.project_progress}%`;
+            }
+            setSyncState('saved');
+            hideAiGenModal();
+          } else {
+            throw new Error(data.error || 'Gagal menghasilkan naskah.');
+          }
+        } catch (err) {
+          console.error('[AI GEN ERROR]', err);
+          if (aiGenStatusAlert) {
+            aiGenStatusAlert.className = 'alert alert-danger';
+            aiGenStatusAlert.style.display = 'block';
+            if (aiGenStatusMessage) aiGenStatusMessage.innerText = err.message || 'Terjadi kesalahan saat memproses AI.';
+          }
+        } finally {
+          executeAiGenBtn.disabled = false;
+        }
+      });
+    }
+
+    function confirmDeleteChapter(e, form) {
+      e.preventDefault();
+      const confirmed = window.confirm('Apakah Anda yakin ingin menghapus bab ini beserta seluruh isinya?');
+      if (confirmed) {
+        form.submit();
+      }
+      return false;
+    }
+
+    document.querySelectorAll('.progress-bar-fill[data-progress]').forEach((el) => {
+      el.style.width = (el.getAttribute('data-progress') || 0) + '%';
+    });
+  </script>
+</body>
+</html>

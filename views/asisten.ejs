@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <meta name="csrf-token" content="<%= csrfToken %>">
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css?v=<%= Date.now() %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <!-- MODUL UTAMA -->
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/dashboard" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/asisten" class="sidebar-nav-link active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="3" y="8" width="18" height="12" rx="4"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/><path d="M9 18h6"/></svg>
+                <span>AI Asisten Riset</span>
+              </a>
+            </li>
+            <li>
+              <a href="/penelitian" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>Project Penelitian</span>
+              </a>
+            </li>
+            <li>
+              <a href="/skripsi" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Penyusunan BAB</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- AI RESEARCH TOOLS (PERSIS GAMBAR 2) -->
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/ai-writer" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span>AI Writer Akademis</span>
+              </a>
+            </li>
+            <li>
+              <a href="/parafrase" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                <span>Parafrase Skripsi</span>
+              </a>
+            </li>
+            <li>
+              <a href="/brainstorming" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg>
+                <span>Brainstorming Judul</span>
+              </a>
+            </li>
+            <li>
+              <a href="/novelty" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg>
+                <span>Temukan Novelty</span>
+              </a>
+            </li>
+            <li>
+              <a href="/revisi" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <span>Lab Revisi Bimbingan</span>
+              </a>
+            </li>
+            <li>
+              <a href="/sidang" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Simulasi Sidang</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SISTEM & AKUN (PERSIS GAMBAR 2) -->
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/kredit" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+                <span>Saldo Kredit</span>
+              </a>
+            </li>
+            <li>
+              <a href="/billing" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Beli Paket</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pengaturan" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span>Pengaturan Akun</span>
+              </a>
+            </li>
+            <% if (currentUser && currentUser.role === 'owner') { %>
+              <li>
+                <a href="/owner" class="sidebar-nav-link" style="color: #a855f7;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <span>Owner Portal</span>
+                </a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SIDEBAR FOOTER (PERSIS GAMBAR 2) -->
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'O' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Owner Dentshub' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'OWNER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="dashboard-main">
+      <div class="asisten-view-container">
+        
+        <!-- TOPBAR -->
+        <header class="asisten-topbar">
+          <div class="asisten-topbar-title">
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileSidebar()" aria-label="Buka Menu" style="margin-right: 0.35rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="3" y="8" width="18" height="12" rx="4"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/><path d="M9 18h6"/></svg>
+            <span>AI Mantra Riset</span>
+          </div>
+          <div class="asisten-topbar-actions">
+            <button type="button" class="btn-asisten-tool" id="btnOpenHistory" onclick="toggleHistoryDrawer(true)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Riwayat</span>
+            </button>
+            <button type="button" class="btn-asisten-tool" id="btnNewChat" onclick="startNewChat()" style="display: none;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              <span>Percakapan baru</span>
+            </button>
+            <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleSingleTheme()" title="Ganti Tema (Terang / Gelap)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- BODY AREA -->
+        <div class="asisten-body-area" id="asistenBodyArea">
+          
+          <!-- 1. WELCOME HERO (EMPTY STATE) -->
+          <div class="asisten-welcome-hero" id="asistenWelcomeState">
+            <div class="asisten-hero-mascot">
+              <img src="/img/dentshubriset.png" alt="DentsHub Mascot">
+            </div>
+            <h1 class="asisten-welcome-title">Apa yang ingin kamu kerjakan?</h1>
+            <p class="asisten-welcome-subtitle">Saya bisa menyusun judul, lalu memandu sampai proyeknya siap ditulis.</p>
+
+            <div class="asisten-input-card-hero">
+              <input type="text" class="asisten-search-box" id="heroInput" placeholder="Tulis pesan, atau ketik / untuk perintah" autocomplete="off">
+              <button type="button" class="asisten-btn-send-inside" id="heroSendBtn" onclick="submitHeroMessage()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </button>
+            </div>
+            <div class="asisten-hero-hint">Enter untuk kirim · Shift+Enter baris baru · / untuk perintah</div>
+
+            <!-- 10 QUICK COMMAND PILLS (MATCHING SCREENSHOT 1) -->
+            <div class="asisten-commands-grid">
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/judul')">
+                <span class="asisten-command-tag">/judul</span>
+                <span class="asisten-command-desc">Buatkan 10 judul dari tema & metode</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/skripsi')">
+                <span class="asisten-command-tag">/skripsi</span>
+                <span class="asisten-command-desc">Mulai skripsi dari judul yang sudah kamu punya</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/tesis')">
+                <span class="asisten-command-tag">/tesis</span>
+                <span class="asisten-command-desc">Mulai tesis dari judul yang sudah kamu punya</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/disertasi')">
+                <span class="asisten-command-tag">/disertasi</span>
+                <span class="asisten-command-desc">Mulai disertasi dari judul yang sudah kamu punya</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/sinta')">
+                <span class="asisten-command-tag">/sinta</span>
+                <span class="asisten-command-desc">Mulai artikel jurnal Sinta dari judulmu</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/scopus')">
+                <span class="asisten-command-tag">/scopus</span>
+                <span class="asisten-command-desc">Mulai artikel jurnal Scopus (Bahasa Inggris)</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/parafrase')">
+                <span class="asisten-command-tag">/parafrase</span>
+                <span class="asisten-command-desc">Parafrase teks langsung di chat (1 klik)</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/ppt')">
+                <span class="asisten-command-tag">/ppt</span>
+                <span class="asisten-command-desc">Unggah skripsi/proposal → jadi PPT, diunduh</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/cek turnitin')">
+                <span class="asisten-command-tag">/cek turnitin</span>
+                <span class="asisten-command-desc">Cek kemiripan berkas dengan standar Turnitin</span>
+              </div>
+              <div class="asisten-command-pill" onclick="executeQuickCommand('/cari artikel')">
+                <span class="asisten-command-tag">/cari artikel</span>
+                <span class="asisten-command-desc">Cari artikel jurnal: tahun, indeks, akreditasi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. CONVERSATION STREAM STATE -->
+          <div class="asisten-chat-stream" id="asistenChatStream" style="display: none;">
+            <!-- Message rows will be appended here dynamically -->
+          </div>
+
+        </div>
+
+        <!-- BOTTOM FIXED INPUT BAR (ACTIVE DURING CHAT) -->
+        <div class="asisten-bottom-bar" id="asistenBottomBar" style="display: none;">
+          <div class="asisten-bottom-input-wrap">
+            <input type="text" class="asisten-search-box" id="bottomInput" placeholder="Tulis pesan, atau ketik / untuk perintah" autocomplete="off">
+            <button type="button" class="asisten-btn-send-inside" id="bottomSendBtn" onclick="submitBottomMessage()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </button>
+          </div>
+          <div class="asisten-bottom-hint">Enter untuk kirim · Shift+Enter baris baru · / untuk perintah</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- RIWAYAT SLIDE-OVER DRAWER -->
+  <div class="asisten-history-backdrop" id="historyBackdrop" onclick="toggleHistoryDrawer(false)"></div>
+  <aside class="asisten-history-drawer" id="historyDrawer">
+    <div class="asisten-drawer-header">
+      <h3>Riwayat Percakapan</h3>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="toggleHistoryDrawer(false)" style="padding: 0.2rem 0.55rem;">✕</button>
+    </div>
+    <div class="asisten-drawer-list" id="historyDrawerList">
+      <% if (sessions && sessions.length > 0) { %>
+        <% sessions.forEach(function(s) { %>
+          <div class="asisten-session-card" onclick="loadSession('<%= s.id %>')">
+            <div>
+              <div class="asisten-session-title"><%= s.title || 'Percakapan Asisten' %></div>
+              <div class="asisten-session-date"><%= new Date(s.updated_at || s.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) %></div>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="deleteSession(event, '<%= s.id %>')" title="Hapus sesi" style="padding: 0.2rem 0.45rem; border: none;">🗑️</button>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 2rem 1rem;">
+          Belum ada riwayat percakapan.
+        </div>
+      <% } %>
+    </div>
+  </aside>
+
+  <!-- SERVER DATA PAYLOAD (SAFE JSON HYDRATION - PREVENTS IDE SYNTAX SQUIGGLES) -->
+  <script id="serverSessionPayload" type="application/json">
+    <%- JSON.stringify({ activeSession: activeSession || null }) %>
+  </script>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    let currentSessionId = null;
+    let currentStep = 'init';
+    let currentContext = {};
+    let isProcessing = false;
+
+    const welcomeState = document.getElementById('asistenWelcomeState');
+    const chatStream = document.getElementById('asistenChatStream');
+    const bottomBar = document.getElementById('asistenBottomBar');
+    const btnNewChat = document.getElementById('btnNewChat');
+    const heroInput = document.getElementById('heroInput');
+    const bottomInput = document.getElementById('bottomInput');
+    const historyDrawer = document.getElementById('historyDrawer');
+    const historyBackdrop = document.getElementById('historyBackdrop');
+
+    // Safely hydrate initial active session if provided from server
+    try {
+      const payloadEl = document.getElementById('serverSessionPayload');
+      if (payloadEl && payloadEl.textContent) {
+        const payloadData = JSON.parse(payloadEl.textContent);
+        if (payloadData && payloadData.activeSession && payloadData.activeSession.messages && payloadData.activeSession.messages.length > 0) {
+          currentSessionId = payloadData.activeSession.id;
+          currentStep = payloadData.activeSession.step || 'init';
+          currentContext = payloadData.activeSession.context || {};
+          renderInitialMessages(payloadData.activeSession.messages);
+        }
+      }
+    } catch (e) {
+      console.error('Gagal parsing sesi awal:', e);
+    }
+
+    function renderInitialMessages(messages) {
+      if (!messages || messages.length === 0) return;
+      welcomeState.style.display = 'none';
+      chatStream.style.display = 'flex';
+      bottomBar.style.display = 'block';
+      btnNewChat.style.display = 'inline-flex';
+      chatStream.innerHTML = '';
+
+      messages.forEach(msg => {
+        if (msg.role === 'user') {
+          appendUserBubble(msg.content);
+        } else {
+          appendAiBubble(msg.content, msg.quick_replies || []);
+        }
+      });
+      scrollToBottom();
+    }
+
+    function toggleHistoryDrawer(open) {
+      if (open) {
+        historyDrawer.classList.add('open');
+        historyBackdrop.classList.add('open');
+      } else {
+        historyDrawer.classList.remove('open');
+        historyBackdrop.classList.remove('open');
+      }
+    }
+
+    function startNewChat() {
+      currentSessionId = null;
+      currentStep = 'init';
+      currentContext = {};
+      chatStream.innerHTML = '';
+      chatStream.style.display = 'none';
+      bottomBar.style.display = 'none';
+      btnNewChat.style.display = 'none';
+      welcomeState.style.display = 'flex';
+      heroInput.value = '';
+      heroInput.focus();
+    }
+
+    function executeQuickCommand(cmd) {
+      heroInput.value = cmd;
+      submitHeroMessage();
+    }
+
+    function submitHeroMessage() {
+      const text = heroInput.value.trim();
+      if (!text || isProcessing) return;
+      heroInput.value = '';
+      sendMessage(text);
+    }
+
+    function submitBottomMessage() {
+      const text = bottomInput.value.trim();
+      if (!text || isProcessing) return;
+      bottomInput.value = '';
+      sendMessage(text);
+    }
+
+    // Keyboard navigation: Enter to send
+    heroInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitHeroMessage();
+      }
+    });
+
+    bottomInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitBottomMessage();
+      }
+    });
+
+    function formatMarkdown(text) {
+      if (!text) return '';
+      // Escape HTML entities
+      let html = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+      // Bold **text**
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      // Italic *text*
+      html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      // Linebreaks
+      html = html.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+      return `<p>${html}</p>`;
+    }
+
+    function appendUserBubble(text) {
+      const row = document.createElement('div');
+      row.className = 'asisten-user-row';
+      row.innerHTML = `<div class="asisten-user-bubble">${escapeHtml(text)}</div>`;
+      chatStream.appendChild(row);
+      scrollToBottom();
+    }
+
+    function appendAiBubble(contentHtml, quickReplies = []) {
+      const row = document.createElement('div');
+      row.className = 'asisten-ai-row';
+
+      let quickRepliesHtml = '';
+      if (quickReplies && quickReplies.length > 0) {
+        quickRepliesHtml = `<div class="asisten-quick-replies">` +
+          quickReplies.map(qr => {
+            const escaped = escapeHtml(qr);
+            return `<button type="button" class="btn-quick-reply" onclick="sendQuickReply('${escaped.replace(/'/g, "\\'")}', this)">${escaped}</button>`;
+          }).join('') +
+          `</div>`;
+      }
+
+      row.innerHTML = `
+        <div class="asisten-ai-avatar">
+          <img src="/img/dentshubriset.png" alt="AI">
+        </div>
+        <div class="asisten-ai-content">
+          <div class="asisten-ai-bubble">${formatMarkdown(contentHtml)}</div>
+          ${quickRepliesHtml}
+        </div>
+      `;
+
+      chatStream.appendChild(row);
+      scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+      const id = 'typingIndicator_' + Date.now();
+      const row = document.createElement('div');
+      row.className = 'asisten-ai-row';
+      row.id = id;
+      row.innerHTML = `
+        <div class="asisten-ai-avatar">
+          <img src="/img/dentshubriset.png" alt="AI">
+        </div>
+        <div class="asisten-ai-content">
+          <div class="asisten-typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      `;
+      chatStream.appendChild(row);
+      scrollToBottom();
+      return id;
+    }
+
+    function removeTypingIndicator(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    function sendQuickReply(replyText, btnEl) {
+      if (isProcessing) return;
+      if (btnEl) {
+        const parent = btnEl.closest('.asisten-quick-replies');
+        if (parent) {
+          parent.querySelectorAll('button').forEach(b => b.disabled = true);
+        }
+      }
+
+      // Check if quick reply triggers a special action (e.g. redirect to billing)
+      if (replyText === 'Isi Ulang Kredit di Billing') {
+        window.location.href = '/billing';
+        return;
+      }
+      if (replyText.startsWith('🚀 Buat Proyek')) {
+        window.location.href = '/penelitian?action=new';
+        return;
+      }
+
+      sendMessage(replyText);
+    }
+
+    async function sendMessage(text) {
+      if (!text || isProcessing) return;
+      isProcessing = true;
+
+      // Switch view from hero to stream if in hero mode
+      if (welcomeState.style.display !== 'none') {
+        welcomeState.style.display = 'none';
+        chatStream.style.display = 'flex';
+        bottomBar.style.display = 'block';
+        btnNewChat.style.display = 'inline-flex';
+      }
+
+      appendUserBubble(text);
+      const typingId = showTypingIndicator();
+
+      try {
+        const res = await fetch('/api/asisten/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken,
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({
+            sessionId: currentSessionId,
+            message: text,
+            step: currentStep,
+            context: currentContext
+          })
+        });
+
+        const data = await res.json();
+        removeTypingIndicator(typingId);
+
+        if (data.success) {
+          currentSessionId = data.sessionId;
+          currentStep = data.step;
+          currentContext = data.context || currentContext;
+          appendAiBubble(data.reply, data.quick_replies || []);
+          refreshHistoryList();
+        } else {
+          appendAiBubble('Maaf, terjadi kendala saat memproses permintaan: ' + (data.error || 'Silakan coba lagi.'));
+        }
+      } catch (err) {
+        removeTypingIndicator(typingId);
+        appendAiBubble('Gagal terhubung ke server AI. Mohon periksa koneksi internet Anda.');
+      } finally {
+        isProcessing = false;
+        bottomInput.focus();
+      }
+    }
+
+    async function refreshHistoryList() {
+      try {
+        const res = await fetch('/api/asisten/sessions', {
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+        const data = await res.json();
+        if (data.success && data.sessions) {
+          renderHistoryDrawerList(data.sessions);
+        }
+      } catch (e) {
+        console.warn('[REFRESH HISTORY ERROR]', e);
+      }
+    }
+
+    function renderHistoryDrawerList(sessions) {
+      const container = document.getElementById('historyDrawerList');
+      if (!sessions || sessions.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 2rem 1rem;">Belum ada riwayat percakapan.</div>';
+        return;
+      }
+
+      container.innerHTML = sessions.map(s => {
+        const dateStr = new Date(s.updated_at || s.created_at).toLocaleDateString('id-ID', {
+          day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+        });
+        return `
+          <div class="asisten-session-card" onclick="loadSession('${s.id}')">
+            <div>
+              <div class="asisten-session-title">${escapeHtml(s.title || 'Percakapan Asisten')}</div>
+              <div class="asisten-session-date">${dateStr}</div>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="deleteSession(event, '${s.id}')" title="Hapus sesi" style="padding: 0.2rem 0.45rem; border: none;">🗑️</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function loadSession(sessionId) {
+      toggleHistoryDrawer(false);
+      try {
+        const res = await fetch(`/api/asisten/session/${sessionId}`, {
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+        const data = await res.json();
+        if (data.success && data.session) {
+          currentSessionId = data.session.id;
+          currentStep = data.session.step || 'init';
+          currentContext = data.session.context || {};
+          renderInitialMessages(data.session.messages || []);
+        }
+      } catch (e) {
+        alert('Gagal memuat riwayat sesi.');
+      }
+    }
+
+    async function deleteSession(e, sessionId) {
+      e.stopPropagation();
+      if (!confirm('Hapus sesi percakapan ini dari riwayat?')) return;
+      try {
+        const res = await fetch(`/api/asisten/session/${sessionId}/delete`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken,
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+        const data = await res.json();
+        if (data.success) {
+          if (currentSessionId === sessionId) {
+            startNewChat();
+          }
+          refreshHistoryList();
+        }
+      } catch (err) {
+        alert('Gagal menghapus riwayat sesi.');
+      }
+    }
+
+    function scrollToBottom() {
+      setTimeout(() => {
+        const area = document.getElementById('asistenBodyArea');
+        area.scrollTop = area.scrollHeight;
+      }, 50);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // THEME CONTROLLERS
+    function setAppTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        localStorage.setItem('dentshub_theme', 'dark');
+      } else {
+        document.body.classList.remove('dark-theme');
+        localStorage.setItem('dentshub_theme', 'light');
+      }
+      updateThemeButtons();
+    }
+
+    function toggleSingleTheme() {
+      const isDark = document.body.classList.contains('dark-theme');
+      setAppTheme(isDark ? 'light' : 'dark');
+    }
+
+    function updateThemeButtons() {
+      const isDark = document.body.classList.contains('dark-theme');
+      const lightBtn = document.getElementById('btnThemeLight');
+      const darkBtn = document.getElementById('btnThemeDark');
+      if (lightBtn && darkBtn) {
+        if (isDark) {
+          darkBtn.classList.add('active');
+          lightBtn.classList.remove('active');
+        } else {
+          lightBtn.classList.add('active');
+          darkBtn.classList.remove('active');
+        }
+      }
+    }
+
+    // Initialize Theme
+    const savedTheme = localStorage.getItem('dentshub_theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+    updateThemeButtons();
+
+    // MOBILE SIDEBAR CONTROLLER (DRAWER & OVERLAY)
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('dashboardSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      if (!sidebar) return;
+      const isShown = sidebar.classList.contains('show') || sidebar.classList.contains('open');
+      if (isShown) {
+        sidebar.classList.remove('show', 'open');
+        if (overlay) overlay.classList.remove('show', 'open');
+      } else {
+        sidebar.classList.add('show', 'open');
+        if (overlay) overlay.classList.add('show', 'open');
+      }
+    }
+
+    const sidebarOverlayEl = document.getElementById('sidebarOverlay');
+    if (sidebarOverlayEl) {
+      sidebarOverlayEl.addEventListener('click', function() {
+        toggleMobileSidebar();
+      });
+    }
+  </script>
+</body>
+</html>

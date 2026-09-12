@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Konsol Manajemen</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard Riset</span></a></li>
+            <li><a href="/admin" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Admin Console</span></a></li>
+            <li><a href="/supervisor" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg><span>Portal Pembimbing</span></a></li>
+            <% if (currentUser && currentUser.role === 'owner') { %>
+              <li><a href="/owner" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Owner Analytics</span></a></li>
+            <% } %>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Alat Riset & Penulisan</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Project Riset</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span>Penyusunan BAB</span></a></li>
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/></svg><span>Buku Besar Kredit</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar" style="background: var(--primary-800);">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'A' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Administrator' %></span>
+            <span class="user-role-badge" style="color: var(--primary-600); font-weight: 700;"><%= currentUser ? currentUser.role.toUpperCase() : 'ADMIN' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Konsol Administrasi & Keamanan Sistem</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="badge badge-admin">Wewenang: <%= currentUser.role.toUpperCase() %></span>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-info" role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <!-- KPI GRID -->
+        <div class="kpi-stat-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Total Akun Terdaftar</span>
+            <span class="kpi-value"><%= stats.totalUsers %></span>
+            <span class="kpi-footer"><%= stats.activeUsers %> berstatus aktif</span>
+          </div>
+          <div class="kpi-card emerald">
+            <span class="kpi-label">Dosen Pembimbing</span>
+            <span class="kpi-value"><%= stats.supervisors %></span>
+            <span class="kpi-footer">Memegang hak telaah naskah</span>
+          </div>
+          <div class="kpi-card purple">
+            <span class="kpi-label">Kredit Beredar</span>
+            <span class="kpi-value"><%= stats.totalCreditsInSystem %></span>
+            <span class="kpi-footer">Akumulasi saldo seluruh peneliti</span>
+          </div>
+          <div class="kpi-card amber">
+            <span class="kpi-label">Audit Log</span>
+            <span class="kpi-value"><%= auditLogs.length %></span>
+            <span class="kpi-footer">Peristiwa keamanan terbaru</span>
+          </div>
+        </div>
+
+        <div class="admin-nav-tabs">
+          <a href="/admin?tab=users" class="admin-nav-tab <%= activeTab === 'users' ? 'active' : '' %>">
+            👥 Manajemen Pengguna (<%= users.length %>)
+          </a>
+          <a href="/admin?tab=credits" class="admin-nav-tab <%= activeTab === 'credits' ? 'active' : '' %>">
+            ⚡ Penyesuaian Saldo Kredit
+          </a>
+          <a href="/admin?tab=audit" class="admin-nav-tab <%= activeTab === 'audit' ? 'active' : '' %>">
+            🛡️ Audit Trail & Keamanan
+          </a>
+        </div>
+
+        <!-- TAB 1: USERS MANAGEMENT -->
+        <% if (activeTab === 'users') { %>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Daftar Akun Peneliti & Supervisor</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table-custom">
+                <thead>
+                  <tr>
+                    <th>Pengguna</th>
+                    <th>Peran (Role)</th>
+                    <th>Status</th>
+                    <th>Saldo Kredit</th>
+                    <th>Waktu Bergabung</th>
+                    <th style="text-align: right;">Aksi Peran</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% users.forEach(u => { %>
+                    <tr>
+                      <td>
+                        <strong style="display: block; font-size: 0.9rem;"><%= u.name %></strong>
+                        <span style="font-size: 0.775rem; color: var(--text-muted);"><%= u.email %></span>
+                        <code style="font-size: 0.7rem; color: var(--text-light); display: block;"><%= u.id %></code>
+                      </td>
+                      <td>
+                        <span class="badge <%= u.role === 'owner' ? 'badge-owner' : u.role === 'admin' ? 'badge-admin' : u.role === 'supervisor' ? 'badge-supervisor' : 'badge-user' %>">
+                          <%= u.role.toUpperCase() %>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="badge <%= u.status === 'active' ? 'badge-emerald' : 'badge-danger' %>">
+                          <%= u.status.toUpperCase() %>
+                        </span>
+                      </td>
+                      <td style="font-family: var(--font-mono); font-weight: 700;">
+                        <% if (['owner', 'admin', 'supervisor'].includes((u.role || '').toLowerCase())) { %>
+                          <span class="badge badge-unlimited">UNLIMITED</span>
+                        <% } else { %>
+                          <%= u.credit_balance || 0 %> Cr
+                        <% } %>
+                      </td>
+                      <td style="font-size: 0.8rem; color: var(--text-muted); white-space: nowrap;">
+                        <%= new Date(u.created_at).toLocaleDateString('id-ID') %>
+                      </td>
+                      <td style="text-align: right;">
+                        <form action="/admin/users/<%= u.id %>/update" method="POST" style="display: inline-flex; gap: 0.35rem; align-items: center;">
+                          <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                          <select name="role" class="form-control" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.75rem;">
+                            <option value="user" <%= u.role === 'user' ? 'selected' : '' %>>User</option>
+                            <option value="supervisor" <%= u.role === 'supervisor' ? 'selected' : '' %>>Supervisor</option>
+                            <option value="admin" <%= u.role === 'admin' ? 'selected' : '' %>>Admin</option>
+                            <option value="owner" <%= u.role === 'owner' ? 'selected' : '' %>>Owner</option>
+                          </select>
+                          <select name="status" class="form-control" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.75rem;">
+                            <option value="active" <%= u.status === 'active' ? 'selected' : '' %>>Active</option>
+                            <option value="suspended" <%= u.status === 'suspended' ? 'selected' : '' %>>Suspended</option>
+                          </select>
+                          <button type="submit" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;">
+                            Ubah
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        <% } else if (activeTab === 'credits') { %>
+          <div class="card" style="max-width: 680px; margin-bottom: 2rem;">
+            <div class="card-header">
+              <h3 class="card-title">Formulir Penyesuaian Saldo Kredit (Admin Adjustment)</h3>
+            </div>
+            <form action="/admin/credits/adjust" method="POST">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="user_id" class="form-label">Pilih Akun Peneliti Target *</label>
+                  <select id="user_id" name="user_id" class="form-control" required>
+                    <option value="">-- Pilih Pengguna --</option>
+                    <% users.forEach(u => { %>
+                      <option value="<%= u.id %>"><%= u.name %> (<%= u.email %>) - Saldo: <%= ['owner', 'admin', 'supervisor'].includes((u.role || '').toLowerCase()) ? 'UNLIMITED' : (u.credit_balance || 0) + ' Cr' %></option>
+                    <% }); %>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="amount" class="form-label">Jumlah Kredit (Gunakan minus (-) untuk pemotongan) *</label>
+                  <input type="number" id="amount" name="amount" class="form-control" placeholder="Contoh: 100 atau -50" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="reason" class="form-label">Alasan Penyesuaian / Dasar Wewenang *</label>
+                  <textarea id="reason" name="reason" class="form-control" rows="3" placeholder="Contoh: Kompensasi kendala teknis simulasi sidang atau hibah kemitraan institusi..." required minlength="5"></textarea>
+                </div>
+
+                <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0;">
+                  🛡️ <strong>Kaidah Audit:</strong> Penyesuaian saldo ini akan secara permanen dicatat pada buku besar kredit (ledger) pengguna dan audit trail keamanan.
+                </p>
+              </div>
+              <div class="card-footer" style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary">
+                  Terapkan Penyesuaian Kredit
+                </button>
+              </div>
+            </form>
+          </div>
+
+        <% } else if (activeTab === 'audit') { %>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Rekaman Log Audit Keamanan Sistem</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Catatan aktivitas autentikasi, mutasi kredit, dan perubahan hak akses.</p>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table-custom">
+                <thead>
+                  <tr>
+                    <th>Waktu</th>
+                    <th>Aktor</th>
+                    <th>Aksi (Event)</th>
+                    <th>Target</th>
+                    <th>Metadata Peristiwa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% auditLogs.forEach(log => { %>
+                    <tr>
+                      <td style="white-space: nowrap; font-size: 0.8rem; color: var(--text-muted);">
+                        <%= new Date(log.created_at).toLocaleDateString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) %>
+                      </td>
+                      <td>
+                        <code style="font-size: 0.75rem; color: var(--primary-700);"><%= log.actor_id %></code>
+                      </td>
+                      <td>
+                        <span class="badge badge-outline" style="font-weight: 700;"><%= log.action %></span>
+                      </td>
+                      <td>
+                        <div style="font-size: 0.8rem;"><%= log.target_type %> / <%= log.target_id %></div>
+                      </td>
+                      <td>
+                        <div class="audit-json-box">
+                          <%= JSON.stringify(log.metadata) %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% } %>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Proyek Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Lanjutkan Skripsi</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/artikel" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Cari Artikel</span></a></li>
+            <li><a href="/olah-data" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Olah Data</span></a></li>
+            <li><a href="/generate-ppt" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Generate PPT</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+            <% if (currentUser && currentUser.role === 'owner') { %>
+              <li><a href="/owner" class="sidebar-nav-link" style="color: #a855f7;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>Owner Portal</span></a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(37, 99, 235, 0.1); color: var(--primary-600); display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div>
+              <h3 style="font-size: 1.15rem; margin: 0; font-weight: 700;">Olah Data</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Pilih jenis olah data sesuai penelitianmu — hasilnya bisa langsung jadi data Bab IV.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span id="headerCreditBalance">
+              <% if (creditBalance === 'UNLIMITED') { %>
+                <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+              <% } else { %>
+                <%= creditBalance %> Kredit
+              <% } %>
+            </span>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert" style="margin-bottom: 1.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <%
+          const selectedModule = (locals.input && input.module_type) || (locals.result && result.module) || 'spss';
+        %>
+
+        <!-- NAVIGASI KEMBALI: PILIH FITUR LAIN -->
+        <div id="navBackContainer" style="display: none; margin-bottom: 1rem;">
+          <button type="button" class="olah-nav-back" onclick="showHubGrid()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>Pilih fitur lain</span>
+          </button>
+        </div>
+
+        <!-- 6-CARD GRID PERSIS GAMBAR 5 -->
+        <div class="olah-data-hub-grid" id="olahHubGrid">
+          <!-- CARD 1: TRANSKRIP AUDIO/VIDEO -->
+          <div class="olah-card <%= selectedModule === 'transkrip' ? 'active' : '' %>" onclick="openWorkbench('transkrip')">
+            <div>
+              <div class="olah-card-icon-wrap" style="background: rgba(14, 165, 233, 0.12); color: #0284c7;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </div>
+              <h4 class="olah-card-title">
+                <span>Transkripsi Audio/Video</span>
+                <span>&rsaquo;</span>
+              </h4>
+              <span class="olah-card-badge" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;">KUALITATIF</span>
+              <p class="olah-card-desc">
+                Unggah audio <strong>atau video</strong> wawancara &rarr; transkrip otomatis dengan label pembicara & timestamp. Edit, unduh Word, atau lanjut ke Analisis Kualitatif untuk jadi data Bab IV.
+              </p>
+            </div>
+            <div class="olah-card-cost" style="color: #0284c7;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>1 kredit / 10 menit audio</span>
+            </div>
+          </div>
+
+          <!-- CARD 2: OLAH DATA SPSS (BUKAN AI - REAL MATH TABLES) -->
+          <div class="olah-card <%= selectedModule === 'spss' ? 'active' : '' %>" onclick="openWorkbench('spss')">
+            <div>
+              <div class="olah-card-icon-wrap" style="background: rgba(13, 148, 136, 0.12); color: #0d9488;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <h4 class="olah-card-title">
+                <span>Olah Data SPSS</span>
+                <span>&rsaquo;</span>
+              </h4>
+              <span class="olah-card-badge" style="background: rgba(13, 148, 136, 0.15); color: #0d9488;">KUANTITATIF (BUKAN AI)</span>
+              <p class="olah-card-desc">
+                Unggah Excel data mentah kuisioner &rarr; uji statistik otomatis (validitas, reliabilitas, asumsi klasik, regresi) dengan tabel gaya SPSS + interpretasi.
+              </p>
+            </div>
+            <div class="olah-card-cost" style="color: #0d9488;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>3 kredit / analisis</span>
+            </div>
+          </div>
+
+          <!-- CARD 3: OLAH DATA SMARTPLS (BUKAN AI - REAL SEM MATRICES) -->
+          <div class="olah-card <%= selectedModule === 'smartpls' ? 'active' : '' %>" onclick="openWorkbench('smartpls')">
+            <div>
+              <div class="olah-card-icon-wrap" style="background: rgba(13, 148, 136, 0.12); color: #0d9488;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              </div>
+              <h4 class="olah-card-title">
+                <span>Olah Data SmartPLS</span>
+                <span>&rsaquo;</span>
+              </h4>
+              <span class="olah-card-badge" style="background: rgba(13, 148, 136, 0.15); color: #0d9488;">PLS-SEM · MEDIASI (BUKAN AI)</span>
+              <p class="olah-card-desc">
+                Unggah Excel kuisioner &rarr; model persamaan struktural lengkap: outer loadings, reliabilitas & AVE, validitas diskriminan (HTMT), path coefficients + bootstrap, uji mediasi (VAF), R², f², Q², SRMR.
+              </p>
+            </div>
+            <div class="olah-card-cost" style="color: #0d9488;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>5 kredit / analisis</span>
+            </div>
+          </div>
+
+          <!-- CARD 4: ANALISIS KUALITATIF -->
+          <div class="olah-card <%= selectedModule === 'kualitatif' ? 'active' : '' %>" onclick="openWorkbench('kualitatif')">
+            <div>
+              <div class="olah-card-icon-wrap" style="background: rgba(16, 185, 129, 0.12); color: #059669;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <h4 class="olah-card-title">
+                <span>Analisis Kualitatif</span>
+                <span>&rsaquo;</span>
+              </h4>
+              <span class="olah-card-badge" style="background: rgba(16, 185, 129, 0.15); color: #059669;">KODING & TEMA</span>
+              <p class="olah-card-desc">
+                Transkrip wawancara &rarr; open coding, kategorisasi, tema, matriks tema&times;informan (Miles & Huberman / Braun & Clarke) &mdash; kutipan diverifikasi verbatim.
+              </p>
+            </div>
+            <div class="olah-card-cost" style="color: #059669;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>2 kredit / analisis</span>
+            </div>
+          </div>
+
+          <!-- CARD 5: ANALISIS DOKUMEN -->
+          <div class="olah-card <%= selectedModule === 'dokumen' ? 'active' : '' %>" onclick="openWorkbench('dokumen')">
+            <div>
+              <div class="olah-card-icon-wrap" style="background: rgba(20, 184, 166, 0.12); color: #0d9488;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <h4 class="olah-card-title">
+                <span>Analisis Dokumen</span>
+                <span>&rsaquo;</span>
+              </h4>
+              <span class="olah-card-badge" style="background: rgba(20, 184, 166, 0.15); color: #0d9488;">BUKU · NOVEL · ARTIKEL</span>
+              <p class="olah-card-desc">
+                Unggah PDF/Word (buku, novel, artikel) &rarr; analisis isi/tematik/naratif/wacana: koding, tema, kutipan + nomor halaman &mdash; verbatim, siap jadi Bab IV.
+              </p>
+            </div>
+            <div class="olah-card-cost" style="color: #0d9488;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>2 kredit / analisis</span>
+            </div>
+          </div>
+
+          <!-- CARD 6: ANALISIS VISUAL VIDEO -->
+          <div class="olah-card <%= selectedModule === 'visual' ? 'active' : '' %>" onclick="openWorkbench('visual')">
+            <div>
+              <div class="olah-card-icon-wrap" style="background: rgba(245, 158, 11, 0.12); color: #d97706;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+              </div>
+              <h4 class="olah-card-title">
+                <span>Analisis Visual Video</span>
+                <span>&rsaquo;</span>
+              </h4>
+              <span class="olah-card-badge" style="background: rgba(245, 158, 11, 0.15); color: #d97706;">FILM · IKLAN · SEMIOTIKA</span>
+              <p class="olah-card-desc">
+                Unggah video &rarr; sistem ambil keyframe &rarr; analisis <strong>visual</strong> (semiotika, mise-en-scène): adegan kunci, makna/simbol, tema visual + narasi.
+              </p>
+            </div>
+            <div class="olah-card-cost" style="color: #d97706;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>3 kredit / video</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEDICATED WORKBENCHES CONTAINER -->
+        <div id="workbenchContainer">
+          <!-- ===================================================================
+               WORKBENCH 2: ANALISIS STATISTIK SPSS (KUANTITATIF) - PERSIS GBR 7
+               =================================================================== -->
+          <div class="card olah-workbench-card" id="wb_spss" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg); margin-bottom: 2rem;">
+            <div class="card-body" style="padding: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(13, 148, 136, 0.15); color: #0d9488; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--text-main);">
+                    Analisis Statistik (Gaya SPSS) — Kuantitatif
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    Excel/CSV data mentah kuisioner · angka dihitung mesin statistik deterministik, BUKAN AI
+                  </p>
+                </div>
+              </div>
+
+              <form action="/olah-data" method="POST" id="form_spss">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="module_type" value="spss">
+
+                <!-- SUB-TABS: KUISIONER VS DATA SEKUNDER -->
+                <div class="olah-subtabs">
+                  <button type="button" class="olah-subtab-btn active" id="tab_spss_primer" onclick="switchSpssTab('primer')">
+                    <span>📊 Kuisioner (data primer)</span>
+                  </button>
+                  <button type="button" class="olah-subtab-btn" id="tab_spss_sekunder" onclick="switchSpssTab('sekunder')">
+                    <span>📈 Data Sekunder (BEI / laporan keuangan)</span>
+                  </button>
+                </div>
+                <input type="hidden" name="sub_tab" id="spss_subtab_input" value="kuisioner">
+
+                <!-- AMBER FORMAT INSTRUCTION BOX PERSIS GBR 7 -->
+                <div class="olah-amber-box">
+                  📁 <strong>Format Excel:</strong> baris 1 = nama kolom (mis. X1.1, X1.2, ..., X2.1, ..., Y.1, ...), baris berikutnya = jawaban angka tiap responden. Kolom total (mis. TX1) opsional.
+                  <a href="/olah-data/template-spss" download="template_kuisioner_spss.csv">Belum punya format? Unduh template kosong &rarr;</a>
+                </div>
+
+                <!-- FILE PICKER DATA MENTAH -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">
+                    File data mentah (.xlsx / .csv)
+                  </label>
+                  <div class="olah-file-picker-wrap">
+                    <label class="olah-file-picker-btn">
+                      Pilih File
+                      <input type="file" accept=".xlsx, .xls, .csv" onchange="handleFileSelected(this, 'spss_filename')">
+                    </label>
+                    <span class="olah-file-picker-name" id="spss_filename">Tidak ada file yang dipilih</span>
+                  </div>
+                  <input type="hidden" name="file_name" id="spss_filename_hidden" value="">
+                </div>
+
+                <!-- JUDUL PENELITIAN -->
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">
+                    Judul penelitian <span style="color: var(--text-muted); font-weight: normal;">(opsional — bantu AI memetakan variabel)</span>
+                  </label>
+                  <input type="text" name="research_title" class="form-control" placeholder="mis. Pengaruh Literasi Keuangan dan Gaya Hidup terhadap Perilaku Konsumtif" value="<%= (locals.input && input.research_title) ? input.research_title : '' %>">
+                </div>
+
+                <!-- TOMBOL UNGGAH & PETAKAN VARIABEL -->
+                <div>
+                  <button type="submit" class="btn-emerald" id="btnSubmitSpss">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    Unggah &amp; Petakan Variabel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ===================================================================
+               WORKBENCH 3: ANALISIS SMARTPLS (PLS-SEM) - PERSIS GBR 8
+               =================================================================== -->
+          <div class="card olah-workbench-card" id="wb_smartpls" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg); margin-bottom: 2rem; display: none;">
+            <div class="card-body" style="padding: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(13, 148, 136, 0.15); color: #0d9488; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--text-main);">
+                    Analisis SmartPLS (PLS-SEM)
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    Outer &amp; inner model + bootstrap + mediasi · angka dihitung mesin statistik deterministik, BUKAN AI
+                  </p>
+                </div>
+              </div>
+
+              <form action="/olah-data" method="POST" id="form_smartpls">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="module_type" value="smartpls">
+
+                <!-- SLATE FORMAT INSTRUCTION BOX PERSIS GBR 8 -->
+                <div class="olah-slate-box">
+                  🗂 <strong>Format Excel:</strong> baris 1 = nama kolom indikator per konstruk (mis. X1.1, X1.2, ..., Z.1, ..., Y.1, ...), baris berikutnya = jawaban angka tiap responden. Cocok untuk model dengan <strong>variabel mediasi/intervening maupun moderasi</strong> — panah antar-konstruk kamu tentukan sendiri di langkah berikutnya. Hasil: outer loadings, reliabilitas (alpha, rho_A, CR, AVE), validitas diskriminan (Fornell-Larcker, cross-loadings, HTMT), inner VIF, path coefficients + bootstrap, mediasi (VAF), <strong>moderasi (efek interaksi)</strong>, R², f², Q², SRMR.
+                  <a href="/olah-data/template-smartpls" download="template_kuisioner_smartpls.csv" style="color: #2dd4bf; text-decoration: underline; margin-left: 0.35rem;">Unduh template kosong &rarr;</a>
+                </div>
+
+                <!-- FILE PICKER DATA MENTAH -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">
+                    File data mentah (.xlsx / .csv)
+                  </label>
+                  <div class="olah-file-picker-wrap">
+                    <label class="olah-file-picker-btn">
+                      Pilih File
+                      <input type="file" accept=".xlsx, .xls, .csv" onchange="handleFileSelected(this, 'smartpls_filename')">
+                    </label>
+                    <span class="olah-file-picker-name" id="smartpls_filename">Tidak ada file yang dipilih</span>
+                  </div>
+                  <input type="hidden" name="file_name" id="smartpls_filename_hidden" value="">
+                </div>
+
+                <!-- JUDUL PENELITIAN -->
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">
+                    Judul penelitian <span style="color: var(--text-muted); font-weight: normal;">(opsional — bantu AI memetakan konstruk)</span>
+                  </label>
+                  <input type="text" name="research_title" class="form-control" placeholder="mis. Pengaruh Kualitas Layanan terhadap Loyalitas melalui Kepuasan Pelanggan" value="<%= (locals.input && input.research_title) ? input.research_title : '' %>">
+                </div>
+
+                <!-- TOMBOL UNGGAH & PETAKAN KONSTRUK -->
+                <div>
+                  <button type="submit" class="btn-emerald" id="btnSubmitSmartpls">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    Unggah &amp; Petakan Konstruk
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ===================================================================
+               WORKBENCH 4: ANALISIS KUALITATIF — KODING & TEMA (PERSIS GBR 9)
+               =================================================================== -->
+          <div class="card olah-workbench-card" id="wb_kualitatif" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg); margin-bottom: 2rem; display: none;">
+            <div class="card-body" style="padding: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); color: #059669; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--text-main);">
+                    Analisis Kualitatif — Koding &amp; Tema
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    Transkrip wawancara &rarr; open coding &rarr; kategorisasi &rarr; tema + matriks informan · kutipan diverifikasi verbatim
+                  </p>
+                </div>
+              </div>
+
+              <form action="/olah-data" method="POST" id="form_kualitatif">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="module_type" value="kualitatif">
+
+                <!-- 2-COL: JUDUL PENELITIAN & TEKNIK ANALISIS -->
+                <div class="olah-form-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                      Judul penelitian <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                    </label>
+                    <input type="text" name="research_title" class="form-control" placeholder="mis. Peran Guru PAI dalam Penguatan Karakter..." value="<%= (locals.input && input.research_title) ? input.research_title : '' %>">
+                  </div>
+
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">Teknik analisis</label>
+                    <select name="analysis_method" class="form-control">
+                      <option value="Miles & Huberman (kondensasi-display-verifikasi)">Miles &amp; Huberman (kondensasi-display-verifikasi)</option>
+                      <option value="Braun & Clarke (Thematic Analysis 6 Langkah)">Braun &amp; Clarke (Thematic Analysis 6 Langkah)</option>
+                      <option value="Grounded Theory (Strauss & Corbin: Open-Axial-Selective)">Grounded Theory (Strauss &amp; Corbin: Open-Axial-Selective)</option>
+                      <option value="Analisis Naratif & Fenomenologis">Analisis Naratif &amp; Fenomenologis</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- FOKUS / RUMUSAN MASALAH -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    Fokus / rumusan masalah <span style="color: var(--text-muted); font-weight: normal;">(opsional — memandu tema)</span>
+                  </label>
+                  <textarea name="focus_problem" class="form-control" rows="3" placeholder="mis. 1) Bagaimana peran guru...? 2) Apa strategi yang digunakan...?"><%= (locals.input && input.focus_problem) ? input.focus_problem : '' %></textarea>
+                </div>
+
+                <!-- SUMBER DATA — TRANSKRIP TERSIMPAN -->
+                <div style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">
+                    Sumber data — transkrip tersimpan
+                  </label>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    Belum ada transkrip selesai. Buat dulu di <a href="javascript:void(0)" onclick="openWorkbench('transkrip')" style="color: #3b82f6; text-decoration: underline;">Transkripsi Wawancara</a>, atau tempel teks manual di bawah.
+                  </p>
+                </div>
+
+                <!-- TEKS WAWANCARA MANUAL DENGAN BUTTON + TAMBAH INFORMAN -->
+                <div style="margin-bottom: 1.5rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem; margin: 0;">
+                      Teks wawancara manual <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                    </label>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="addInformantBlock()" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+                      <span>+ Tambah informan</span>
+                    </button>
+                  </div>
+
+                  <div id="informantsListContainer">
+                    <div class="informant-item-box" id="inf_box_1">
+                      <div class="informant-header">
+                        <span class="informant-title">Informan 1</span>
+                      </div>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+                        <input type="text" class="form-control form-control-sm" placeholder="Nama / Inisial (mis. Pak Budi / Inf 1)" name="informant_names[]" value="Informan 1 (Kepala Unit)">
+                        <input type="text" class="form-control form-control-sm" placeholder="Peran / Jabatan (mis. Guru PAI)" name="informant_roles[]" value="Kepala Unit Pelaksana">
+                      </div>
+                      <textarea name="informant_quotes[]" class="form-control form-control-sm" rows="3" placeholder="Salin kutipan wawancara verbatim informan 1 di sini...">Pada mulanya ada resistensi dari staf senior karena kebiasaan lama. Namun setelah kami adakan pendampingan intensif selama dua minggu, adaptasi mulai berjalan lancar dan akurasi pencatatan meningkat pesat.</textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TOMBOL AKSI -->
+                <div>
+                  <button type="submit" class="btn-emerald" id="btnSubmitKualitatif">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Mulai Koding &amp; Analisis Tema
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ===================================================================
+               WORKBENCH 5: ANALISIS DOKUMEN — BUKU, NOVEL & ARTIKEL (PERSIS GBR 10)
+               =================================================================== -->
+          <div class="card olah-workbench-card" id="wb_dokumen" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg); margin-bottom: 2rem; display: none;">
+            <div class="card-body" style="padding: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(20, 184, 166, 0.15); color: #0d9488; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--text-main);">
+                    Analisis Dokumen — Buku, Novel &amp; Artikel
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    PDF/Word &rarr; koding &rarr; tema + kutipan berhalaman · kutipan diverifikasi verbatim
+                  </p>
+                </div>
+              </div>
+
+              <form action="/olah-data" method="POST" id="form_dokumen">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="module_type" value="dokumen">
+
+                <!-- 2-COL: JUDUL PENELITIAN & METODE ANALISIS -->
+                <div class="olah-form-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.5rem;">
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                      Judul penelitian <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                    </label>
+                    <input type="text" name="research_title" class="form-control" placeholder="mis. Nilai Moral dalam Novel Laskar Pelangi" value="<%= (locals.input && input.research_title) ? input.research_title : '' %>">
+                  </div>
+
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">Metode analisis</label>
+                    <select name="analysis_method" class="form-control">
+                      <option value="Analisis Isi (Content Analysis)">Analisis Isi (Content Analysis)</option>
+                      <option value="Analisis Wacana Kritis (Teun van Dijk)">Analisis Wacana Kritis (Teun van Dijk)</option>
+                      <option value="Analisis Wacana Kritis (Norman Fairclough)">Analisis Wacana Kritis (Norman Fairclough)</option>
+                      <option value="Analisis Naratif (Vladimir Propp / Todorov)">Analisis Naratif (Vladimir Propp / Todorov)</option>
+                      <option value="Analisis Semiotika Sastra (Roland Barthes)">Analisis Semiotika Sastra (Roland Barthes)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0 0 1.25rem;">
+                  Kategorisasi &amp; frekuensi makna — cocok untuk artikel, dokumen kebijakan, media.
+                </p>
+
+                <!-- FOKUS / RUMUSAN MASALAH -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    Fokus / rumusan masalah <span style="color: var(--text-muted); font-weight: normal;">(opsional — memandu tema)</span>
+                  </label>
+                  <textarea name="focus_problem" class="form-control" rows="3" placeholder="mis. 1) Nilai moral apa yang terkandung...? 2) Bagaimana penggambarannya...?"><%= (locals.input && input.focus_problem) ? input.focus_problem : '' %></textarea>
+                </div>
+
+                <!-- DOKUMEN (PDF / WORD / TXT) DROPZONE -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    Dokumen (PDF / Word / TXT)
+                  </label>
+                  <div class="dropzone-box" onclick="document.getElementById('dokumen_file_input').click()">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);" id="dokumen_dropzone_label">
+                      &uarr; Klik untuk pilih file (bisa lebih dari satu)
+                    </div>
+                  </div>
+                  <input type="file" id="dokumen_file_input" accept=".pdf, .docx, .doc, .txt" multiple style="display: none;" onchange="handleDocFilesSelected(this)">
+                  <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0.35rem 0 0;">
+                    PDF hasil scan (gambar) tak terbaca — gunakan PDF berteks. Maks 25MB/file.
+                  </p>
+                </div>
+
+                <!-- TEMPEL TEKS -->
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    Atau tempel teks <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                  </label>
+                  <textarea name="document_text" class="form-control" rows="4" placeholder="Tempel kutipan bab/artikel yang ingin dianalisis..."><%= (locals.input && input.document_text) ? input.document_text : '' %></textarea>
+                </div>
+
+                <!-- TOMBOL AKSI -->
+                <div>
+                  <button type="submit" class="btn-emerald" id="btnSubmitDokumen">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Mulai Analisis Dokumen
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ===================================================================
+               WORKBENCH 6: ANALISIS VISUAL VIDEO (PERSIS GBR 11)
+               =================================================================== -->
+          <div class="card olah-workbench-card" id="wb_visual" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg); margin-bottom: 2rem; display: none;">
+            <div class="card-body" style="padding: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(245, 158, 11, 0.15); color: #d97706; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--text-main);">
+                    Analisis Visual Video
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    Video &rarr; keyframe &rarr; analisis semiotika/mise-en-scène: adegan kunci, makna, tema visual
+                  </p>
+                </div>
+              </div>
+
+              <form action="/olah-data" method="POST" id="form_visual">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="module_type" value="visual">
+
+                <!-- AMBER WARNING NOTIFICATION PERSIS GBR 11 -->
+                <div class="olah-amber-box">
+                  📢 <strong>Menganalisis tampilan visual</strong> (bukan suara). Sistem mengambil &plusmn;12 keyframe merata lalu menafsirkannya. Untuk analisis ucapan, gunakan <a href="javascript:void(0)" onclick="openWorkbench('transkrip')" style="color: #60a5fa; text-decoration: underline;">Transkripsi</a> lalu <a href="javascript:void(0)" onclick="openWorkbench('kualitatif')" style="color: #60a5fa; text-decoration: underline;">Analisis Kualitatif</a>.
+                </div>
+
+                <!-- 2-COL: JUDUL PENELITIAN & METODE ANALISIS -->
+                <div class="olah-form-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.5rem;">
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                      Judul penelitian <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                    </label>
+                    <input type="text" name="research_title" class="form-control" placeholder="mis. Representasi Gender dalam Iklan X" value="<%= (locals.input && input.research_title) ? input.research_title : '' %>">
+                  </div>
+
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">Metode analisis</label>
+                    <select name="analysis_method" class="form-control">
+                      <option value="Semiotika (Barthes/Peirce)">Semiotika (Barthes/Peirce)</option>
+                      <option value="Mise-en-scène (Cinematography)">Mise-en-scène (Cinematography)</option>
+                      <option value="Analisis Visual Multimodal (Kress & van Leeuwen)">Analisis Visual Multimodal (Kress &amp; van Leeuwen)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0 0 1.25rem;">
+                  Penanda&ndash;petanda, denotasi&ndash;konotasi, mitos — cocok untuk iklan &amp; film.
+                </p>
+
+                <!-- FOKUS / RUMUSAN MASALAH -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    Fokus / rumusan masalah <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                  </label>
+                  <textarea name="focus_problem" class="form-control" rows="3" placeholder="mis. Bagaimana perempuan direpresentasikan secara visual...?"><%= (locals.input && input.focus_problem) ? input.focus_problem : '' %></textarea>
+                </div>
+
+                <!-- FILE VIDEO PICKER -->
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">File video</label>
+                  <div class="olah-file-picker-wrap">
+                    <label class="olah-file-picker-btn">
+                      Pilih File
+                      <input type="file" accept=".mp4, .mov, .mkv, .avi, .webm" onchange="handleFileSelected(this, 'visual_filename')">
+                    </label>
+                    <span class="olah-file-picker-name" id="visual_filename">Tidak ada file yang dipilih</span>
+                  </div>
+                  <input type="hidden" name="video_file_name" id="visual_filename_hidden" value="">
+                  <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0.35rem 0 0;">
+                    MP4/MOV/MKV/AVI/WEBM · maks 1GB. Untuk hemat, potong ke bagian penting sebelum unggah.
+                  </p>
+                </div>
+
+                <!-- TOMBOL AKSI -->
+                <div>
+                  <button type="submit" class="btn-emerald" id="btnSubmitVisual">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Mulai Analisis Visual
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ===================================================================
+               WORKBENCH 1: TRANSKRIPSI AUDIO/VIDEO (PERSIS GBR 6)
+               =================================================================== -->
+          <div class="card olah-workbench-card" id="wb_transkrip" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg); margin-bottom: 2rem; display: none;">
+            <div class="card-body" style="padding: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(14, 165, 233, 0.15); color: #0284c7; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--text-main);">
+                    Transkripsi Audio/Video — Otomatis &amp; Verbatim
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                    Unggah audio atau video wawancara &rarr; transkrip otomatis dengan label pembicara &amp; timestamp terverifikasi.
+                  </p>
+                </div>
+              </div>
+
+              <form action="/olah-data" method="POST" id="form_transkrip">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="module_type" value="transkrip">
+
+                <!-- 2-COL: JUDUL PENELITIAN & BAHASA -->
+                <div class="olah-form-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                      Judul penelitian <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                    </label>
+                    <input type="text" name="research_title" class="form-control" placeholder="mis. Wawancara Mendalam Implementasi Kurikulum Merdeka" value="<%= (locals.input && input.research_title) ? input.research_title : '' %>">
+                  </div>
+
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">Bahasa Audio</label>
+                    <select name="audio_language" class="form-control">
+                      <option value="Bahasa Indonesia Formal">Bahasa Indonesia Formal</option>
+                      <option value="Bahasa Indonesia Campuran (Slang)">Bahasa Indonesia Campuran (Slang/Daerah)</option>
+                      <option value="Bahasa Jawa / Sunda">Bahasa Daerah (Jawa / Sunda)</option>
+                      <option value="English">English (Akademik)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- FILE AUDIO / VIDEO -->
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    File Rekaman Suara / Video (.mp3, .wav, .m4a, .mp4, .aac)
+                  </label>
+                  <div class="olah-file-picker-wrap">
+                    <label class="olah-file-picker-btn">
+                      Pilih File
+                      <input type="file" accept=".mp3, .wav, .m4a, .mp4, .aac, .ogg" onchange="handleFileSelected(this, 'transkrip_filename')">
+                    </label>
+                    <span class="olah-file-picker-name" id="transkrip_filename">Tidak ada file yang dipilih</span>
+                  </div>
+                  <input type="hidden" name="file_name" id="transkrip_filename_hidden" value="">
+                  <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0.35rem 0 0;">
+                    Maks 1GB per rekaman. Sistem mendeteksi jeda hening dan pergantian pembicara secara otomatis.
+                  </p>
+                </div>
+
+                <!-- FOKUS WAWANCARA -->
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" style="font-weight: 600; font-size: 0.85rem;">
+                    Fokus Wawancara &amp; Kunci Terminologi <span style="color: var(--text-muted); font-weight: normal;">(opsional)</span>
+                  </label>
+                  <input type="text" name="focus_problem" class="form-control" placeholder="Contoh kata kunci teknis: pedagogik, diferensiasi, asesmen, modul ajar..." value="<%= (locals.input && input.focus_problem) ? input.focus_problem : '' %>">
+                </div>
+
+                <!-- TOMBOL AKSI -->
+                <div>
+                  <button type="submit" class="btn-emerald" id="btnSubmitTranskrip">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Mulai Transkripsi Audio/Video
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- HASIL PEMROSESAN OLAH DATA -->
+        <% if (result) { %>
+          <div style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                <%= result.title || 'Hasil Analisis Terverifikasi' %>
+              </h3>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="copyBab4Text(this)">
+                Salin Narasi BAB IV
+              </button>
+            </div>
+
+            <!-- JIKA MODUL SPSS (KUANTITATIF) -->
+            <% if (result.module === 'spss') { %>
+              <!-- DESCRIPTIVE STATISTICS -->
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">Tabel 1: Descriptive Statistics</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Variabel</th>
+                          <th>N</th>
+                          <th>Mean</th>
+                          <th>Std. Deviation</th>
+                          <th>Minimum</th>
+                          <th>Maximum</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% (result.descriptive_statistics || []).forEach(row => { %>
+                          <tr>
+                            <td><strong><%= row.variable %></strong></td>
+                            <td><%= row.N %></td>
+                            <td><%= row.mean.toFixed(2) %></td>
+                            <td><%= row.std_dev.toFixed(2) %></td>
+                            <td><%= row.min %></td>
+                            <td><%= row.max %></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MODEL SUMMARY & ANOVA -->
+              <div class="spss-tables-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem;">
+                <div class="card">
+                  <div class="card-header" style="background: var(--bg-subtle);">
+                    <h4 style="margin: 0; font-size: 0.95rem;">Tabel 2: Model Summary (Regresi)</h4>
+                  </div>
+                  <div class="card-body">
+                    <% const ms = result.model_summary || {}; %>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                      <div style="display: flex; justify-content: space-between;"><span>Koefisien Korelasi (R):</span> <strong><%= ms.R %></strong></div>
+                      <div style="display: flex; justify-content: space-between;"><span>R Square (R²):</span> <strong style="color: #0d9488;"><%= ms.R_square %></strong></div>
+                      <div style="display: flex; justify-content: space-between;"><span>Adjusted R Square:</span> <strong><%= ms.adjusted_R_square %></strong></div>
+                      <div style="display: flex; justify-content: space-between;"><span>Durbin-Watson:</span> <strong><%= ms.durbin_watson %></strong></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" style="background: var(--bg-subtle);">
+                    <h4 style="margin: 0; font-size: 0.95rem;">Tabel 3: ANOVA (Uji Simultan F)</h4>
+                  </div>
+                  <div class="card-body">
+                    <% const anova = result.anova_table || {}; %>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                      <div style="display: flex; justify-content: space-between;"><span>F-Hitung:</span> <strong style="color: #10b981;"><%= anova.F_count %></strong></div>
+                      <div style="display: flex; justify-content: space-between;"><span>Sig. (p-value):</span> <strong><%= anova.sig_p %></strong></div>
+                      <div style="display: flex; justify-content: space-between;"><span>Keputusan:</span> <span class="badge badge-emerald">Model Fit Signifikan</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COEFFICIENTS TABLE -->
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">Tabel 4: Coefficients (Uji Parsial t)</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Model</th>
+                          <th>Unstandardized B</th>
+                          <th>Std. Error</th>
+                          <th>Standardized Beta</th>
+                          <th>t-Hitung</th>
+                          <th>Sig. (p)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% (result.coefficients_table || []).forEach(row => { %>
+                          <tr>
+                            <td><strong><%= row.model %></strong></td>
+                            <td><%= row.unstd_B.toFixed(3) %></td>
+                            <td><%= row.std_error.toFixed(3) %></td>
+                            <td><%= row.beta !== null ? row.beta.toFixed(3) : '-' %></td>
+                            <td style="color: #0d9488; font-weight: 700;"><%= row.t_count.toFixed(3) %></td>
+                            <td><%= row.sig.toFixed(3) %></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- JIKA MODUL SMARTPLS (PLS-SEM) -->
+            <% if (result.module === 'smartpls') { %>
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">1. Measurement Model: Convergent Validity &amp; Reliability</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Konstruk Variabel</th>
+                          <th>Cronbach Alpha</th>
+                          <th>Composite Reliability</th>
+                          <th>AVE</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% (result.outer_model?.construct_reliability || []).forEach(c => { %>
+                          <tr>
+                            <td><strong><%= c.construct %></strong></td>
+                            <td><%= c.cronbach_alpha.toFixed(3) %></td>
+                            <td><%= c.composite_reliability.toFixed(3) %></td>
+                            <td><%= c.AVE.toFixed(3) %></td>
+                            <td><span class="badge badge-emerald"><%= c.conclusion %></span></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PATH COEFFICIENTS & MEDIATION -->
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">2. Structural Model: Path Coefficients &amp; Uji Mediasi VAF</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Jalur Hubungan</th>
+                          <th>Path Beta</th>
+                          <th>Std Dev</th>
+                          <th>T-Statistics</th>
+                          <th>P-Value</th>
+                          <th>Keputusan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% (result.inner_model?.path_coefficients || []).forEach(p => { %>
+                          <tr>
+                            <td><strong><%= p.relationship %></strong></td>
+                            <td><%= p.path_beta.toFixed(3) %></td>
+                            <td><%= p.std_dev.toFixed(3) %></td>
+                            <td style="color: #0d9488; font-weight: 700;"><%= p.t_statistics.toFixed(3) %></td>
+                            <td><%= p.p_value.toFixed(3) %></td>
+                            <td><span class="badge badge-emerald"><%= p.decision %></span></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <% if (result.inner_model?.mediation_testing) { %>
+                    <% const med = result.inner_model.mediation_testing; %>
+                    <div style="background: rgba(13, 148, 136, 0.08); border: 1px solid #2dd4bf; border-radius: var(--radius-md); padding: 1rem; margin-top: 1rem; font-size: 0.85rem;">
+                      <strong style="color: #0f766e; display: block; margin-bottom: 0.25rem;">Hasil Pengujian Mediasi: <%= med.mediation_type %></strong>
+                      <div style="color: var(--text-main);"><%= med.conclusion %> Rasio VAF: <strong><%= med.vaf_ratio %></strong> (t-stat = <%= med.t_statistics_indirect %>).</div>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- JIKA MODUL TRANSKRIP KUALITATIF -->
+            <% if (result.module === 'transkrip' && result.transcripts) { %>
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">Tabel Transkrip Verbatim</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th style="width: 100px;">Timestamp</th>
+                          <th style="width: 140px;">Pembicara</th>
+                          <th>Pernyataan Verbatim</th>
+                          <th>Label / Tag</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% result.transcripts.forEach(t => { %>
+                          <tr>
+                            <td style="font-family: var(--font-mono);"><%= t.timestamp %></td>
+                            <td><strong><%= t.speaker %></strong></td>
+                            <td style="font-family: var(--font-sans);"><%= t.dialogue %></td>
+                            <td><span class="badge badge-primary" style="font-size: 0.725rem;"><%= t.tag || t.code_label %></span></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- JIKA MODUL KUALITATIF (KODING & TEMA) -->
+            <% if (result.module === 'kualitatif' && result.coding_summary) { %>
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">Matriks Koding Terbuka &amp; Frekuensi Tema</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Kode Analisis</th>
+                          <th>Label Kategori</th>
+                          <th>Frekuensi Muncul</th>
+                          <th>Sumber Informan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% result.coding_summary.forEach(c => { %>
+                          <tr>
+                            <td><code style="color: #059669;"><%= c.code %></code></td>
+                            <td><strong><%= c.label %></strong></td>
+                            <td><%= c.frequency %> kali</td>
+                            <td><%= c.informants %></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- JIKA MODUL VISUAL VIDEO -->
+            <% if (result.module === 'visual' && result.keyframe_breakdown) { %>
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">Dekonstruksi Semiotika Keyframe Visual</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Adegan &amp; Timestamp</th>
+                          <th>Elemen Visual / Mise-en-scène</th>
+                          <th>Makna Denotasi</th>
+                          <th>Makna Konotasi</th>
+                          <th>Mitos / Ideologi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% result.keyframe_breakdown.forEach(k => { %>
+                          <tr>
+                            <td><strong><%= k.scene %></strong></td>
+                            <td><%= k.visual_element %></td>
+                            <td><%= k.denotation %></td>
+                            <td><%= k.connotation %></td>
+                            <td><em style="color: #d97706;"><%= k.myth %></em></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- JIKA MODUL DOKUMEN -->
+            <% if (result.module === 'dokumen' && result.content_categories) { %>
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h4 style="margin: 0; font-size: 0.95rem;">Kategorisasi Tematik &amp; Rujukan Teks</h4>
+                </div>
+                <div class="card-body">
+                  <div class="spss-table-container">
+                    <table class="spss-math-table">
+                      <thead>
+                        <tr>
+                          <th>Kategori Tematik</th>
+                          <th>Kutipan / Nomor Halaman</th>
+                          <th>Intisari Temuan Dokumen</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% result.content_categories.forEach(d => { %>
+                          <tr>
+                            <td><strong><%= d.category %></strong></td>
+                            <td><code style="color: #0d9488;"><%= d.citation %></code></td>
+                            <td><%= d.finding %></td>
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- NARASI BAB IV SIAP SALIN -->
+            <% if (result.bab4_text || result.bab4_draft) { %>
+              <div class="card" style="border: 1px solid #0d9488;">
+                <div class="card-header" style="background: rgba(13, 148, 136, 0.08); display: flex; justify-content: space-between; align-items: center;">
+                  <h4 style="margin: 0; font-size: 0.95rem; color: #0f766e; font-weight: 700;">
+                    Draf Naskah Penyajian Hasil &amp; Pembahasan (BAB IV)
+                  </h4>
+                  <span class="badge badge-emerald">Siap Tempel Skripsi</span>
+                </div>
+                <div class="card-body">
+                  <div id="bab4NarrationContent" style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); font-size: 0.9rem; line-height: 1.7; white-space: pre-wrap; color: var(--text-main);">
+                    <%= result.bab4_text || result.bab4_draft %>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        <% } %>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    let activeModule = '<%= selectedModule %>';
+
+    function openWorkbench(modKey) {
+      activeModule = modKey;
+      
+      // Sembunyikan Hub 6-card, tampilkan tombol kembali
+      const hubGrid = document.getElementById('olahHubGrid');
+      const backNav = document.getElementById('navBackContainer');
+      if (hubGrid) hubGrid.style.display = 'none';
+      if (backNav) backNav.style.display = 'block';
+
+      // Sembunyikan seluruh workbench
+      document.querySelectorAll('.olah-workbench-card').forEach(wb => {
+        wb.style.display = 'none';
+      });
+
+      // Tampilkan workbench yang dipilih
+      const targetWb = document.getElementById(`wb_${modKey}`);
+      if (targetWb) {
+        targetWb.style.display = 'block';
+        targetWb.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showHubGrid() {
+      const hubGrid = document.getElementById('olahHubGrid');
+      const backNav = document.getElementById('navBackContainer');
+      if (hubGrid) hubGrid.style.display = 'grid';
+      if (backNav) backNav.style.display = 'none';
+
+      document.querySelectorAll('.olah-workbench-card').forEach(wb => {
+        wb.style.display = 'none';
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Subtab SPSS (Kuisioner vs Data Sekunder)
+    function switchSpssTab(tabKey) {
+      const btnPrimer = document.getElementById('tab_spss_primer');
+      const btnSekunder = document.getElementById('tab_spss_sekunder');
+      const subtabInput = document.getElementById('spss_subtab_input');
+      
+      if (tabKey === 'primer') {
+        btnPrimer.classList.add('active');
+        btnSekunder.classList.remove('active');
+        subtabInput.value = 'kuisioner';
+      } else {
+        btnPrimer.classList.remove('active');
+        btnSekunder.classList.add('active');
+        subtabInput.value = 'data_sekunder';
+      }
+    }
+
+    // Dynamic file upload labels
+    function handleFileSelected(input, targetLabelId) {
+      const label = document.getElementById(targetLabelId);
+      const hiddenInput = document.getElementById(`${targetLabelId}_hidden`);
+      if (input.files && input.files.length > 0) {
+        const name = input.files[0].name;
+        if (label) label.innerText = name;
+        if (hiddenInput) hiddenInput.value = name;
+      }
+    }
+
+    function handleDocFilesSelected(input) {
+      const label = document.getElementById('dokumen_dropzone_label');
+      if (input.files && input.files.length > 0) {
+        const count = input.files.length;
+        if (count === 1) {
+          label.innerText = `✓ File terpilih: ${input.files[0].name}`;
+        } else {
+          label.innerText = `✓ ${count} dokumen siap dianalisis`;
+        }
+      }
+    }
+
+    // Dynamic Informant Builder for GBR 9
+    let informantCount = 1;
+    function addInformantBlock() {
+      informantCount++;
+      const container = document.getElementById('informantsListContainer');
+      const div = document.createElement('div');
+      div.className = 'informant-item-box';
+      div.id = `inf_box_${informantCount}`;
+      div.innerHTML = `
+        <div class="informant-header">
+          <span class="informant-title">Informan ${informantCount}</span>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="removeInformantBlock(${informantCount})" style="color: #ef4444; padding: 0.2rem 0.5rem;">Hapus</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+          <input type="text" class="form-control form-control-sm" placeholder="Nama / Inisial (mis. Informan ${informantCount})" name="informant_names[]" value="Informan ${informantCount}">
+          <input type="text" class="form-control form-control-sm" placeholder="Peran / Jabatan" name="informant_roles[]">
+        </div>
+        <textarea name="informant_quotes[]" class="form-control form-control-sm" rows="3" placeholder="Salin kutipan wawancara verbatim informan ${informantCount} di sini..."></textarea>
+      `;
+      container.appendChild(div);
+    }
+
+    function removeInformantBlock(idx) {
+      const el = document.getElementById(`inf_box_${idx}`);
+      if (el) el.remove();
+    }
+
+    function copyBab4Text(btn) {
+      const el = document.getElementById('bab4NarrationContent');
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        const old = btn.innerText;
+        btn.innerText = 'Tersalin!';
+        btn.style.color = '#10b981';
+        setTimeout(() => {
+          btn.innerText = old;
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+  </script>
+
+  <div id="olahDataState" data-auto-open="<%= (locals.result || locals.input?.module_type) ? (locals.selectedModule || '') : '' %>" style="display: none;"></div>
+
+  <script>
+    // Auto open selected workbench if submitted or result available
+    document.addEventListener('DOMContentLoaded', () => {
+      const stateEl = document.getElementById('olahDataState');
+      const mod = stateEl ? stateEl.getAttribute('data-auto-open') : '';
+      if (mod) {
+        openWorkbench(mod);
+      }
+    });
+  </script>
+</body>
+</html>

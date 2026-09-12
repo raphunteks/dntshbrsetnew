@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Menu Supervisor</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/supervisor" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>Daftar Bimbingan</span></a></li>
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard Utama</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar" style="background: #15803d;">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'S' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Dosen Pembimbing' %></span>
+            <span class="user-role-badge" style="color: #15803d; font-weight: 700;"><%= currentUser ? currentUser.role.toUpperCase() : 'SUPERVISOR' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Portal Telaah & Catatan Bimbingan Dosen</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="badge badge-supervisor">Pembimbing Akademik Terverifikasi</span>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-info" role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <!-- IF ACTIVE PROJECT VIEW (INSPECTION MODE) -->
+        <% if (activeProject) { %>
+          <div style="margin-bottom: 1.5rem;">
+            <a href="/supervisor" class="btn btn-secondary btn-sm" style="margin-bottom: 1rem;">
+              &larr; Kembali ke Daftar Seluruh Bimbingan
+            </a>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <span class="badge badge-primary" style="margin-bottom: 0.4rem;"><%= activeProject.research_type.toUpperCase() %></span>
+                <h2 style="font-size: 1.5rem; margin-bottom: 0.25rem;"><%= activeProject.title %></h2>
+                <p style="color: var(--text-muted); margin: 0;">
+                  Peneliti: <strong><%= activeProject.author_name %></strong> (<%= activeProject.author_email %>) &bull; <%= activeProject.institution %>
+                </p>
+              </div>
+              <span class="badge <%= activeProject.status === 'completed' ? 'badge-emerald' : 'badge-amber' %>" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+                Status: <%= activeProject.status.toUpperCase() %>
+              </span>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+            <!-- LEFT: CHAPTERS INSPECTION -->
+            <div>
+              <div class="card" style="margin-bottom: 1.5rem;">
+                <div class="card-header">
+                  <h3 class="card-title">Naskah Bab Penelitian Mahasiswa (<%= chapters.length %> Bab)</h3>
+                </div>
+                <div class="card-body">
+                  <% chapters.forEach(ch => { %>
+                    <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1rem; background: #ffffff;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <strong style="font-size: 1rem; color: var(--primary-700);">BAB <%= ch.number %>: <%= ch.title %></strong>
+                        <span class="badge badge-outline"><%= ch.word_count || 0 %> Kata</span>
+                      </div>
+                      <div style="max-height: 200px; overflow-y: auto; font-size: 0.875rem; line-height: 1.6; color: var(--text-main); background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); white-space: pre-wrap;">
+<%= ch.content ? ch.content.substring(0, 700) + '...' : 'Belum ada konten pada bab ini.' %>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card" style="position: sticky; top: 80px;">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h3 class="card-title">Berikan Catatan Bimbingan</h3>
+                </div>
+                <form action="/supervisor/projects/<%= activeProject.id %>/feedback" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="recommendation" class="form-label">Rekomendasi Dosen *</label>
+                      <select id="recommendation" name="recommendation" class="form-control">
+                        <option value="revision_needed">Perlu Revisi (Naskah Diperbaiki)</option>
+                        <option value="approved">Disetujui (Layak Maju Ujian)</option>
+                        <option value="rejected">Ditolak / Ganti Metodologi</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="feedback" class="form-label">Catatan & Arahan Bimbingan *</label>
+                      <textarea id="feedback" name="feedback" class="form-control" rows="6" placeholder="Tuliskan catatan konkret terkait latar belakang, metodologi sampling, atau pembahasan hasil..." required minlength="10"></textarea>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-block">
+                      Kirimkan Catatan Resmi
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- PREVIOUS FEEDBACK HISTORY -->
+              <% if (feedbacks && feedbacks.length > 0) { %>
+                <div style="margin-top: 1.5rem;">
+                  <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Riwayat Catatan Bimbingan Sebelumnya:</h4>
+                  <div class="feedback-timeline">
+                    <% feedbacks.forEach(fb => { %>
+                      <div class="feedback-bubble">
+                        <div class="feedback-bubble-header">
+                          <span class="feedback-author"><%= fb.supervisor_name %></span>
+                          <span class="badge <%= fb.recommendation === 'approved' ? 'badge-emerald' : 'badge-amber' %>">
+                            <%= fb.recommendation %>
+                          </span>
+                        </div>
+                        <div class="feedback-body"><%= fb.feedback %></div>
+                        <div class="feedback-time" style="margin-top: 0.4rem;"><%= new Date(fb.created_at).toLocaleDateString('id-ID', { hour: '2-digit', minute: '2-digit' }) %></div>
+                      </div>
+                    <% }); %>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+          </div>
+
+        <!-- ELSE: LIST ALL PROJECTS -->
+        <% } else { %>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Daftar Project Penelitian Mahasiswa yang Memerlukan Telaah</h3>
+            </div>
+            <% if (projects && projects.length > 0) { %>
+              <div class="table-responsive">
+                <table class="table-custom">
+                  <thead>
+                    <tr>
+                      <th>Judul Skripsi / Penelitian</th>
+                      <th>Nama Mahasiswa</th>
+                      <th>Bidang & Institusi</th>
+                      <th>Progres</th>
+                      <th>Status</th>
+                      <th style="text-align: right;">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% projects.forEach(p => { %>
+                      <tr>
+                        <td>
+                          <strong style="font-size: 0.95rem; display: block;"><%= p.title %></strong>
+                          <span style="font-size: 0.775rem; color: var(--text-muted);">Diperbarui: <%= new Date(p.updated_at).toLocaleDateString('id-ID') %></span>
+                        </td>
+                        <td>
+                          <div style="font-weight: 600;"><%= p.author_name %></div>
+                          <span style="font-size: 0.75rem; color: var(--text-muted);"><%= p.author_email %></span>
+                        </td>
+                        <td><%= p.field %> &bull; <%= p.institution %></td>
+                        <td style="font-family: var(--font-mono); font-weight: 700;"><%= p.progress %>%</td>
+                        <td>
+                          <span class="badge <%= p.status === 'completed' ? 'badge-emerald' : 'badge-amber' %>">
+                            <%= p.status.toUpperCase() %>
+                          </span>
+                        </td>
+                        <td style="text-align: right;">
+                          <a href="/supervisor/projects/<%= p.id %>" class="btn btn-primary btn-sm">
+                            Telaah Bab & Beri Masukan
+                          </a>
+                        </td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+            <% } else { %>
+              <div class="card-body" style="text-align: center; padding: 4rem 1.5rem; color: var(--text-muted);">
+                <div style="font-size: 3rem; margin-bottom: 0.75rem;">📂</div>
+                <h4>Belum Ada Naskah Riset Terdaftar</h4>
+                <p style="font-size: 0.885rem;">Project penelitian mahasiswa yang aktif akan otomatis muncul di sini untuk ditelaah.</p>
+              </div>
+            <% } %>
+          </div>
+        <% } %>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+  </script>
+</body>
+</html>

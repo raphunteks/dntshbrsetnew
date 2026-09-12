@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Proyek Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Lanjutkan Skripsi</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/artikel" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Cari Artikel</span></a></li>
+            <li><a href="/olah-data" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Olah Data</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+            <% if (currentUser && currentUser.role === 'owner') { %>
+              <li><a href="/owner" class="sidebar-nav-link" style="color: #a855f7;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>Owner Portal</span></a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div>
+            <h3 style="font-size: 1.15rem; margin: 0; font-weight: 700;">Cari Artikel</h3>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-info" role="status" style="margin-bottom: 1.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert" style="margin-bottom: 1.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <div style="margin-bottom: 1.75rem;">
+          <h2 style="font-size: 1.65rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.4rem;">Cari Artikel</h2>
+          <p style="color: var(--text-muted); font-size: 0.925rem; line-height: 1.6; margin: 0;">
+            Cari jurnal yang valid, filter tahun/bahasa/indeks, dan simpan referensi lengkap dengan rangkuman penelitiannya. Gratis, tanpa kredit.
+          </p>
+        </div>
+
+        <!-- 2-COLUMN LAYOUT PERSIS GAMBAR 4 -->
+        <div class="artikel-2col-layout">
+
+          <!-- KOLOM KIRI: CARI JURNAL + FILTERS -->
+          <div class="card" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg);">
+            <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 1.5rem;">
+              <h3 class="card-title" style="font-size: 1.05rem; font-weight: 700; margin: 0;">Cari Jurnal</h3>
+            </div>
+
+            <div class="card-body" style="padding: 1.5rem;">
+              <form action="/artikel/search" method="POST" id="articleSearchForm" style="margin-bottom: 1.5rem;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+
+                <!-- SEARCH BAR WITH BUTTON -->
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+                  <input type="text" id="query" name="query" class="form-control" placeholder="Topik atau judul artikel..." value="<%= (locals.input && input.query) ? input.query : '' %>" required minlength="2" style="flex: 1; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                  <button type="submit" class="btn btn-primary" id="btnArticleSearch" style="background: #2563eb; width: 48px; display: flex; align-items: center; justify-content: center; padding: 0;" title="Cari Jurnal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  </button>
+                </div>
+
+                <!-- 3 FILTER DROPDOWNS -->
+                <div class="filter-3col-grid">
+                  <div>
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.35rem; display: block;">Tahun minimal</label>
+                    <select name="min_year" class="form-control" style="font-size: 0.825rem; padding: 0.55rem 0.75rem;">
+                      <% const curYr = (locals.input && input.min_year) ? input.min_year : 'Semua'; %>
+                      <option value="Semua" <%= curYr === 'Semua' ? 'selected' : '' %>>Semua</option>
+                      <option value="2024" <%= curYr === '2024' ? 'selected' : '' %>>2024</option>
+                      <option value="2023" <%= curYr === '2023' ? 'selected' : '' %>>2023</option>
+                      <option value="2022" <%= curYr === '2022' ? 'selected' : '' %>>2022</option>
+                      <option value="2021" <%= curYr === '2021' ? 'selected' : '' %>>2021</option>
+                      <option value="2020" <%= curYr === '2020' ? 'selected' : '' %>>2020</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.35rem; display: block;">Bahasa</label>
+                    <select name="language" class="form-control" style="font-size: 0.825rem; padding: 0.55rem 0.75rem;">
+                      <% const curLang = (locals.input && input.language) ? input.language : 'Semua'; %>
+                      <option value="Semua" <%= curLang === 'Semua' ? 'selected' : '' %>>Semua</option>
+                      <option value="Indonesia" <%= curLang === 'Indonesia' ? 'selected' : '' %>>Indonesia</option>
+                      <option value="Inggris" <%= curLang === 'Inggris' ? 'selected' : '' %>>Inggris</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.35rem; display: block;">Indeks</label>
+                    <select name="index" class="form-control" style="font-size: 0.825rem; padding: 0.55rem 0.75rem;">
+                      <% const curIdx = (locals.input && input.index) ? input.index : 'Semua'; %>
+                      <option value="Semua" <%= curIdx === 'Semua' ? 'selected' : '' %>>Semua</option>
+                      <option value="Scopus" <%= curIdx === 'Scopus' ? 'selected' : '' %>>Scopus Q1-Q4</option>
+                      <option value="Sinta" <%= curIdx === 'Sinta' ? 'selected' : '' %>>Sinta 1-6</option>
+                      <option value="DOAJ" <%= curIdx === 'DOAJ' ? 'selected' : '' %>>DOAJ Open Access</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+
+              <!-- HASIL TEMUAN ARTIKEL -->
+              <div>
+                <% if (result && result.articles && result.articles.length > 0) { %>
+                  <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <% result.articles.forEach(art => { %>
+                      <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.15rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.4rem;">
+                          <h4 style="font-size: 0.975rem; font-weight: 700; margin: 0; line-height: 1.4; color: var(--text-main);">
+                            <%= art.title %>
+                          </h4>
+                          <span class="badge" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.725rem; font-weight: 700; white-space: nowrap;">
+                            <%= art.index || 'Scopus' %>
+                          </span>
+                        </div>
+
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.65rem;">
+                          <span><%= art.authors %></span> &bull; <span><%= art.year %></span> &bull; <em><%= art.journal %></em>
+                        </div>
+
+                        <p style="font-size: 0.825rem; color: var(--text-main); line-height: 1.55; margin: 0 0 0.85rem;">
+                          <%= art.abstract %>
+                        </p>
+
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border-color); padding-top: 0.75rem; font-size: 0.8rem;">
+                          <% if (art.doi) { %>
+                            <a href="https://doi.org/<%= art.doi %>" target="_blank" rel="noopener noreferrer" style="color: #2563eb; font-family: var(--font-mono); text-decoration: none;">
+                              doi:<%= art.doi %> ↗
+                            </a>
+                          <% } else { %>
+                            <span></span>
+                          <% } %>
+
+                          <form action="/artikel/save" method="POST" style="margin: 0;">
+                            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                            <input type="hidden" name="title" value="<%= art.title %>">
+                            <input type="hidden" name="authors" value="<%= art.authors %>">
+                            <input type="hidden" name="year" value="<%= art.year %>">
+                            <input type="hidden" name="journal" value="<%= art.journal %>">
+                            <input type="hidden" name="doi" value="<%= art.doi || '' %>">
+                            <input type="hidden" name="url" value="<%= art.url || '' %>">
+                            <input type="hidden" name="abstract" value="<%= art.abstract || '' %>">
+                            <button type="submit" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+                              + Simpan ke Referensi
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    <% }); %>
+                  </div>
+                <% } else { %>
+                  <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.875rem;">
+                    <p style="margin: 0;">Cari jurnal untuk menambahkannya ke daftar pustaka.</p>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <!-- KOLOM KANAN: DAFTAR REFERENSI TERSIMPAN -->
+          <div class="card" style="border: 1px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-lg);">
+            <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+              <h3 class="card-title" style="font-size: 1.05rem; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                Daftar Referensi (<%= (locals.savedArticles && savedArticles.length) ? savedArticles.length : 0 %>)
+              </h3>
+
+              <button type="button" class="btn btn-outline btn-sm" onclick="toggleDoiModal()" style="font-size: 0.775rem; padding: 0.4rem 0.75rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Tambah via DOI
+              </button>
+            </div>
+
+            <!-- MODAL / FORM INLINE TAMBAH VIA DOI -->
+            <div id="doiAddContainer" style="display: none; background: var(--bg-subtle); border-bottom: 1px solid var(--border-color); padding: 1.25rem 1.5rem;">
+              <form action="/artikel/add-doi" method="POST">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <label class="form-label" style="font-size: 0.825rem; font-weight: 700; margin-bottom: 0.4rem; display: block;">
+                  Nomor DOI Artikel (CrossRef Verified):
+                </label>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" name="doi" class="form-control" placeholder="mis. 10.1016/j.jbusres.2023.114120" required style="font-size: 0.85rem; font-family: var(--font-mono);">
+                  <button type="submit" class="btn btn-primary btn-sm" style="white-space: nowrap; font-weight: 700;">
+                    Tarik Metadata
+                  </button>
+                </div>
+                <small style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.4rem;">
+                  Sistem otomatis mengambil judul, penulis, tahun, dan abstrak resmi dari CrossRef.
+                </small>
+              </form>
+            </div>
+
+            <div class="card-body" style="padding: 1.5rem;">
+              <% if (locals.savedArticles && savedArticles.length > 0) { %>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <% savedArticles.forEach((art, idx) => { %>
+                    <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                      <h4 style="font-size: 0.925rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.25rem; line-height: 1.4;">
+                        <%= art.title %>
+                      </h4>
+                      <div style="font-size: 0.785rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+                        <%= art.authors %> &bull; <%= art.year %> &bull; <em><%= art.journal %></em>
+                      </div>
+                      <% if (art.doi) { %>
+                        <div style="font-size: 0.75rem; font-family: var(--font-mono);">
+                          <a href="<%= art.url || ('https://doi.org/' + art.doi) %>" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: none;">
+                            doi:<%= art.doi %> ↗
+                          </a>
+                        </div>
+                      <% } %>
+                    </div>
+                  <% }); %>
+                </div>
+              <% } else { %>
+                <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                  <p style="margin: 0;">Belum ada referensi tersimpan.</p>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    function toggleDoiModal() {
+      const container = document.getElementById('doiAddContainer');
+      if (container) {
+        container.style.display = container.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+
+    const sForm = document.getElementById('articleSearchForm');
+    const sBtn = document.getElementById('btnArticleSearch');
+    if (sForm && sBtn) {
+      sForm.addEventListener('submit', function() {
+        sBtn.disabled = true;
+      });
+    }
+  </script>
+</body>
+</html>

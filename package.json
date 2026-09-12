@@ -1,0 +1,35 @@
+{
+"name": "dentshub-riset",
+"version": "1.0.0",
+"description": "DENTSHUB RISET - Asisten Riset dan Skripsi Berbasis AI (Phase 0 Foundation)",
+"main": "server.js",
+"scripts": {
+"start": "node server.js",
+"dev": "node --watch server.js"
+},
+"engines": {
+"node": ">=18.x"
+},
+"dependencies": {
+"@upstash/redis": "^1.34.3",
+"cookie-parser": "^1.4.7",
+"dotenv": "^16.4.7",
+"ejs": "^3.1.10",
+"express": "^4.21.2",
+"zod": "^3.24.2"
+},
+"overrides": {
+"qs": "^6.16.0"
+},
+"keywords": [
+"academic",
+"research-assistant",
+"thesis",
+"express",
+"ejs",
+"upstash-redis",
+"vercel"
+],
+"author": "DENTSHUB RISET Team",
+"license": "ISC"
+}

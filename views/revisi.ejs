@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Project Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Penyusunan BAB</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/artikel" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Pencarian Artikel</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/olah-data" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Olah Data Riset</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+            <li><a href="/generate-ppt" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Generate PPT Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Lab Revisi Bimbingan Dosen</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <div class="tool-hero-header">
+          <div>
+            <h2 style="font-size: 1.65rem; margin-bottom: 0.25rem;">Bedah Masukan & Panduan Respons Bimbingan</h2>
+            <p style="color: var(--text-muted); margin: 0;">
+              Ubah catatan kritis pembimbing menjadi checklist perbaikan konkret, draf revisi ilmiah, dan kalimat penjelasan formal (rebuttal).
+            </p>
+          </div>
+          <div class="tool-badge-pill">
+            <span>Biaya Analisis:</span>
+            <strong><%= creditCost %> Kredit</strong>
+          </div>
+        </div>
+
+        <div class="ai-tool-layout">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Catatan Bimbingan & Draf Awal</h3>
+            </div>
+            <form action="/revisi" method="POST">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="supervisor_feedback" class="form-label">Catatan / Komentar Dosen Pembimbing *</label>
+                  <textarea id="supervisor_feedback" name="supervisor_feedback" class="form-control" rows="4" placeholder="Contoh: Paragraf ini terlalu spekulatif. Mana rujukan yang membuktikan hubungan variabel tersebut? Dan perjelas batasan operasionalnya..." required minlength="5"><%= input.supervisor_feedback || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="original_text" class="form-label">Naskah Paragraf Awal yang Dikomentari *</label>
+                  <textarea id="original_text" name="original_text" class="form-control" rows="6" placeholder="Tempelkan kalimat atau paragraf awal yang mendapat catatan dari dosen..." required minlength="10"><%= input.original_text || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="revision_instruction" class="form-label">Fokus Tambahan (Opsional)</label>
+                  <input type="text" id="revision_instruction" name="revision_instruction" class="form-control" placeholder="Contoh: Gunakan tone yang lebih defensif ilmiah dengan rujukan 2024" value="<%= input.revision_instruction || '' %>">
+                </div>
+              </div>
+
+              <div class="card-footer" style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  Susun Solusi Revisi
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <% if (result) { %>
+              <div class="card">
+                <div class="card-header" style="background: var(--bg-subtle);">
+                  <h3 class="card-title" style="color: var(--primary-700);">Rekomendasi Revisi & Respons Bimbingan</h3>
+                  <span class="badge badge-emerald">Disetujui Kaidah Akademis</span>
+                </div>
+                <div class="card-body">
+                  <!-- ANALYSIS -->
+                  <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.4rem;">1. Intisari Masukan Pembimbing:</h4>
+                    <p style="font-size: 0.885rem; color: var(--text-main); background: var(--bg-subtle); padding: 0.85rem 1rem; border-radius: var(--radius-md);">
+                      <%= result.feedback_analysis %>
+                    </p>
+                  </div>
+
+                  <!-- ACTION CHECKLIST -->
+                  <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.65rem;">2. Checklist Aksi Perbaikan:</h4>
+                    <% if (result.checklist && result.checklist.length > 0) { %>
+                      <% result.checklist.forEach((item) => { %>
+                        <div class="checklist-item-row">
+                          <span class="checklist-badge <%= item.status === 'Wajib' ? 'badge-amber' : 'badge-primary' %>">
+                            <%= item.status %>
+                          </span>
+                          <div>
+                            <strong style="font-size: 0.885rem; display: block;"><%= item.item %></strong>
+                            <span style="font-size: 0.825rem; color: var(--text-muted);"><%= item.note %></span>
+                          </div>
+                        </div>
+                      <% }); %>
+                    <% } %>
+                  </div>
+
+                  <!-- REVISED TEXT -->
+                  <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.4rem; color: #047857;">3. Rekomendasi Naskah Hasil Revisi:</h4>
+                    <div style="font-size: 0.9rem; line-height: 1.7; background: #ecfdf5; padding: 1.15rem; border-radius: var(--radius-md); border: 1px solid #a7f3d0; white-space: pre-wrap;">
+<%= result.suggested_revision_text %>
+                    </div>
+                  </div>
+
+                  <!-- REBUTTAL -->
+                  <div>
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.4rem;">4. Contoh Kalimat Respons ke Dosen Pembimbing:</h4>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); background: #f8fafc; padding: 0.85rem 1rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); font-style: italic;">
+                      <%= result.rebuttal_or_explanation %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% } else { %>
+              <div class="card">
+                <div class="card-body" style="text-align: center; padding: 4rem 1.5rem;">
+                  <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+                  <h4>Lab Bimbingan Menunggu Catatan Dosen</h4>
+                  <p style="max-width: 420px; margin: 0 auto; font-size: 0.9rem; color: var(--text-muted);">
+                    Salin masukan dari pembimbing skripsi Anda di sebelah kiri. Sistem akan membedah poin-poin yang harus diperbaiki serta menyusun teks revisi yang siap Anda konsultasikan kembali.
+                  </p>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+  </script>
+</body>
+</html>

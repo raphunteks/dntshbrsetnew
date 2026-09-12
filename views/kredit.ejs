@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Project Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Penyusunan BAB</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Saldo Kredit & Buku Besar</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-info" role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <div class="ledger-hero-card">
+          <div class="ledger-hero-left">
+            <span class="ledger-hero-subtitle">Saldo Kredit Penelitian Aktif</span>
+            <div class="ledger-hero-balance">
+              <% if (creditBalance === 'UNLIMITED') { %>
+                <span class="badge-unlimited-hero"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+              <% } else { %>
+                <%= creditBalance %> <span class="ledger-hero-unit">Kredit</span>
+              <% } %>
+            </div>
+            <p class="ledger-hero-desc">
+              <% if (creditBalance === 'UNLIMITED') { %>
+                Akun Anda terdaftar dengan akses istimewa <strong>(UNLIMITED CREDITS)</strong>. Anda dapat mengeksplorasi dan memproses seluruh AI Tools tanpa batas kuota.
+              <% } else { %>
+                Kredit tidak pernah kedaluwarsa. Digunakan secara transparan untuk memproses AI Writer, Parafrase, Novelty, dan Brainstorming Judul.
+              <% } %>
+            </p>
+          </div>
+          <div class="ledger-hero-actions">
+            <a href="/billing" class="btn btn-primary" style="box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Beli Paket Kredit
+            </a>
+            <button type="button" class="btn btn-secondary" onclick="toggleVoucherForm()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              Klaim Kode Voucher
+            </button>
+          </div>
+        </div>
+
+        <div id="voucherBox" class="voucher-box" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <strong style="font-size: 0.95rem; color: var(--text-main);">Klaim Bonus Kredit Riset</strong>
+            <button type="button" class="input-icon-btn" onclick="toggleVoucherForm()" aria-label="Tutup Form Voucher">&times;</button>
+          </div>
+          <form action="/kredit/redeem" method="POST" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <input type="text" name="code" class="form-control" placeholder="Masukkan kode (contoh: MHS2026, RISETBERES)" style="flex: 1; min-width: 240px; text-transform: uppercase;" required minlength="3" maxlength="30">
+            <button type="submit" class="btn btn-primary btn-sm">Tukarkan Sekarang</button>
+          </form>
+          <div style="font-size: 0.775rem; color: var(--text-muted); margin-top: 0.5rem;">
+            💡 <strong>Info Kupon:</strong> Coba masukkan kode demo <code>MHS2026</code> (+100 Kredit) atau <code>RISETBERES</code> (+50 Kredit).
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 2rem;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Akumulasi Kredit Masuk</span>
+              <div class="stat-icon" style="background: var(--accent-emerald-light); color: #065f46;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #047857;">+<%= stats.totalEarned %></div>
+            <div class="stat-footer">Bonus pendaftaran, top-up, & voucher</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Pemakaian AI</span>
+              <div class="stat-icon" style="background: #fef2f2; color: #b91c1c;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7 7 7-7"/></svg>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #b91c1c;">-<%= stats.totalSpent %></div>
+            <div class="stat-footer">Konsumsi token fitur AI akademik</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Transaksi Buku Besar</span>
+              <div class="stat-icon" style="background: var(--primary-100); color: var(--primary-700);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+            </div>
+            <div class="stat-value"><%= stats.totalTransactions %></div>
+            <div class="stat-footer">Mutasi tercatat permanen di Redis</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header" style="background: var(--bg-subtle);">
+            <h3 class="card-title">Proporsi Pemakaian Kredit Berdasarkan Fitur AI</h3>
+            <span class="badge badge-outline"><%= stats.totalSpent %> Kredit Terpakai</span>
+          </div>
+          <div class="card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+              <div class="ledger-feature-item">
+                <div class="feature-name">AI Writer Akademis (20 Cr)</div>
+                <div class="feature-cost"><%= stats.usageByFeature.ai_writer %> Kredit</div>
+              </div>
+              <div class="ledger-feature-item">
+                <div class="feature-name">Temukan Novelty (15 Cr)</div>
+                <div class="feature-cost"><%= stats.usageByFeature.novelty %> Kredit</div>
+              </div>
+              <div class="ledger-feature-item">
+                <div class="feature-name">Parafrase Kalimat (10 Cr)</div>
+                <div class="feature-cost"><%= stats.usageByFeature.parafrase %> Kredit</div>
+              </div>
+              <div class="ledger-feature-item">
+                <div class="feature-name">Brainstorming Judul (10 Cr)</div>
+                <div class="feature-cost"><%= stats.usageByFeature.brainstorming %> Kredit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" style="flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 class="card-title">Buku Besar Transaksi (Credit Ledger)</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Catatan mutasi saldo resmi dan tidak dapat direkayasa (immutable).</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="exportLedgerToCSV()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Ekspor CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="ledger-filter-bar">
+            <a href="/kredit" class="ledger-filter-pill <%= activeFilter === 'all' ? 'active' : '' %>">
+              Semua (<%= allCount %>)
+            </a>
+            <a href="/kredit?type=usage" class="ledger-filter-pill <%= activeFilter === 'usage' ? 'active' : '' %>">
+              Pemakaian (Usage)
+            </a>
+            <a href="/kredit?type=bonus" class="ledger-filter-pill <%= activeFilter === 'bonus' ? 'active' : '' %>">
+              Bonus & Voucher
+            </a>
+            <a href="/kredit?type=purchase" class="ledger-filter-pill <%= activeFilter === 'purchase' ? 'active' : '' %>">
+              Pembelian Paket
+            </a>
+            <a href="/kredit?type=refund" class="ledger-filter-pill <%= activeFilter === 'refund' ? 'active' : '' %>">
+              Pengembalian (Refund)
+            </a>
+          </div>
+
+          <% if (ledgerEntries && ledgerEntries.length > 0) { %>
+            <div class="table-responsive">
+              <table class="table-custom" id="ledgerTable">
+                <thead>
+                  <tr>
+                    <th>Waktu Transaksi</th>
+                    <th>ID Buku Besar</th>
+                    <th>Jenis Mutasi</th>
+                    <th>Keterangan / Referensi</th>
+                    <th style="text-align: right;">Nominal</th>
+                    <th style="text-align: right;">Saldo Setelah</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% ledgerEntries.forEach(item => { %>
+                    <tr>
+                      <td style="white-space: nowrap; font-size: 0.825rem; color: var(--text-muted);">
+                        <%= new Date(item.created_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %>
+                      </td>
+                      <td>
+                        <code style="font-family: var(--font-mono); font-size: 0.775rem; color: var(--primary-700); background: var(--bg-subtle); padding: 0.15rem 0.4rem; border-radius: var(--radius-sm);"><%= item.id %></code>
+                      </td>
+                      <td>
+                        <% if (item.type === 'usage') { %>
+                          <span class="badge badge-usage">PEMAKAIAN</span>
+                        <% } else if (item.type === 'bonus') { %>
+                          <span class="badge badge-bonus">BONUS KREDIT</span>
+                        <% } else if (item.type === 'purchase') { %>
+                          <span class="badge badge-purchase">TOP UP</span>
+                        <% } else if (item.type === 'refund') { %>
+                          <span class="badge badge-refund">REFUND AI</span>
+                        <% } else { %>
+                          <span class="badge badge-outline"><%= (item.type || 'MUTASI').toUpperCase() %></span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <strong style="display: block; font-size: 0.885rem; color: var(--text-main);">
+                          <%= item.description || 'Transaksi Kredit Sistem' %>
+                        </strong>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">
+                          Ref: <%= item.reference_type %> / <%= item.reference_id %>
+                        </span>
+                      </td>
+                      <td style="text-align: right; font-weight: 700; font-family: var(--font-mono); font-size: 0.95rem;">
+                        <% if (item.amount > 0) { %>
+                          <span class="amount-positive">+<%= item.amount %></span>
+                        <% } else { %>
+                          <span class="amount-negative"><%= item.amount %></span>
+                        <% } %>
+                      </td>
+                      <td style="text-align: right; font-weight: 700; font-family: var(--font-mono); font-size: 0.95rem; color: var(--primary-700);">
+                        <%= item.balance_after %>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          <% } else { %>
+            <div class="card-body" style="text-align: center; padding: 4rem 1.5rem; color: var(--text-muted);">
+              <div style="font-size: 3rem; margin-bottom: 0.75rem;">📋</div>
+              <h4 style="margin-bottom: 0.25rem;">Tidak Ada Transaksi yang Cocok</h4>
+              <p style="font-size: 0.885rem; max-width: 420px; margin: 0 auto;">
+                Belum ada rekaman mutasi pada filter ini. Seluruh pemakaian AI tools dan bonus akan otomatis tercatat di sini.
+              </p>
+            </div>
+          <% } %>
+        </div>
+
+        <div style="margin-top: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; display: flex; align-items: flex-start; gap: 0.85rem;">
+          <div style="font-size: 1.35rem;">🛡️</div>
+          <div style="font-size: 0.825rem; color: var(--text-muted); line-height: 1.6;">
+            <strong style="color: var(--text-main);">Jaminan Integritas Buku Besar Finansial:</strong> 
+            Seluruh mutasi kredit dijalankan melalui mekanisme atomik Upstash Redis untuk mencegah <em>race condition</em>. Sisa saldo dijamin tidak pernah menjadi negatif. Jika server mengalami kegagalan pada saat pemrosesan eksternal AI, kredit secara otomatis dikembalikan utuh melalui mekanisme <em>ledger refund</em>.
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    function toggleVoucherForm() {
+      const box = document.getElementById('voucherBox');
+      if (box) {
+        box.style.display = box.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+
+    function exportLedgerToCSV() {
+      const table = document.getElementById('ledgerTable');
+      if (!table) return;
+
+      let csv = [];
+      const rows = table.querySelectorAll('tr');
+      for (let i = 0; i < rows.length; i++) {
+        let row = [], cols = rows[i].querySelectorAll('td, th');
+        for (let j = 0; j < cols.length; j++) {
+          let text = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, ' ').replace(/"/g, '""').trim();
+          row.push('"' + text + '"');
+        }
+        csv.push(row.join(','));
+      }
+
+      const csvFile = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const downloadLink = document.createElement('a');
+      downloadLink.download = `ledger-kredit-dentshub-${new Date().toISOString().slice(0, 10)}.csv`;
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+      downloadLink.style.display = 'none';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  </script>
+</body>
+</html>

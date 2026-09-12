@@ -1,0 +1,3087 @@
+<!DOCTYPE html>
+<html lang="id" prefix="og: https://ogp.me/ns#">
+<%
+  const currentSiteUrl = (typeof siteUrl !== 'undefined' && siteUrl) ? siteUrl : ((typeof companyProfile !== 'undefined' && companyProfile && companyProfile.siteUrl) ? companyProfile.siteUrl : 'https://dentshub.id');
+  const cleanBaseUrl = currentSiteUrl.replace(/\/+$/, '');
+  // Fallback domain publik HTTPS untuk crawler Meta (WhatsApp/FB/Telegram) bila berjalan di localhost/dev
+  const isLocalEnv = cleanBaseUrl.includes('localhost') || cleanBaseUrl.includes('127.0.0.1');
+  const publicShareBaseUrl = isLocalEnv ? 'https://dentshub.id' : cleanBaseUrl;
+
+  // Aset gambar thumbnail persegi 1:1 (< 300 KB, lolos crawler WhatsApp & media sosial)
+  const shareImageUrl = publicShareBaseUrl + '/img/og-thumbnail.png';
+  const shareImageJpg = publicShareBaseUrl + '/img/og-thumbnail.jpg';
+  const siteTitle = (typeof title !== 'undefined' && title) ? title : 'DENTSHUB RISET - Platform AI Asisten Riset, Skripsi & Publikasi Ilmiah Terpadu';
+  const siteDesc = 'Platform AI terdepan untuk mahasiswa S1-S3 & peneliti. Susun skripsi Bab 1-5, tesis, disertasi, hingga artikel jurnal SINTA & Scopus otomatis dengan referensi DOI valid (Zero AI Fabrication), parafrase anti-plagiasi Turnitin, dan simulasi sidang AI.';
+  const siteKeywords = 'skripsi AI, tesis AI, disertasi AI, asisten riset, penyusunan bab skripsi, parafrase ilmiah, cek plagiasi turnitin, sitasi otomatis doi, jurnal scopus, jurnal sinta, simulasi sidang skripsi, brainstorming judul skripsi, novelty riset, dentshub riset, asisten akademik';
+  const waContact = (typeof companyProfile !== 'undefined' && companyProfile && companyProfile.contact) ? companyProfile.contact.whatsapp : '6285338922586';
+  const waDisplay = (typeof companyProfile !== 'undefined' && companyProfile && companyProfile.contact && companyProfile.contact.whatsappDisplay) ? companyProfile.contact.whatsappDisplay : '+62 853-3892-2586';
+  const contactEmail = (typeof companyProfile !== 'undefined' && companyProfile && companyProfile.contact && companyProfile.contact.email) ? companyProfile.contact.email : 'kontak@dentshubriset.id';
+%>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Google Search Console Verification (GSC) -->
+  <meta name="google-site-verification" content="cbSE7olGd0ibEx_bhjC3aitjIovXCSwUKYbVOh7nbLs">
+
+  <!-- Primary SEO Meta Tags (Google Search Console Gold Standard) -->
+  <title><%= siteTitle %></title>
+  <meta name="title" content="<%= siteTitle %>">
+  <meta name="description" content="<%= siteDesc %>">
+  <meta name="keywords" content="<%= siteKeywords %>">
+  <meta name="author" content="drg. M. Aksa Arsyad, S.KG & Tim Dentshub Riset">
+  <meta name="publisher" content="DENTSHUB RISET Indonesia">
+  <meta name="copyright" content="© <%= new Date().getFullYear() %> DENTSHUB RISET. All rights reserved.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow">
+  <link rel="canonical" href="<%= cleanBaseUrl %>/">
+
+  <!-- Progressive Web App (PWA) Manifest & Theme -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="msapplication-TileColor" content="#0284c7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="DENTSHUB RISET">
+  <meta name="application-name" content="DENTSHUB RISET">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Favicons, High-Res Touch Icons & Thumbnail Suite for WhatsApp, FB, IG, Telegram, iOS, Android -->
+  <link rel="icon" type="image/png" sizes="512x512" href="<%= cleanBaseUrl %>/img/dentshubriset.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="<%= cleanBaseUrl %>/img/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= cleanBaseUrl %>/img/favicon-32x32.png">
+  <link rel="shortcut icon" type="image/png" href="<%= cleanBaseUrl %>/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= cleanBaseUrl %>/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="<%= cleanBaseUrl %>/img/apple-touch-icon.png">
+  <!-- Link khusus untuk WhatsApp, Telegram, Yahoo crawler -->
+  <link rel="image_src" href="<%= shareImageUrl %>">
+
+  <!-- Open Graph (OG) Suite (Facebook, Instagram, WhatsApp, LinkedIn, Telegram, Pinterest) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DENTSHUB RISET">
+  <meta property="og:url" content="<%= cleanBaseUrl %>/">
+  <meta property="og:title" content="<%= siteTitle %>">
+  <meta property="og:description" content="<%= siteDesc %>">
+  <meta property="og:image" content="<%= shareImageUrl %>">
+  <meta property="og:image:secure_url" content="<%= shareImageUrl %>">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Logo Resmi DENTSHUB RISET - Platform AI Asisten Riset & Publikasi Ilmiah Terpadu">
+  <meta property="og:locale" content="id_ID">
+
+  <!-- Twitter / X Cards (Summary Card for Square Thumbnail Logo on the left - Persis Gambar 1) -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="<%= cleanBaseUrl %>/">
+  <meta name="twitter:site" content="@dentshub">
+  <meta name="twitter:creator" content="@dentshub">
+  <meta name="twitter:title" content="<%= siteTitle %>">
+  <meta name="twitter:description" content="<%= siteDesc %>">
+  <meta name="twitter:image" content="<%= shareImageUrl %>">
+  <meta name="twitter:image:alt" content="Logo Resmi DENTSHUB RISET - Asisten Riset AI Akademis Terpadu">
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Global Stylesheet with Cache Busting -->
+  <link rel="stylesheet" href="/css/main.css?v=<%= Date.now() %>">
+
+  <!-- =========================================================
+       SCHEMA.ORG STRUCTURED DATA SUITE (GOOGLE SEARCH CONSOLE GOLD STANDARD)
+       ========================================================= -->
+  <!-- 1. WebSite Schema with Sitelinks SearchBox -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "<%= cleanBaseUrl %>/#website",
+    "url": "<%= cleanBaseUrl %>/",
+    "name": "DENTSHUB RISET",
+    "alternateName": ["Dentshub AI", "Dentshub Riset", "Platform Riset AI Dentshub"],
+    "description": "<%= siteDesc %>",
+    "inLanguage": "id-ID",
+    "publisher": { "@id": "<%= cleanBaseUrl %>/#organization" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "<%= cleanBaseUrl %>/brainstorming?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- 2. Organization Schema with Founders & Contacts -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "<%= cleanBaseUrl %>/#organization",
+    "name": "DENTSHUB RISET",
+    "legalName": "DENTSHUB RISET Indonesia",
+    "url": "<%= cleanBaseUrl %>/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "<%= shareImageUrl %>",
+      "width": 512,
+      "height": 512
+    },
+    "image": "<%= shareImageUrl %>",
+    "description": "Ekosistem asistensi riset, skripsi, dan publikasi ilmiah berbasis AI terpadu di Indonesia dengan kepatuhan integritas akademik murni dan sitasi DOI valid.",
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "drg. M. Aksa Arsyad, S.KG",
+        "jobTitle": "Founder & Lead System Architect",
+        "image": "<%= shareImageUrl %>"
+      },
+      {
+        "@type": "Person",
+        "name": "drg. Andi Rifka Rahmayanti, S.KG",
+        "jobTitle": "Co-Founder & Operations Director",
+        "image": "<%= shareImageUrl %>"
+      },
+      {
+        "@type": "Person",
+        "name": "drg. Tasya Awaliyah Arsyad, S.KG",
+        "jobTitle": "Head of Academic Quality & Supervision",
+        "image": "<%= shareImageUrl %>"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+<%= waContact %>",
+      "contactType": "customer service",
+      "contactOption": "TollFree",
+      "areaServed": "ID",
+      "availableLanguage": ["Indonesian", "English"]
+    },
+    "sameAs": [
+      "https://instagram.com/dentshub.id",
+      "https://facebook.com/dentshub.id",
+      "https://twitter.com/dentshub"
+    ]
+  }
+  </script>
+
+  <!-- 3. WebApplication Schema with Aggregated Ratings & Features -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": "<%= cleanBaseUrl %>/#webapp",
+    "name": "DENTSHUB RISET",
+    "url": "<%= cleanBaseUrl %>/",
+    "applicationCategory": "EducationalApplication, BusinessApplication",
+    "operatingSystem": "All modern web browsers (Chrome, Safari, Firefox, Edge)",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "description": "<%= siteDesc %>",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1420",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "IDR",
+      "lowPrice": "99000",
+      "highPrice": "1800000",
+      "offerCount": "8"
+    },
+    "featureList": [
+      "Penyusunan Skripsi Lengkap Bab 1 hingga Bab 5",
+      "Zero AI Fabrication dengan Sitasi DOI Aktif Resmi",
+      "Parafrase Ilmiah Anti-Plagiarisme & Cek Turnitin",
+      "Simulasi Sidang Skripsi dengan Penguji AI Realistis",
+      "AI Academic Writer Tingkat Lanjut Jurnal SINTA & Scopus",
+      "Ekspor Dokumen ke Microsoft Word & Slide Presentasi PPT"
+    ]
+  }
+  </script>
+
+  <!-- 4. BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Beranda",
+        "item": "<%= cleanBaseUrl %>/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Fitur Riset",
+        "item": "<%= cleanBaseUrl %>/#fitur"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Alur Riset",
+        "item": "<%= cleanBaseUrl %>/#alur"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Paket Harga",
+        "item": "<%= cleanBaseUrl %>/#harga"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Testimoni",
+        "item": "<%= cleanBaseUrl %>/#testimonial"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "FAQ",
+        "item": "<%= cleanBaseUrl %>/#faq"
+      }
+    ]
+  }
+  </script>
+
+  <!-- 5. SiteNavigationElement (Google Sitelinks) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "Fitur & Kapabilitas Riset",
+        "description": "Eksplorasi instrumen perumusan novelty, bab skripsi, dan sitasi DOI valid.",
+        "url": "<%= cleanBaseUrl %>/#fitur"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Alur Pendampingan Riset",
+        "description": "5 tahapan komprehensif mulai dari topik gagasan hingga simulasi sidang.",
+        "url": "<%= cleanBaseUrl %>/#alur"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Paket Harga & Langganan",
+        "description": "Pilihan paket kredit hemat untuk Mahasiswa S1 dan Profesor Pascasarjana.",
+        "url": "<%= cleanBaseUrl %>/#harga"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Testimoni Peneliti",
+        "description": "Ulasan pengalaman nyata ribuan mahasiswa S1, S2, S3 di Indonesia.",
+        "url": "<%= cleanBaseUrl %>/#testimonial"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "Tanya Jawab (FAQ)",
+        "description": "Jawaban lengkap seputar integritas ilmiah, Turnitin, dan legalitas sitasi.",
+        "url": "<%= cleanBaseUrl %>/#faq"
+      }
+    ]
+  }
+  </script>
+
+  <!-- 6. ItemList Schema (Catalog 8 Paket Kredit Riset) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Daftar Paket Kredit Riset DENTSHUB",
+    "description": "Pilihan paket langganan dan kredit riset akademik terpadu.",
+    "numberOfItems": 8,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Mahasiswa Bulanan",
+          "price": "99000",
+          "priceCurrency": "IDR",
+          "description": "100 + 10 bonus kredit riset untuk skripsi Bab 1-5 dan simulasi sidang.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Mahasiswa 3 Bulan (Populer)",
+          "price": "299000",
+          "priceCurrency": "IDR",
+          "description": "300 + 65 bonus kredit riset paling populer hingga sidang munaqasyah.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Mahasiswa Semester (6 Bulan)",
+          "price": "599000",
+          "priceCurrency": "IDR",
+          "description": "600 + 150 bonus kredit riset pendampingan satu semester penuh.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Mahasiswa Tahunan",
+          "price": "999000",
+          "priceCurrency": "IDR",
+          "description": "1200 + 300 bonus kredit riset hemat maksimal untuk riset setahun penuh.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Profesor Bulanan",
+          "price": "149000",
+          "priceCurrency": "IDR",
+          "description": "150 + 10 bonus kredit riset untuk tesis S2, disertasi S3, dan artikel jurnal SINTA/Scopus.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Profesor 3 Bulan (Populer)",
+          "price": "450000",
+          "priceCurrency": "IDR",
+          "description": "450 + 75 bonus kredit riset untuk publikasi ilmiah dan telaah jurnal bereputasi.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Profesor Semester (6 Bulan)",
+          "price": "900000",
+          "priceCurrency": "IDR",
+          "description": "900 + 200 bonus kredit riset untuk riset lanjutan pascasarjana dan hibah penelitian.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Offer",
+          "name": "Paket Profesor Tahunan (Unlimited)",
+          "price": "1800000",
+          "priceCurrency": "IDR",
+          "description": "Akses unlimited setahun penuh untuk seluruh instrumen riset dan publikasi internasional.",
+          "availability": "https://schema.org/InStock",
+          "url": "<%= cleanBaseUrl %>/#harga"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 7. FAQPage Schema (Google Rich Results Q&A Accordion) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Apakah saya perlu paham prompt AI untuk memakai Dentshub Riset?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tidak sama sekali. Platform Dentshub Riset dirancang dengan filosofi Zero Prompt Barrier. Anda hanya perlu memasukkan data dasar penelitian seperti topik minat, variabel, metode, dan target bab. Seluruh rekayasa prompt akademis dan rantai penalaran ilmiah terstruktur disusun otomatis di balik layar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana Dentshub Riset menjamin keaslian sitasi (Zero AI Fabrication)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Di Dentshub Riset kami memegang teguh prinsip Zero AI Fabrication. Setiap kali rujukan diusulkan, sistem menarik metadata langsung via API pangkalan data ilmiah dunia seperti Crossref, PubMed, SINTA, DOAJ, dan Scopus lengkap dengan tautan Digital Object Identifier (DOI) resmi aktif."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah format dan susunan bab dapat disesuaikan dengan pedoman kampus saya?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sangat sesuai dan fleksibel. Fitur BAB Skripsi Dinamis kami memungkinkan penyesuaian struktur penuh, mulai dari 5 Bab baku, 6 Bab, hingga format manuskrip IMRaD untuk publikasi jurnal ilmiah nasional maupun internasional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah penggunaan Dentshub Riset menggantikan peran dosen pembimbing saya?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tentu saja tidak. Dentshub Riset memposisikan diri sebagai Pre-Consultation Research Assistant — asisten persiapan mandiri sebelum Anda berhadapan dengan dosen pembimbing (dospem). Keputusan substansi dan persetujuan (ACC) akhir tetap merupakan otoritas dosen pembimbing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana jaminan keamanan dari deteksi plagiarisme dan uji Turnitin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Modul Academic Paraphraser & Synthesizer kami merombak konstruksi sintaksis dan memadukan variasi klausa aktif-pasif ilmiah berdasarkan kaidah EYD V dan saintifik global, terbukti efektif menekan angka similarity index Turnitin maupun iThenticate ke batas aman universitas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah data mentah, judul, dan draf karya tulis saya aman serta dijamin rahasia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kerahasiaan data intelektual Anda dijamin 100%. Data diisolasi dengan enkripsi AES-256 dan protokol SSL/TLS, serta TIDAK PERNAH digunakan sebagai data pelatihan (training data) model AI pihak ketiga. Hak cipta sepenuhnya milik Anda."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana sistem saldo kredit bekerja? Apakah memiliki masa kedaluwarsa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sistem kredit Dentshub Riset menerapkan skema Lifetime Ownership (Tanpa Batas Waktu / No Expiry). Kredit tidak pernah hangus atau kedaluwarsa, dan pemakaian tercatat transparan di Buku Besar Akun (Audit Ledger)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Karya tulis apa saja yang didukung selain skripsi Sarjana (S1)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mendukung seluruh jenjang: Sarjana & Profesi (Skripsi, KTI, Case Report), Magister S2 (Tesis, Systematic Literature Review, Meta-analisis), Doktoral S3 (Disertasi, Novelty Theory), dan Dosen/Peneliti (Artikel Jurnal Scopus/SINTA, Proposal Hibah BIMA)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana cara kerja modul Simulasi Sidang & Ujian Skripsi (Defense AI)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Modul Simulasi Sidang AI menganalisis titik-titik krusial naskah Anda yang sering dicecar penguji (sampel, metodologi, bias) dan menyimulasikan tanya-jawab berbobot tinggi lengkap dengan strategi jawaban berbasis bukti (evidence-based defense)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah platform ini mendukung analisis data statistik (SPSS, SEM-PLS, Uji Klinis)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya, asisten BAB 4 Hasil & Pembahasan dapat membaca tabel ringkasan uji statistik (t-test, ANOVA, Regresi, Chi-Square, SmartPLS/SEM) lalu merangkai interpretasi ilmiah baku dan menyambungkannya dengan pembahasan komparatif literatur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Metode pembayaran apa saja yang didukung untuk pembelian kredit atau langganan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mendukung QRIS Real-Time (GoPay, OVO, DANA, ShopeePay, Mobile Banking BCA, Mandiri, BRI, BNI, dll), Virtual Account otomatis, dan Transfer Bank untuk paket institusi kampus resmi."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana cara menghubungi tim Customer Care & Konsultasi Resmi Dentshub Riset?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Anda dapat menghubungi Customer Care resmi melalui WhatsApp di <%= waDisplay %>, surel di <%= contactEmail %>, atau tombol floating WhatsApp interaktif di pojok kanan bawah website kami."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- DEDICATED THEME & STYLES INTEGRATED INTO /css/main.css?v=<%= Date.now() %> -->
+
+  <!-- Google Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="landing-body">
+
+  <!-- AMBIENT RADIAL NEON GLOWS -->
+  <div class="ambient-glow-wrap" aria-hidden="true">
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-glow ambient-glow-3"></div>
+  </div>
+
+  <!-- GLASSMORPHIC STICKY NAVBAR -->
+  <header class="public-header" id="publicNavbar">
+    <div class="container">
+      <nav class="public-nav">
+        <!-- Logo -->
+        <a href="/" class="brand-logo" id="navLogo">
+          <img src="/img/dentshubriset.png" alt="Dentshub Riset Official Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#beranda" class="nav-link">Beranda</a></li>
+          <li><a href="#tentang" class="nav-link">Tentang</a></li>
+          <li><a href="#fitur" class="nav-link">Fitur</a></li>
+          <li><a href="#alur" class="nav-link">Cara Kerja</a></li>
+          <li><a href="#pendiri" class="nav-link">Visi & Pendiri</a></li>
+          <li><a href="#harga" class="nav-link">Harga</a></li>
+          <li><a href="#testimonial" class="nav-link">Testimonial</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+
+        <!-- Action CTAs -->
+        <div class="nav-actions">
+          <!-- Install App (PWA) Button -->
+          <button class="btn-install-pwa" id="btnInstallPwa" type="button" aria-label="Install Aplikasi" title="Pasang Aplikasi Dentshub Riset (PWA Android, iOS, Chrome, Desktop)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="pwa-text">Install App</span>
+            <span class="pwa-badge">PWA</span>
+          </button>
+
+          <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Ganti Tema" title="Ganti Mode Tampilan (Terang / Gelap)">
+            <span id="themeIcon" style="font-size: 1.05rem;">🌙</span>
+            <span id="themeText" class="theme-text-desktop">Mode Gelap</span>
+          </button>
+
+          <% if (currentUser) { %>
+            <a href="/dashboard" class="btn-holo">
+              <span>Buka Dashboard</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          <% } else { %>
+            <a href="/login" class="btn-glass">Masuk</a>
+            <a href="/register" class="btn-holo">
+              <span>Daftar Gratis</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          <% } %>
+
+          <!-- Mobile Hamburger Button -->
+          <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER MENU -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <!-- Mobile Install App Button -->
+    <button class="btn-install-pwa mobile-install-btn" id="btnMobileInstallPwa" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>Install Aplikasi (Android / iOS / PC)</span>
+      <span class="pwa-badge">PWA</span>
+    </button>
+
+    <!-- Mobile Theme Switcher -->
+    <button class="theme-toggle-btn" id="mobileThemeToggleBtn" type="button" style="width: 100%; justify-content: center; margin-bottom: 1rem; padding: 0.75rem 1rem;">
+      <span id="mobileThemeIcon" style="font-size: 1.15rem;">🌙</span>
+      <span id="mobileThemeText" style="font-weight: 700; font-size: 0.95rem;">Ganti ke Mode Gelap</span>
+    </button>
+
+    <a href="#beranda" class="nav-link mobile-link">Beranda</a>
+    <a href="#tentang" class="nav-link mobile-link">Tentang</a>
+    <a href="#fitur" class="nav-link mobile-link">Fitur & 13 Tahapan</a>
+    <a href="#alur" class="nav-link mobile-link">Cara Kerja</a>
+    <a href="#pendiri" class="nav-link mobile-link">Visi, Misi & Pendiri</a>
+    <a href="#harga" class="nav-link mobile-link">Paket Harga</a>
+    <a href="#testimonial" class="nav-link mobile-link">Testimonial</a>
+    <a href="#faq" class="nav-link mobile-link">FAQ</a>
+    <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.85rem;">
+      <% if (currentUser) { %>
+        <a href="/dashboard" class="btn-holo" style="justify-content: center;">Buka Dashboard Anda</a>
+      <% } else { %>
+        <a href="/login" class="btn-glass" style="justify-content: center;">Masuk Akun</a>
+        <a href="/register" class="btn-holo" style="justify-content: center;">Daftar Gratis Sekarang</a>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- SECTION 1: BERANDA / HERO SECTION -->
+  <section id="beranda" class="landing-hero">
+    <div class="container">
+      <!-- Holographic Badge -->
+      <div class="hero-pill-badge">
+        <span class="hero-pill-dot"></span>
+        <span class="hero-pill-text">Ekosistem Riset AI Terakreditasi 2026</span>
+        <span class="hero-pill-highlight">• Zero-Hallucination Guardrails</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-main-title">
+        Selesaikan Riset, Skripsi & Tesis <br>
+        <span class="hero-gradient-text">Lebih Cepat, Terstruktur & Akademis</span>
+      </h1>
+
+      <!-- Subtitle Lead -->
+      <p class="hero-lead-text">
+        DENTSHUB RISET mengawal seluruh perjalanan akademik Anda: mulai dari eksplorasi topik, novelty, sitasi jurnal ilmiah DOI valid, drafting bab terstruktur, hingga simulasi sidang munaqasyah tanpa manipulasi data.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-cta-group">
+        <a href="/register" class="btn-hero-primary" id="heroCtaRegister">
+          <span>Mulai Riset Gratis Sekarang</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#fitur" class="btn-hero-secondary" id="heroCtaWorkflow">
+          <span>Eksplorasi 13 Tahapan Riset</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <!-- Verified Stats Strip -->
+      <div class="hero-stats-strip">
+        <div class="stat-box">
+          <div class="stat-number cyan">15.000+</div>
+          <div class="stat-label">Mahasiswa & Peneliti Aktif</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number emerald">99.4%</div>
+          <div class="stat-label">Tingkat Lulus Sidang Tepat Waktu</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Bebas Fabrikasi & Halusinasi DOI</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number cyan">4.9 / 5</div>
+          <div class="stat-label">Kepuasan Ulasan Dosen & Promotor</div>
+        </div>
+      </div>
+
+      <!-- 3D Glass Editor Realistic Mockup -->
+      <div class="editor-mockup-wrapper">
+        <div class="editor-mockup-window">
+          <!-- Window Header Bar -->
+          <div class="mockup-titlebar">
+            <div class="traffic-dots">
+              <span class="traffic-dot traffic-red"></span>
+              <span class="traffic-dot traffic-yellow"></span>
+              <span class="traffic-dot traffic-green"></span>
+            </div>
+            <div class="mockup-filename">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>SKRIPSI_FINAL_ACC_PEMBIMBING.docx</span>
+            </div>
+            <div class="mockup-status-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Validasi Sitasi: 100% DOI Terverifikasi</span>
+            </div>
+          </div>
+
+          <!-- Window Inner Layout -->
+          <div class="mockup-body">
+            <!-- Sidebar Navigation Tree -->
+            <div class="mockup-sidebar">
+              <div class="mockup-tree-title">Struktur Naskah Riset</div>
+              <div class="mockup-tree-item active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>BAB 1: Pendahuluan</span>
+              </div>
+              <div class="mockup-tree-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                <span>BAB 2: Tinjauan Pustaka</span>
+              </div>
+              <div class="mockup-tree-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>BAB 3: Metodologi Ilmiah</span>
+              </div>
+              <div class="mockup-tree-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>BAB 4: Hasil & Analisis Data</span>
+              </div>
+              <div class="mockup-tree-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <span>BAB 5: Kesimpulan & Saran</span>
+              </div>
+              <div class="mockup-tree-item" style="margin-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 0.75rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>Lab Catatan Dosen Pembimbing</span>
+              </div>
+            </div>
+
+            <!-- Editor Work Area -->
+            <div class="mockup-editor-view">
+              <div class="mockup-paper-heading">
+                1.3 Rumusan Kebaruan Penelitian (Novelty Formulation)
+              </div>
+              <p class="mockup-paper-para">
+                Berdasarkan telaah kritis terhadap keterbatasan penelitian terdahulu, studi ini mengajukan pendekatan sintesis biokompatibilitas komposit berbasis nanopartikel kalsium fosfat terkalsinasi. Berbeda dengan penelitian sebelumnya yang hanya meninjau sifat mekanik makro, formulasi ini mengintegrasikan evaluasi adhesi mikroorganisme patogen rongga mulut secara <em>in-vitro</em>.
+              </p>
+              <p class="mockup-paper-para">
+                Kajian ini merujuk pada temuan mutakhir <span class="mockup-citation-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Arsyad et al., 2025 [Scopus Q1 • DOI: 10.1016/j.dental.2025.01.002]</span> yang mendemonstrasikan signifikansi modulasi hidrofilisitas permukaan terhadap laju regenerasi jaringan keras.
+              </p>
+
+              <!-- Bottom Tools Strip -->
+              <div class="mockup-tools-strip">
+                <div class="mockup-turnitin-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Indeks Turnitin: <strong>6% (Aman & Bebas Plagiasi)</strong></span>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                  <span style="font-size: 0.8rem; color: #94a3b8; font-family: var(--font-mono); display: flex; align-items: center; gap: 0.35rem;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Standar APA 7th Edition
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TENTANG DENTSHUB RISET (ANTI-FABRIKASI & ETIKA RISET) -->
+  <section id="tentang" class="landing-section">
+    <div class="container">
+      <div class="landing-section-header">
+        <span class="section-tag-pill">Filosofi & Integritas Akademik</span>
+        <h2 class="section-main-title">AI sebagai Katalisator Intelektual, Bukan Pengganti Pertanggungjawaban</h2>
+        <p class="section-lead-subtitle">
+          Banyak platform AI generik menciptakan sitasi palsu dan mengarang angka statistik. Dentshub Riset dibangun dengan arsitektur Zero-Hallucination Guardrails untuk menjaga marwah ilmiah Anda.
+        </p>
+      </div>
+
+      <!-- Hero About Card -->
+      <div class="about-card-hero">
+        <div class="about-hero-grid">
+          <div>
+            <div class="about-badge-shield">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Zero-Hallucination Guarantee</span>
+            </div>
+            <h3 style="font-size: 1.85rem; font-weight: 800; color: var(--theme-text-title); margin-bottom: 1rem; line-height: 1.3;">
+              Komitmen Ketat Terhadap Keabsahan Data & Validitas Rujukan
+            </h3>
+            <p style="color: var(--theme-text-body); font-size: 1rem; line-height: 1.7; margin-bottom: 1.25rem;">
+              Kami percaya bahwa skripsi dan publikasi jurnal bukan hanya syarat kelulusan, melainkan jejak intelektual abadi Anda. Oleh karena itu, sistem komputasi cerdas Dentshub Riset dilarang secara algoritmik untuk memanipulasi angka signifikansi (p-value), mengarang judul jurnal fiktif, ataupun memalsukan nama penulis.
+            </p>
+            <p style="color: var(--theme-text-muted); font-size: 0.925rem; line-height: 1.6; margin: 0;">
+              Seluruh rujukan yang dihasilkan platform dapat diklik langsung untuk memeriksa metadata resmi DOI dari Crossref, PubMed, DOAJ, SINTA, hingga Scopus.
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="principle-box">
+              <div class="principle-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div class="principle-title">Audit Metadata Rujukan Riil</div>
+              <p class="principle-desc">Pemeriksaan silang otomatis terhadap pangkalan data ilmiah dunia. Anda menerima artikel jurnal yang memang eksis dan diakui.</p>
+            </div>
+
+            <div class="principle-box">
+              <div class="principle-icon emerald">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="principle-title">Kepatuhan Terhadap Kode Etik Peneliti</div>
+              <p class="principle-desc">Membimbing logika penalaran dan penyusunan kalimat ilmiah tanpa mengambil alih kepemilikan orisinalitas ide Anda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Pillars Grid -->
+      <div class="about-principles-grid">
+        <div class="principle-box">
+          <div class="principle-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <div class="principle-title">Buku Besar Kredit Transparan</div>
+          <p class="principle-desc">Setiap konsumsi kredit tercatat mutasi real-time di sistem Ledger. Saldo kredit tidak pernah kedaluwarsa (No Expiry).</p>
+        </div>
+
+        <div class="principle-box">
+          <div class="principle-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="principle-title">Kolaborasi Multi-Rumpun Ilmu</div>
+          <p class="principle-desc">Dirancang adaptif untuk rumpun Kesehatan & Kedokteran, Sains-Teknologi, Sosial Humaniora, Ekonomi, maupun Hukum.</p>
+        </div>
+
+        <div class="principle-box">
+          <div class="principle-icon emerald">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="principle-title">Privasi Naskah Terjamin</div>
+          <p class="principle-desc">Data draf dan ide penelitian Anda dienkripsi penuh dan tidak digunakan untuk melatih model AI publik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FITUR & 13 TAHAPAN RISET BERKELANJUTAN -->
+  <section id="fitur" class="landing-section">
+    <div class="container">
+      <div class="landing-section-header">
+        <span class="section-tag-pill">End-to-End Research Architecture</span>
+        <h2 class="section-main-title">13 Tahapan Riset Berkelanjutan</h2>
+        <p class="section-lead-subtitle">
+          Bukan sekadar bot pembuat teks pendek. Sistem kami membimbing Anda melewati 13 tahapan ilmiah komprehensif dari pencarian ide hingga dinyatakan lulus sidang.
+        </p>
+      </div>
+
+      <!-- 13 Stages Grid -->
+      <div class="workflow-13-grid">
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 01</div>
+          <div class="stage-card-title">Eksplorasi Ide Riset</div>
+          <p class="stage-card-desc">Identifikasi fenomena aktual di lapangan, gap fenomena, dan minat peminatan akademik.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 02</div>
+          <div class="stage-card-title">Brainstorming Judul</div>
+          <p class="stage-card-desc">Formulasi judul presisi dengan variabel terukur yang siap diajukan ke dewan jurusan.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 03</div>
+          <div class="stage-card-title">Pemetaan Research Gap</div>
+          <p class="stage-card-desc">Komparasi komprehensif terhadap keterbatasan studi terdahulu untuk menemukan celah ilmiah.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 04</div>
+          <div class="stage-card-title">Formulasi Novelty</div>
+          <p class="stage-card-desc">Penegasan unsur kebaruan (state-of-the-art) yang menjadikan karya Anda bernilai tinggi.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 05</div>
+          <div class="stage-card-title">Pencarian DOI Jurnal</div>
+          <p class="stage-card-desc">Pengambilan metadata referensi ilmiah valid berindeks SINTA, Scopus, PubMed, dan Crossref.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 06</div>
+          <div class="stage-card-title">Manajemen Project</div>
+          <p class="stage-card-desc">Sentralisasi berkas digital riset, target kelulusan, dan riwayat catatan dosen pembimbing.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 07</div>
+          <div class="stage-card-title">BAB Skripsi Dinamis</div>
+          <p class="stage-card-desc">Struktur bab fleksibel (BAB 1–5, BAB 6+, maupun kustomisasi naskah publikasi artikel).</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 08</div>
+          <div class="stage-card-title">AI Academic Writer</div>
+          <p class="stage-card-desc">Elaborasi paragraf ilmiah, kohesi argumen, dan sintesis literatur berstandar perguruan tinggi.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 09</div>
+          <div class="stage-card-title">Parafrase Anti-Plagiasi</div>
+          <p class="stage-card-desc">Restrukturisasi sintaks kalimat akademik dengan mempertahankan esensi dan sitasi asli.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 10</div>
+          <div class="stage-card-title">Olah Data & Interpretasi</div>
+          <p class="stage-card-desc">Panduan membaca tabel statistik, uji korelasi, regresi, hingga deskripsi hasil uji laboratorium.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 11</div>
+          <div class="stage-card-title">Lab Revisi Bimbingan</div>
+          <p class="stage-card-desc">Checklist perbaikan sistematis berdasarkan feedback coretan dosen penguji & pembimbing.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 12</div>
+          <div class="stage-card-title">Audit Plagiasi & Sitasi</div>
+          <p class="stage-card-desc">Evaluasi skor kemiripan teks dan format sitasi (APA, Vancouver, Harvard, IEEE) sebelum sidang.</p>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-card-num">FASE 13</div>
+          <div class="stage-card-title">Simulasi Sidang & PPT</div>
+          <p class="stage-card-desc">Latihan tanya jawab lisan dengan AI penguji kritis serta pembuatan slide deck presentasi sidang.</p>
+        </div>
+      </div>
+
+      <!-- 6 MODUL UNGGULAN SECTION -->
+      <div class="landing-section-header" style="margin-top: 5rem; margin-bottom: 3rem;">
+        <span class="section-tag-pill">Modul Produktivitas Utama</span>
+        <h2 class="section-main-title">Fitur Spesifik Pendukung Setiap Bab</h2>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-icon-box">✍️</div>
+          <div class="module-title">AI Academic Writer Pro</div>
+          <p class="module-desc">Bantuan penyusunan draft naskah akademik berkaidah formal. Membantu menulis latar belakang yang kuat, batasan masalah, hingga pembahasan hasil penelitian.</p>
+          <div class="module-tags">
+            <span class="module-tag-item">Argumen Deduktif</span>
+            <span class="module-tag-item">Kaidah Ilmiah</span>
+            <span class="module-tag-item">Koneksi Antar Paragraf</span>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon-box">🔄</div>
+          <div class="module-title">Parafrase Cerdas Turnitin</div>
+          <p class="module-desc">Turunkan persentase similarity index naskah Anda tanpa merusak istilah medis, sains, atau teori fundamental. Pilihan gaya formal, ringkas, maupun elaboratif.</p>
+          <div class="module-tags">
+            <span class="module-tag-item">Anti-Plagiasi</span>
+            <span class="module-tag-item">Jaga Sitasi Asli</span>
+            <span class="module-tag-item">Turnitin-Safe</span>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon-box">📊</div>
+          <div class="module-title">Olah Data & Statistik</div>
+          <p class="module-desc">Ubah tabel rumit hasil SPSS, Jamovi, R, atau Excel menjadi narasi interpretasi akademik yang runut dan siap dimasukkan ke BAB 4 hasil penelitian.</p>
+          <div class="module-tags">
+            <span class="module-tag-item">Deskripsi Tabel</span>
+            <span class="module-tag-item">Uji Hipotesis</span>
+            <span class="module-tag-item">Signifikansi P-Value</span>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon-box">🔬</div>
+          <div class="module-title">Lab Revisi Bimbingan</div>
+          <p class="module-desc">Salin catatan atau coretan dari dosen pembimbing. AI menganalisis poin keberatan dan merekomendasikan perbaikan paragraf yang tepat sasaran.</p>
+          <div class="module-tags">
+            <span class="module-tag-item">Feedback Solver</span>
+            <span class="module-tag-item">Tracking Progres</span>
+            <span class="module-tag-item">Revisi Terarah</span>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon-box">📚</div>
+          <div class="module-title">Rujukan DOI Jurnal Valid</div>
+          <p class="module-desc">Cari dan tambahkan metadata jurnal bereputasi dari Crossref dan PubMed. Dapatkan DOI yang bisa diakses langsung untuk daftar pustaka akurat.</p>
+          <div class="module-tags">
+            <span class="module-tag-item">SINTA & Scopus</span>
+            <span class="module-tag-item">DOI Aktif</span>
+            <span class="module-tag-item">Bebas Halusinasi</span>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon-box">🎓</div>
+          <div class="module-title">Simulasi Sidang & Generator PPT</div>
+          <p class="module-desc">Berlatihlah menghadapi dewan penguji dengan prediksi pertanyaan tersulit. Ekspor outline presentasi dan speaker notes untuk presentasi percaya diri.</p>
+          <div class="module-tags">
+            <span class="module-tag-item">Tanya Jawab AI</span>
+            <span class="module-tag-item">Slide PPT Siap Pakai</span>
+            <span class="module-tag-item">Mental Juara Sidang</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: CARA KERJA (4-STEP WORKFLOW) -->
+  <section id="alur" class="landing-section">
+    <div class="container">
+      <div class="landing-section-header">
+        <span class="section-tag-pill">Workflow Sistematis</span>
+        <h2 class="section-main-title">4 Langkah Mudah Menyelesaikan Riset Anda</h2>
+        <p class="section-lead-subtitle">
+          Proses terstruktur yang dirancang agar mahasiswa tidak tersesat di tengah jalan.
+        </p>
+      </div>
+
+      <div class="steps-pipeline-grid">
+        <div class="step-card">
+          <div class="step-badge-number">1</div>
+          <div class="step-title">Formulasi Ide & Judul</div>
+          <p class="step-desc">Tentukan topik atau fenomena yang ingin diteliti. Dentshub Riset membantu merumuskan judul terarah, novelty, dan gap penelitian yang kuat.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge-number">2</div>
+          <div class="step-title">Validasi Rujukan DOI</div>
+          <p class="step-desc">Kumpulkan literatur jurnal ilmiah terindeks tanpa resiko sitasi fiktif. Hubungkan setiap rujukan dengan pustaka resmi yang terverifikasi.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge-number">3</div>
+          <div class="step-title">Penyusunan & Lab Revisi</div>
+          <p class="step-desc">Tulis bab naskah dengan AI Writer, parafrase kalimat yang rentan similarity, dan perbaiki sesuai arahan dosen pembimbing di Lab Revisi.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge-number">4</div>
+          <div class="step-title">Simulasi Sidang & Lulus</div>
+          <p class="step-desc">Lakukan geladi bersih ujian sidang dengan AI, pelajari jawaban ilmiah atas potensi sanggahan penguji, dan unduh slide deck presentasi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: DARI PENDIRI, VISI & MISI DENTSHUB RISET -->
+  <section id="pendiri" class="landing-section">
+    <div class="container">
+      <div class="landing-section-header">
+        <span class="section-tag-pill">Kepemimpinan & Dewan Akademik</span>
+        <h2 class="section-main-title">Dari Pendiri: Visi & Misi Dentshub Riset</h2>
+        <p class="section-lead-subtitle">
+          Dikelola dan diawasi langsung oleh praktisi dokter gigi dan akademisi untuk menjamin kualitas penulisan dan standar etika tertinggi.
+        </p>
+      </div>
+
+      <!-- Visi & Misi Container -->
+      <div class="vision-mission-card">
+        <!-- Visi -->
+        <div class="vision-box">
+          <div class="vision-label">Visi Kami</div>
+          <div class="vision-quote">
+            "<%= (companyProfile && companyProfile.vision) ? companyProfile.vision : 'Menjadi ekosistem asistensi riset, skripsi, dan publikasi ilmiah berbasis AI terdepan di Indonesia yang berakar pada integritas akademik murni, anti-fabrikasi data, dan percepatan kelulusan bermartabat.' %>"
+          </div>
+        </div>
+
+        <!-- Misi -->
+        <div>
+          <div class="vision-label" style="text-align: center; margin-bottom: 1.5rem;">Misi Platform Dentshub Riset</div>
+          <div class="missions-list-grid">
+            <% if (companyProfile && companyProfile.mission && companyProfile.mission.length > 0) { %>
+              <% companyProfile.mission.forEach(misi => { %>
+                <div class="mission-item-box">
+                  <div class="mission-check-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div><%= misi %></div>
+                </div>
+              <% }); %>
+            <% } else { %>
+              <div class="mission-item-box">
+                <div class="mission-check-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div>Menyediakan pendampingan riset komprehensif mulai dari perumusan novelty hingga simulasi sidang munaqasyah.</div>
+              </div>
+              <div class="mission-item-box">
+                <div class="mission-check-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div>Mengeliminasi hambatan penulisan ilmiah dengan AI Academic Writer yang patuh kaidah sitasi dan anti-plagiasi.</div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 FOUNDER CARDS (OWNER, ADMIN, SUPERVISOR) -->
+      <div class="founders-grid">
+        <!-- 1. OWNER CARD -->
+        <% const owner = (companyProfile && companyProfile.founders && companyProfile.founders[0]) ? companyProfile.founders[0] : { name: 'drg. M. Aksa Arsyad, S.KG', title: 'Founder & Lead System Architect', bio: 'Inisiator platform Dentshub Riset, berdedikasi membangun platform komputasi cerdas terpadu untuk percepatan riset kedokteran, kesehatan, dan lintas rumpun keilmuan dengan standar etika akademik tertinggi.' }; %>
+        <div class="founder-card owner-glow">
+          <div class="founder-avatar-wrap">
+            <img src="/img/dentshubriset.png" alt="<%= owner.name %>" class="founder-avatar-img">
+          </div>
+          <div class="founder-role-tag tag-owner">OWNER & LEAD ARCHITECT</div>
+          <div class="founder-name"><%= owner.name %></div>
+          <div class="founder-title"><%= owner.title %></div>
+          <p class="founder-bio"><%= owner.bio %></p>
+        </div>
+
+        <!-- 2. ADMIN CARD -->
+        <% const admin = (companyProfile && companyProfile.founders && companyProfile.founders[1]) ? companyProfile.founders[1] : { name: 'drg. Andi Rifka Rahmayanti, S.KG', title: 'Co-Founder & Operations Director', bio: 'Penanggung jawab manajemen operasional, tata kelola akun peneliti, verifikasi validasi transaksi, serta standarisasi alur pendampingan mahasiswa di seluruh Indonesia.' }; %>
+        <div class="founder-card admin-glow">
+          <div class="founder-avatar-wrap">
+            <img src="/img/dentshubriset.png" alt="<%= admin.name %>" class="founder-avatar-img">
+          </div>
+          <div class="founder-role-tag tag-admin">CO-FOUNDER & OPERATIONS LEAD</div>
+          <div class="founder-name"><%= admin.name %></div>
+          <div class="founder-title"><%= admin.title %></div>
+          <p class="founder-bio"><%= admin.bio %></p>
+        </div>
+
+        <!-- 3. SUPERVISOR CARD -->
+        <% const supervisor = (companyProfile && companyProfile.founders && companyProfile.founders[2]) ? companyProfile.founders[2] : { name: 'drg. Tasya Awaliyah Arsyad, S.KG', title: 'Head of Academic Quality & Supervision', bio: 'Penasihat utama kurasi telaah metodologi riset, pengawasan kepatuhan kaidah ilmiah sivitas akademika, serta evaluasi kesiapan naskah publikasi menuju jurnal terindeks.' }; %>
+        <div class="founder-card supervisor-glow">
+          <div class="founder-avatar-wrap">
+            <img src="/img/dentshubriset.png" alt="<%= supervisor.name %>" class="founder-avatar-img">
+          </div>
+          <div class="founder-role-tag tag-supervisor">ACADEMIC ADVISOR & QA</div>
+          <div class="founder-name"><%= supervisor.name %></div>
+          <div class="founder-title"><%= supervisor.title %></div>
+          <p class="founder-bio"><%= supervisor.bio %></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: HARGA / PRICING (TABS SWITCHER MATCHING USER SCREENSHOT) -->
+  <section id="harga" class="landing-section">
+    <div class="container">
+      <div class="landing-section-header">
+        <span class="section-tag-pill">Harga & Investasi Riset</span>
+        <h2 class="section-main-title">Mulai gratis, upgrade saat butuh</h2>
+        <p class="section-lead-subtitle">
+          Tanpa auto-charge. Kamu yang pegang kendali penuh atas paket dan saldo kreditmu.
+        </p>
+      </div>
+
+      <!-- PRICING TABS SWITCHER -->
+      <div class="pricing-tabs-wrapper">
+        <div class="pricing-tabs-container">
+          <button class="pricing-tab-btn active" id="tabBtnMahasiswa" onclick="switchPricingTab('mahasiswa')">
+            <span>🎓 Paket Mahasiswa</span>
+            <small style="opacity: 0.8; font-weight: 500;">— fitur inti penulisan</small>
+          </button>
+          <button class="pricing-tab-btn" id="tabBtnProfesor" onclick="switchPricingTab('profesor')">
+            <span>✨ Paket Profesor</span>
+            <small style="opacity: 0.8; font-weight: 500;">— semua fitur + Artikel Sinta/Scopus & AI Writer</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 1: PAKET MAHASISWA -->
+      <div class="pricing-tab-panel active" id="panelMahasiswa">
+        <div class="pricing-grid-4">
+          <!-- Bulanan -->
+          <div class="plan-card">
+            <div class="plan-period-label">BULANAN</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 99.000</span>
+              <span class="plan-price-duration">/ bulan</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">100 + 10 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 4 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+            </ul>
+            <a href="/register?pkg=mahasiswa_1m" class="btn-plan btn-plan-secondary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- 3 Bulan (Populer) -->
+          <div class="plan-card popular">
+            <div class="plan-pop-badge">★ Populer</div>
+            <div class="plan-period-label">3 BULAN</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 299.000</span>
+              <span class="plan-price-duration">/ 3 bulan</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">300 + 65 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 12 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+            </ul>
+            <a href="/register?pkg=mahasiswa_3m" class="btn-plan btn-plan-primary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Semester 6 Bulan -->
+          <div class="plan-card">
+            <div class="plan-period-label">SEMESTER (6 BLN)</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 599.000</span>
+              <span class="plan-price-duration">/ 6 bulan</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">600 + 150 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 24 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+            </ul>
+            <a href="/register?pkg=mahasiswa_6m" class="btn-plan btn-plan-secondary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Tahunan -->
+          <div class="plan-card">
+            <div class="plan-period-label">TAHUNAN</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 999.000</span>
+              <span class="plan-price-duration">/ tahun</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">1200 + 300 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 48 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+            </ul>
+            <a href="/register?pkg=mahasiswa_1y" class="btn-plan btn-plan-secondary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 2: PAKET PROFESOR & PASCASARJANA -->
+      <div class="pricing-tab-panel" id="panelProfesor">
+        <div class="pricing-grid-4">
+          <!-- Bulanan -->
+          <div class="plan-card">
+            <div class="plan-period-label">BULANAN</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 149.000</span>
+              <span class="plan-price-duration">/ bulan</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">150 + 10 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 5 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+            </ul>
+            <a href="/register?pkg=profesor_1m" class="btn-plan btn-plan-secondary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- 3 Bulan (Populer) -->
+          <div class="plan-card popular">
+            <div class="plan-pop-badge">★ Populer</div>
+            <div class="plan-period-label">3 BULAN</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 450.000</span>
+              <span class="plan-price-duration">/ 3 bulan</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">450 + 75 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 17 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+            </ul>
+            <a href="/register?pkg=profesor_3m" class="btn-plan btn-plan-primary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Semester 6 Bulan -->
+          <div class="plan-card">
+            <div class="plan-period-label">SEMESTER (6 BLN)</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 900.000</span>
+              <span class="plan-price-duration">/ 6 bulan</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">900 + 200 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+              <div class="plan-credits-sub">📄 ≈ 35 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+            </ul>
+            <a href="/register?pkg=profesor_6m" class="btn-plan btn-plan-secondary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Tahunan Unlimited -->
+          <div class="plan-card">
+            <div class="plan-period-label">TAHUNAN</div>
+            <div class="plan-price-row">
+              <span class="plan-price-amount">Rp 1.800.000</span>
+              <span class="plan-price-duration">/ tahun</span>
+            </div>
+            <div class="plan-credits-pill">
+              <div class="plan-credits-title">Unlimited <span style="font-size: 0.8rem; font-weight: 500;">akses</span></div>
+              <div class="plan-credits-sub">📄 Skripsi, tesis & artikel tanpa batas. Pakai sepuasnya selama setahun.</div>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+              <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+            </ul>
+            <a href="/register?pkg=profesor_1y" class="btn-plan btn-plan-secondary">
+              <span>Bayar Sekarang</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIVERSITY / INSTITUSI ENTERPRISE CARD (MATCHING USER SCREENSHOT 3) -->
+      <div class="enterprise-card">
+        <div class="enterprise-header">
+          <div>
+            <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--theme-text-title); margin-bottom: 0.35rem;">Paket Kampus & Institusi</h3>
+            <p style="color: var(--theme-text-muted); font-size: 0.95rem; margin: 0;">Untuk fakultas, program studi, atau laboratorium riset — banyak akun, tahunan, seluruh fitur premium terbuka.</p>
+          </div>
+          <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: var(--radius-full);">INSTITUSI RESMI</span>
+        </div>
+
+        <div class="enterprise-tiers-grid">
+          <div class="enterprise-tier-box">
+            <div class="enterprise-tier-count">20 Akun</div>
+            <div class="enterprise-tier-cta">Hubungi Kami</div>
+            <small style="color: #64748b;">Harga khusus fakultas / lab</small>
+          </div>
+          <div class="enterprise-tier-box">
+            <div class="enterprise-tier-count">50 Akun</div>
+            <div class="enterprise-tier-cta">Hubungi Kami</div>
+            <small style="color: #64748b;">Harga khusus fakultas / lab</small>
+          </div>
+          <div class="enterprise-tier-box">
+            <div class="enterprise-tier-count">100 Akun</div>
+            <div class="enterprise-tier-cta">Hubungi Kami</div>
+            <small style="color: #64748b;">Harga khusus institusi besar</small>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem; font-size: 0.9rem; color: var(--theme-text-body);">
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #34d399; font-weight: 800;">✓</span><span>Semua fitur Profesor & Pascasarjana</span></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #34d399; font-weight: 800;">✓</span><span>Kelola banyak akun mahasiswa & dosen terpusat</span></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #34d399; font-weight: 800;">✓</span><span>Dashboard admin analitik institusi</span></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #34d399; font-weight: 800;">✓</span><span>Prioritas dukungan & pendampingan implementasi</span></div>
+        </div>
+
+        <a href="https://wa.me/<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.whatsapp : '6285338922586' %>?text=Halo%20Tim%20Dentshub%20Riset,%20kami%20tertarik%20dengan%20Paket%20Institusi%20Kampus" target="_blank" rel="noopener noreferrer" class="btn-holo" style="padding: 0.75rem 2rem;">
+          <span>Hubungi Tim Institusi Kami</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- SECTION 7: TESTIMONIAL PENELITI (2-ROW HORIZONTAL INFINITE LOOPING MARQUEE - 40 TESTIMONI) -->
+  <section id="testimonial" class="landing-section testimonial-section-marquee">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem 1.5rem;">
+      <div class="landing-section-header" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-tag-pill">Bukti Keberhasilan Sivitas Akademika</span>
+        <h2 class="section-main-title">Dipercaya Ribuan Mahasiswa & Peneliti se-Indonesia</h2>
+        <p class="section-lead-subtitle">
+          Inilah 40 testimoni nyata sivitas akademika dari berbagai disiplin ilmu dan kampus ternama di Indonesia yang telah menuntaskan skripsi, tesis, dan publikasi ilmiah bereputasi bersama Dentshub Riset.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2-ROW HORIZONTAL INFINITE LOOPING MARQUEE CONTAINER -->
+    <div class="marquee-dual-container" aria-label="Testimonial Pelanggan Dentshub Riset">
+      <div class="marquee-fade-left" aria-hidden="true"></div>
+      <div class="marquee-fade-right" aria-hidden="true"></div>
+
+      <!-- ROW 1: LOOPING HORISONTAL KE KIRI (TESTIMONI 1 - 20 + 20 DUPLIKAT UNTUK LOOPING MULUS 100%) -->
+      <div class="marquee-row">
+        <div class="marquee-track marquee-track-left">
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Validasi referensi DOI real-time sangat membantu saya saat bimbingan skripsi. Dosen pembimbing langsung percaya karena sitasi jurnalnya benar-benar ada dan terindeks Scopus Q1. Lulus sidang komprehensif nilai A!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">S</div>
+              <div>
+                <div class="testimonial-name">Sa*** N****a, S.KG</div>
+                <div class="testimonial-role">Kedokteran Gigi • Universitas Indonesia (UI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Simulasi sidang AI sangat jitu menebak arah pertanyaan dewan penguji terkait metodologi penelitian klinis dan uji klinis saya. Mental jadi sangat tenang dan siap saat hari H!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #2563eb;">D</div>
+              <div>
+                <div class="testimonial-name">dr. D***s W******no</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Hasanuddin (Unhas)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Mencari novelty dan research gap formulasi nanoemulsi herbal adalah momok tersulit. Modul analisis gap Dentshub Riset memetakan 40 artikel Scopus Q1-Q2 secara presisi dan sistematis."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #7c3aed;">A</div>
+              <div>
+                <div class="testimonial-name">An****a P***i, M.Si</div>
+                <div class="testimonial-role">Magister Farmasi • Universitas Gadjah Mada (UGM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Fitur parafrase akademiknya luar biasa rapi. Rumus matematis, istilah machine learning, dan pseudocode tetap aman, namun Turnitin similarity langsung anjlok dari 38% ke 9%!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #059669;">F</div>
+              <div>
+                <div class="testimonial-name">Fa**r P*****a, S.Kom</div>
+                <div class="testimonial-role">Teknik Informatika • Institut Teknologi Bandung (ITB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Struktur bab dinamisnya sangat fleksibel disesuaikan dengan pedoman skripsi FEB. Pengolahan data statistik SmartPLS di Bab 4 selesai dalam 5 hari tanpa revisi substansi!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #ea580c;">N</div>
+              <div>
+                <div class="testimonial-name">Na*** Ch*********a, S.E</div>
+                <div class="testimonial-role">Manajemen Bisnis • Universitas Airlangga (Unair)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Saya sangat mengapresiasi prinsip Zero AI Fabrication platform ini. Sebagai klinisi dan residen spesialis, validitas fakta medis dan sitasi PubMed wajib akurat 100%!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0891b2;">R</div>
+              <div>
+                <div class="testimonial-name">drg. R**a F*********h, Sp.Perio</div>
+                <div class="testimonial-role">Spesialis Periodonsia • Universitas Padjadjaran (Unpad)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis asas hukum normatif dan perbandingan regulasi di tesis saya jadi sangat kaya literatur. Pendekatan perundang-undangan terstruktur dari pasal ke doktrin pakar secara runtut."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #b45309;">B</div>
+              <div>
+                <div class="testimonial-name">B**g S******o, S.H, M.Kn</div>
+                <div class="testimonial-role">Magister Kenotariatan • Universitas Diponegoro (Undip)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penulisan metode analisis elemen hingga dan struktur gempa Bab 3 jadi sangat rapi. Penyelarasan standar SNI dan sitasi Elsevier tersusun otomatis tanpa repot buka-tutup reference manager."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4f46e5;">M</div>
+              <div>
+                <div class="testimonial-name">M*****d R***i, S.T</div>
+                <div class="testimonial-role">Teknik Sipil • Institut Teknologi Sepuluh Nopember (ITS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penyusunan alat ukur skala psikologi dan uji reliabilitas Cronbach Alpha di Bab 3 skripsi saya diuraikan dengan argumen akademis yang begitu kuat. Dosen pembimbing langsung ACC!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #db2777;">D</div>
+              <div>
+                <div class="testimonial-name">D**i A*****i, S.Psi</div>
+                <div class="testimonial-role">Fakultas Psikologi • Universitas Brawijaya (UB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Eksplorasi marker imunohistokimia dan sitokin inflamasi di bagian pembahasan jurnal saya terhubung langsung dengan jurnal bereputasi tinggi. Manuskrip langsung lolos meja reviewer!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0d9488;">N</div>
+              <div>
+                <div class="testimonial-name">dr. N***a W*****i, M.Biomed</div>
+                <div class="testimonial-role">Magister Ilmu Biomedik • Universitas Udayana (Unud)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penulisan bab tinjauan pustaka mengenai patofisiologi demam berdarah dengue sangat sistematis. Rujukan meta-analisis Lancet dan PubMed langsung disisipkan secara otomatis."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #e11d48;">K</div>
+              <div>
+                <div class="testimonial-name">K***a P******i, S.Ked</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Andalas (Unand)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Perancangan kontroler PID adaptif pada skripsi teknik elektro saya diulas dengan logika matematis yang kokoh. Reviewer seminar hasil memberikan apresiasi luar biasa."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">G</div>
+              <div>
+                <div class="testimonial-name">G****g P*****a, S.T</div>
+                <div class="testimonial-role">Teknik Elektro & Robotika • Universitas Indonesia (UI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis geopolitik maritim Indo-Pasifik di skripsi saya jadi sangat tajam. Dentshub Riset membantu sintesis 25 jurnal bereputasi Scopus Q1 tanpa ada sitasi fiktif."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #9333ea;">T</div>
+              <div>
+                <div class="testimonial-name">T***a L*****i, S.Sos</div>
+                <div class="testimonial-role">Hubungan Internasional • Universitas Padjadjaran (Unpad)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Karakterisasi enzim lipase termostabil dari bakteri termofilik Bab 4 skripsi saya selesai tepat waktu. Dosen pembimbing sangat terkesan dengan ketajaman analisis hasil uji."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #16a34a;">R</div>
+              <div>
+                <div class="testimonial-name">R***i A*****h, S.Si</div>
+                <div class="testimonial-role">Biokimia • IPB University (IPB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Pendeteksian fraud laporan keuangan menggunakan Beneish M-Score di bab metode dianalisis mendalam. Sangat memudahkan mahasiswa akuntansi dalam penyusunan model skripsi!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #d97706;">H</div>
+              <div>
+                <div class="testimonial-name">H***i K*****w, S.E, Ak</div>
+                <div class="testimonial-role">Akuntansi Forensik • Universitas Gadjah Mada (UGM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Laporan kasus perawatan saluran akar gigi molar ketiga selesai dengan acuan jurnal endodontik dunia. Sangat membantu saat ujian OSCE dan presentasi kasus klinis!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0891b2;">V</div>
+              <div>
+                <div class="testimonial-name">drg. V***a M******a</div>
+                <div class="testimonial-role">Profesi Dokter Gigi • Universitas Trisakti (Usakti)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Uji materiil undang-undang terhadap UUD 1945 diuraikan dengan pisau analisis doktrin constitutional law yang kuat. Lulus munaqasyah dengan yudisium cumlaude!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4338ca;">A</div>
+              <div>
+                <div class="testimonial-name">A***d F*****h, S.H</div>
+                <div class="testimonial-role">Hukum Tata Negara • Universitas Sebelas Maret (UNS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Perhitungan asupan makronutrien dan antropometri balita stunting Bab 4 skripsi saya terhubung dengan data baku WHO. Tabel dan grafik tersaji sangat rapi dan ilmiah."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #e11d48;">N</div>
+              <div>
+                <div class="testimonial-name">N***a S*****a, S.Gz</div>
+                <div class="testimonial-role">Ilmu Gizi Klinis • Universitas Diponegoro (Undip)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Kalkulasi arus pasang surut dan batimetri perairan Selat Makassar di Bab 4 tersusun sangat matematis. Jurnal publikasi langsung tembus SINTA 2 dalam hitungan minggu."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">B</div>
+              <div>
+                <div class="testimonial-name">B***i W*****o, S.Kel</div>
+                <div class="testimonial-role">Oseanografi Fisika • Universitas Hasanuddin (Unhas)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis komplikasi preeklamsia berat pada kehamilan risiko tinggi di tesis spesialis saya didukung referensi Cochrane Review terakreditasi. Standar integritas risetnya juara!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #be123c;">E</div>
+              <div>
+                <div class="testimonial-name">dr. E***a P*****i, Sp.OG</div>
+                <div class="testimonial-role">Spesialis Obstetri & Ginekologi • Universitas Airlangga (Unair)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUPLIKAT ROW 1 UNTUK SEAMLESS 100% INFINITE LOOPING -->
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Validasi referensi DOI real-time sangat membantu saya saat bimbingan skripsi. Dosen pembimbing langsung percaya karena sitasi jurnalnya benar-benar ada dan terindeks Scopus Q1. Lulus sidang komprehensif nilai A!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">S</div>
+              <div>
+                <div class="testimonial-name">Sa*** N****a, S.KG</div>
+                <div class="testimonial-role">Kedokteran Gigi • Universitas Indonesia (UI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Simulasi sidang AI sangat jitu menebak arah pertanyaan dewan penguji terkait metodologi penelitian klinis dan uji klinis saya. Mental jadi sangat tenang dan siap saat hari H!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #2563eb;">D</div>
+              <div>
+                <div class="testimonial-name">dr. D***s W******no</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Hasanuddin (Unhas)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Mencari novelty dan research gap formulasi nanoemulsi herbal adalah momok tersulit. Modul analisis gap Dentshub Riset memetakan 40 artikel Scopus Q1-Q2 secara presisi dan sistematis."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #7c3aed;">A</div>
+              <div>
+                <div class="testimonial-name">An****a P***i, M.Si</div>
+                <div class="testimonial-role">Magister Farmasi • Universitas Gadjah Mada (UGM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Fitur parafrase akademiknya luar biasa rapi. Rumus matematis, istilah machine learning, dan pseudocode tetap aman, namun Turnitin similarity langsung anjlok dari 38% ke 9%!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #059669;">F</div>
+              <div>
+                <div class="testimonial-name">Fa**r P*****a, S.Kom</div>
+                <div class="testimonial-role">Teknik Informatika • Institut Teknologi Bandung (ITB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Struktur bab dinamisnya sangat fleksibel disesuaikan dengan pedoman skripsi FEB. Pengolahan data statistik SmartPLS di Bab 4 selesai dalam 5 hari tanpa revisi substansi!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #ea580c;">N</div>
+              <div>
+                <div class="testimonial-name">Na*** Ch*********a, S.E</div>
+                <div class="testimonial-role">Manajemen Bisnis • Universitas Airlangga (Unair)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Saya sangat mengapresiasi prinsip Zero AI Fabrication platform ini. Sebagai klinisi dan residen spesialis, validitas fakta medis dan sitasi PubMed wajib akurat 100%!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0891b2;">R</div>
+              <div>
+                <div class="testimonial-name">drg. R**a F*********h, Sp.Perio</div>
+                <div class="testimonial-role">Spesialis Periodonsia • Universitas Padjadjaran (Unpad)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis asas hukum normatif dan perbandingan regulasi di tesis saya jadi sangat kaya literatur. Pendekatan perundang-undangan terstruktur dari pasal ke doktrin pakar secara runtut."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #b45309;">B</div>
+              <div>
+                <div class="testimonial-name">B**g S******o, S.H, M.Kn</div>
+                <div class="testimonial-role">Magister Kenotariatan • Universitas Diponegoro (Undip)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penulisan metode analisis elemen hingga dan struktur gempa Bab 3 jadi sangat rapi. Penyelarasan standar SNI dan sitasi Elsevier tersusun otomatis tanpa repot buka-tutup reference manager."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4f46e5;">M</div>
+              <div>
+                <div class="testimonial-name">M*****d R***i, S.T</div>
+                <div class="testimonial-role">Teknik Sipil • Institut Teknologi Sepuluh Nopember (ITS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penyusunan alat ukur skala psikologi dan uji reliabilitas Cronbach Alpha di Bab 3 skripsi saya diuraikan dengan argumen akademis yang begitu kuat. Dosen pembimbing langsung ACC!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #db2777;">D</div>
+              <div>
+                <div class="testimonial-name">D**i A*****i, S.Psi</div>
+                <div class="testimonial-role">Fakultas Psikologi • Universitas Brawijaya (UB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Eksplorasi marker imunohistokimia dan sitokin inflamasi di bagian pembahasan jurnal saya terhubung langsung dengan jurnal bereputasi tinggi. Manuskrip langsung lolos meja reviewer!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0d9488;">N</div>
+              <div>
+                <div class="testimonial-name">dr. N***a W*****i, M.Biomed</div>
+                <div class="testimonial-role">Magister Ilmu Biomedik • Universitas Udayana (Unud)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penulisan bab tinjauan pustaka mengenai patofisiologi demam berdarah dengue sangat sistematis. Rujukan meta-analisis Lancet dan PubMed langsung disisipkan secara otomatis."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #e11d48;">K</div>
+              <div>
+                <div class="testimonial-name">K***a P******i, S.Ked</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Andalas (Unand)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Perancangan kontroler PID adaptif pada skripsi teknik elektro saya diulas dengan logika matematis yang kokoh. Reviewer seminar hasil memberikan apresiasi luar biasa."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">G</div>
+              <div>
+                <div class="testimonial-name">G****g P*****a, S.T</div>
+                <div class="testimonial-role">Teknik Elektro & Robotika • Universitas Indonesia (UI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis geopolitik maritim Indo-Pasifik di skripsi saya jadi sangat tajam. Dentshub Riset membantu sintesis 25 jurnal bereputasi Scopus Q1 tanpa ada sitasi fiktif."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #9333ea;">T</div>
+              <div>
+                <div class="testimonial-name">T***a L*****i, S.Sos</div>
+                <div class="testimonial-role">Hubungan Internasional • Universitas Padjadjaran (Unpad)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Karakterisasi enzim lipase termostabil dari bakteri termofilik Bab 4 skripsi saya selesai tepat waktu. Dosen pembimbing sangat terkesan dengan ketajaman analisis hasil uji."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #16a34a;">R</div>
+              <div>
+                <div class="testimonial-name">R***i A*****h, S.Si</div>
+                <div class="testimonial-role">Biokimia • IPB University (IPB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Pendeteksian fraud laporan keuangan menggunakan Beneish M-Score di bab metode dianalisis mendalam. Sangat memudahkan mahasiswa akuntansi dalam penyusunan model skripsi!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #d97706;">H</div>
+              <div>
+                <div class="testimonial-name">H***i K*****w, S.E, Ak</div>
+                <div class="testimonial-role">Akuntansi Forensik • Universitas Gadjah Mada (UGM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Laporan kasus perawatan saluran akar gigi molar ketiga selesai dengan acuan jurnal endodontik dunia. Sangat membantu saat ujian OSCE dan presentasi kasus klinis!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0891b2;">V</div>
+              <div>
+                <div class="testimonial-name">drg. V***a M******a</div>
+                <div class="testimonial-role">Profesi Dokter Gigi • Universitas Trisakti (Usakti)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Uji materiil undang-undang terhadap UUD 1945 diuraikan dengan pisau analisis doktrin constitutional law yang kuat. Lulus munaqasyah dengan yudisium cumlaude!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4338ca;">A</div>
+              <div>
+                <div class="testimonial-name">A***d F*****h, S.H</div>
+                <div class="testimonial-role">Hukum Tata Negara • Universitas Sebelas Maret (UNS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Perhitungan asupan makronutrien dan antropometri balita stunting Bab 4 skripsi saya terhubung dengan data baku WHO. Tabel dan grafik tersaji sangat rapi dan ilmiah."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #e11d48;">N</div>
+              <div>
+                <div class="testimonial-name">N***a S*****a, S.Gz</div>
+                <div class="testimonial-role">Ilmu Gizi Klinis • Universitas Diponegoro (Undip)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Kalkulasi arus pasang surut dan batimetri perairan Selat Makassar di Bab 4 tersusun sangat matematis. Jurnal publikasi langsung tembus SINTA 2 dalam hitungan minggu."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">B</div>
+              <div>
+                <div class="testimonial-name">B***i W*****o, S.Kel</div>
+                <div class="testimonial-role">Oseanografi Fisika • Universitas Hasanuddin (Unhas)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis komplikasi preeklamsia berat pada kehamilan risiko tinggi di tesis spesialis saya didukung referensi Cochrane Review terakreditasi. Standar integritas risetnya juara!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #be123c;">E</div>
+              <div>
+                <div class="testimonial-name">dr. E***a P*****i, Sp.OG</div>
+                <div class="testimonial-role">Spesialis Obstetri & Ginekologi • Universitas Airlangga (Unair)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2: LOOPING HORISONTAL KE KANAN (TESTIMONI 21 - 40 + 20 DUPLIKAT UNTUK LOOPING MULUS 100%) -->
+      <div class="marquee-row">
+        <div class="marquee-track marquee-track-right">
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Pemetaan oseanografi klorofil-a dan suhu permukaan laut Bab 4 skripsi saya jadi sangat komprehensif. Menghubungkan data spasial GIS dengan literatur kelautan global jadi super cepat."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">I</div>
+              <div>
+                <div class="testimonial-name">I***m F***i, S.Kel</div>
+                <div class="testimonial-role">Ilmu Kelautan & Perikanan • Universitas Riau (Unri)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Rancangan Acak Kelompok (RAK) dan uji lanjut DMRT penelitian tanaman pangan saya tersusun dengan metodologi yang sangat runut. Sangat direkomendasikan untuk pejuang skripsi pertanian!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #16a34a;">S</div>
+              <div>
+                <div class="testimonial-name">S***i R******ti, S.P</div>
+                <div class="testimonial-role">Agronomi & Hortikultura • IPB University (IPB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penyusunan laporan kasus bedah ortopedi dan patologi veteriner jadi sangat efisien. Diagnosa banding serta referensi indeks komparatif internasional tersaji dengan akurat."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #d97706;">T</div>
+              <div>
+                <div class="testimonial-name">drh. T***o P******o, M.Si</div>
+                <div class="testimonial-role">Kedokteran Hewan • Universitas Syiah Kuala (USK)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Skripsi kedokteran tentang resistensi antibiotik selesai 2 bulan lebih cepat dari target. Fitur parafrase memastikan integritas data ilmiah tanpa risiko plagiarisme sama sekali."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #dc2626;">Y</div>
+              <div>
+                <div class="testimonial-name">Y***a M*****a, S.Ked</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Sebelas Maret (UNS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis wacana kritis dan sintaksis semantik dalam tesis saya mendapat pujian dewan penguji. Koherensi paragraf dan transisi argumen mengalir sangat elegan serta akademis."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4338ca;">A</div>
+              <div>
+                <div class="testimonial-name">A**f H******n, M.Pd</div>
+                <div class="testimonial-role">Pendidikan Bahasa & Sastra • Universitas Negeri Malang (UM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Sintesis pustaka untuk ekstraksi DNA mikroba dan elektroforesis gel Bab 2 saya langsung komplit dengan jurnal internasional Q1 5 tahun terakhir. Standar pustakanya kelas dunia!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #059669;">C</div>
+              <div>
+                <div class="testimonial-name">C***a K******a, S.Si</div>
+                <div class="testimonial-role">Bioteknologi & Biologi • Universitas Andalas (Unand)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Intervensi asuhan keperawatan berbasis Evidence-Based Nursing di studi kasus klinis saya tersusun sistematis. Pertanyaan penguji saat uji kompetensi klinis terjawab tuntas!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">R</div>
+              <div>
+                <div class="testimonial-name">R***y H*****h, S.Kep, Ns</div>
+                <div class="testimonial-role">Fakultas Keperawatan • Universitas Sumatera Utara (USU)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penyusunan Formularium Rumah Sakit dan Farmakoekonomi pada studi kasus profesi apoteker jadi sangat terarah. Analisis efektivitas biaya obat sangat akurat dan terpercaya."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #7c2d12;">M</div>
+              <div>
+                <div class="testimonial-name">M***a Z*****a, S.Farm, Apt</div>
+                <div class="testimonial-role">Profesi Apoteker • Universitas Muslim Indonesia (UMI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Pembuktian teorema pemodelan stokastik dan visualisasi data numerik di bab pembahasan skripsi saya sangat runtut. Turnitin nol kesalahan interpretasi formula matematika!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #475569;">H</div>
+              <div>
+                <div class="testimonial-name">H****n K*****m, S.Mat</div>
+                <div class="testimonial-role">Matematika & Statistika • Universitas Negeri Yogyakarta (UNY)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Dentshub Riset memberikan standar baru dalam asistensi penulisan proposal hibah riset dan manuskrip ilmiah bereputasi. Metodologi ketat, sitasi faktual, dan bebas halusinasi."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #854d0e;">E</div>
+              <div>
+                <div class="testimonial-name">Prof. Dr. drg. E**y S******h, M.Kes</div>
+                <div class="testimonial-role">Guru Besar Kedokteran Gigi • Universitas Hasanuddin (Unhas)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Estimasi cadangan batubara dengan metode geostatistika Ordinary Kriging di Bab 4 tersaji dengan visualisasi variogram yang presisi. Sidang sarjana lancar jaya!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #ca8a04;">Z</div>
+              <div>
+                <div class="testimonial-name">Z***i A*****n, S.T</div>
+                <div class="testimonial-role">Teknik Pertambangan • Universitas Sriwijaya (Unsri)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Uji aktivitas antioksidan ekstrak daun karamunting dianalisis dengan kurva IC50 yang sangat akurat. Manuskrip skripsi langsung siap disubmit ke jurnal nasional terakreditasi."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #059669;">L</div>
+              <div>
+                <div class="testimonial-name">L***a M*****a, S.Far</div>
+                <div class="testimonial-role">Farmakologi Bahan Alam • Universitas Mulawarman (Unmul)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Karakterisasi kitosan dari cangkang kepiting bakau sebagai edible coating Bab 3 dan 4 tuntas rapi. Tidak ada sitasi kadaluwarsa, seluruh jurnal referensi 5 tahun terkini."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">F</div>
+              <div>
+                <div class="testimonial-name">F****y P*****o, S.Pi</div>
+                <div class="testimonial-role">Teknologi Hasil Perairan • Universitas Brawijaya (UB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Simulasi dinamika fluida komputasi (CFD) turbin angin Savonius di tesis saya dipaparkan dengan parameter aerodinamika yang sangat akurat. Lulus tesis dengan pujian!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4f46e5;">W</div>
+              <div>
+                <div class="testimonial-name">W***u S******o, M.T</div>
+                <div class="testimonial-role">Magister Teknik Mesin • Universitas Sebelas Maret (UNS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Edukasi hipertensi berbasis model promosi kesehatan Nola Pender tersusun dengan instrumen kuesioner tervalidasi. Pengolahan data Wilcoxon Bab 4 selesai dalam 2 hari."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #e11d48;">M</div>
+              <div>
+                <div class="testimonial-name">M***a D*****i, S.Kep</div>
+                <div class="testimonial-role">Keperawatan Komunitas • Universitas Jember (Unej)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penelitian kohort faktor risiko penyakit ginjal kronis pada komunitas lahan basah Kalimantan tersusun metodologis. Sangat membantu menyusun proposal etik penelitian!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #2563eb;">R</div>
+              <div>
+                <div class="testimonial-name">dr. R***i H******n</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Lambung Mangkurat (ULM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Kajian kenyamanan termal dan ventilasi alami pada rumah sakit ramah lingkungan tersusun dengan analisis komparatif standar Green Building Council Indonesia."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0d9488;">A</div>
+              <div>
+                <div class="testimonial-name">A***a F*****a, S.Ars</div>
+                <div class="testimonial-role">Arsitektur & Lanskap Tropis • Institut Teknologi Bandung (ITB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis framing pemberitaan isu kesehatan gigi di media digital nasional diulas dengan metodologi Robert Entman yang sangat tajam. ACC sidang hanya dalam 2 kali revisi."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #7c3aed;">S</div>
+              <div>
+                <div class="testimonial-name">S***o K*****o, S.Sos</div>
+                <div class="testimonial-role">Ilmu Komunikasi • Universitas Indonesia (UI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Identifikasi molekuler jamur patogen tanaman kopi menggunakan sekuens ITS rDNA diuraikan secara runtut dengan pohon filogenetik yang komprehensif."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #16a34a;">E</div>
+              <div>
+                <div class="testimonial-name">E***y R*****a, S.P</div>
+                <div class="testimonial-role">Proteksi Tanaman • Universitas Lampung (Unila)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Platform ini sangat kami rekomendasikan bagi mahasiswa bimbingan maupun dosen peneliti muda. Pustaka faktual, parafrase beretika, dan akselerasi riset yang terukur."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #1e40af;">M</div>
+              <div>
+                <div class="testimonial-name">Dr. M*****d A***f, S.T, M.T</div>
+                <div class="testimonial-role">Dosen & Peneliti Teknik Lingkungan • Institut Teknologi Sepuluh Nopember (ITS)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUPLIKAT ROW 2 UNTUK SEAMLESS 100% INFINITE LOOPING -->
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Pemetaan oseanografi klorofil-a dan suhu permukaan laut Bab 4 skripsi saya jadi sangat komprehensif. Menghubungkan data spasial GIS dengan literatur kelautan global jadi super cepat."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">I</div>
+              <div>
+                <div class="testimonial-name">I***m F***i, S.Kel</div>
+                <div class="testimonial-role">Ilmu Kelautan & Perikanan • Universitas Riau (Unri)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Rancangan Acak Kelompok (RAK) dan uji lanjut DMRT penelitian tanaman pangan saya tersusun dengan metodologi yang sangat runut. Sangat direkomendasikan untuk pejuang skripsi pertanian!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #16a34a;">S</div>
+              <div>
+                <div class="testimonial-name">S***i R******ti, S.P</div>
+                <div class="testimonial-role">Agronomi & Hortikultura • IPB University (IPB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penyusunan laporan kasus bedah ortopedi dan patologi veteriner jadi sangat efisien. Diagnosa banding serta referensi indeks komparatif internasional tersaji dengan akurat."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #d97706;">T</div>
+              <div>
+                <div class="testimonial-name">drh. T***o P******o, M.Si</div>
+                <div class="testimonial-role">Kedokteran Hewan • Universitas Syiah Kuala (USK)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Skripsi kedokteran tentang resistensi antibiotik selesai 2 bulan lebih cepat dari target. Fitur parafrase memastikan integritas data ilmiah tanpa risiko plagiarisme sama sekali."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #dc2626;">Y</div>
+              <div>
+                <div class="testimonial-name">Y***a M*****a, S.Ked</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Sebelas Maret (UNS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis wacana kritis dan sintaksis semantik dalam tesis saya mendapat pujian dewan penguji. Koherensi paragraf dan transisi argumen mengalir sangat elegan serta akademis."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4338ca;">A</div>
+              <div>
+                <div class="testimonial-name">A**f H******n, M.Pd</div>
+                <div class="testimonial-role">Pendidikan Bahasa & Sastra • Universitas Negeri Malang (UM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Sintesis pustaka untuk ekstraksi DNA mikroba dan elektroforesis gel Bab 2 saya langsung komplit dengan jurnal internasional Q1 5 tahun terakhir. Standar pustakanya kelas dunia!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #059669;">C</div>
+              <div>
+                <div class="testimonial-name">C***a K******a, S.Si</div>
+                <div class="testimonial-role">Bioteknologi & Biologi • Universitas Andalas (Unand)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Intervensi asuhan keperawatan berbasis Evidence-Based Nursing di studi kasus klinis saya tersusun sistematis. Pertanyaan penguji saat uji kompetensi klinis terjawab tuntas!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">R</div>
+              <div>
+                <div class="testimonial-name">R***y H*****h, S.Kep, Ns</div>
+                <div class="testimonial-role">Fakultas Keperawatan • Universitas Sumatera Utara (USU)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penyusunan Formularium Rumah Sakit dan Farmakoekonomi pada studi kasus profesi apoteker jadi sangat terarah. Analisis efektivitas biaya obat sangat akurat dan terpercaya."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #7c2d12;">M</div>
+              <div>
+                <div class="testimonial-name">M***a Z*****a, S.Farm, Apt</div>
+                <div class="testimonial-role">Profesi Apoteker • Universitas Muslim Indonesia (UMI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Pembuktian teorema pemodelan stokastik dan visualisasi data numerik di bab pembahasan skripsi saya sangat runtut. Turnitin nol kesalahan interpretasi formula matematika!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #475569;">H</div>
+              <div>
+                <div class="testimonial-name">H****n K*****m, S.Mat</div>
+                <div class="testimonial-role">Matematika & Statistika • Universitas Negeri Yogyakarta (UNY)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Dentshub Riset memberikan standar baru dalam asistensi penulisan proposal hibah riset dan manuskrip ilmiah bereputasi. Metodologi ketat, sitasi faktual, dan bebas halusinasi."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #854d0e;">E</div>
+              <div>
+                <div class="testimonial-name">Prof. Dr. drg. E**y S******h, M.Kes</div>
+                <div class="testimonial-role">Guru Besar Kedokteran Gigi • Universitas Hasanuddin (Unhas)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Estimasi cadangan batubara dengan metode geostatistika Ordinary Kriging di Bab 4 tersaji dengan visualisasi variogram yang presisi. Sidang sarjana lancar jaya!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #ca8a04;">Z</div>
+              <div>
+                <div class="testimonial-name">Z***i A*****n, S.T</div>
+                <div class="testimonial-role">Teknik Pertambangan • Universitas Sriwijaya (Unsri)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Uji aktivitas antioksidan ekstrak daun karamunting dianalisis dengan kurva IC50 yang sangat akurat. Manuskrip skripsi langsung siap disubmit ke jurnal nasional terakreditasi."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #059669;">L</div>
+              <div>
+                <div class="testimonial-name">L***a M*****a, S.Far</div>
+                <div class="testimonial-role">Farmakologi Bahan Alam • Universitas Mulawarman (Unmul)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Karakterisasi kitosan dari cangkang kepiting bakau sebagai edible coating Bab 3 dan 4 tuntas rapi. Tidak ada sitasi kadaluwarsa, seluruh jurnal referensi 5 tahun terkini."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0284c7;">F</div>
+              <div>
+                <div class="testimonial-name">F****y P*****o, S.Pi</div>
+                <div class="testimonial-role">Teknologi Hasil Perairan • Universitas Brawijaya (UB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Simulasi dinamika fluida komputasi (CFD) turbin angin Savonius di tesis saya dipaparkan dengan parameter aerodinamika yang sangat akurat. Lulus tesis dengan pujian!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #4f46e5;">W</div>
+              <div>
+                <div class="testimonial-name">W***u S******o, M.T</div>
+                <div class="testimonial-role">Magister Teknik Mesin • Universitas Sebelas Maret (UNS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Edukasi hipertensi berbasis model promosi kesehatan Nola Pender tersusun dengan instrumen kuesioner tervalidasi. Pengolahan data Wilcoxon Bab 4 selesai dalam 2 hari."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #e11d48;">M</div>
+              <div>
+                <div class="testimonial-name">M***a D*****i, S.Kep</div>
+                <div class="testimonial-role">Keperawatan Komunitas • Universitas Jember (Unej)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Penelitian kohort faktor risiko penyakit ginjal kronis pada komunitas lahan basah Kalimantan tersusun metodologis. Sangat membantu menyusun proposal etik penelitian!"</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #2563eb;">R</div>
+              <div>
+                <div class="testimonial-name">dr. R***i H******n</div>
+                <div class="testimonial-role">Pendidikan Dokter • Universitas Lambung Mangkurat (ULM)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Kajian kenyamanan termal dan ventilasi alami pada rumah sakit ramah lingkungan tersusun dengan analisis komparatif standar Green Building Council Indonesia."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #0d9488;">A</div>
+              <div>
+                <div class="testimonial-name">A***a F*****a, S.Ars</div>
+                <div class="testimonial-role">Arsitektur & Lanskap Tropis • Institut Teknologi Bandung (ITB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Analisis framing pemberitaan isu kesehatan gigi di media digital nasional diulas dengan metodologi Robert Entman yang sangat tajam. ACC sidang hanya dalam 2 kali revisi."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #7c3aed;">S</div>
+              <div>
+                <div class="testimonial-name">S***o K*****o, S.Sos</div>
+                <div class="testimonial-role">Ilmu Komunikasi • Universitas Indonesia (UI)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Identifikasi molekuler jamur patogen tanaman kopi menggunakan sekuens ITS rDNA diuraikan secara runtut dengan pohon filogenetik yang komprehensif."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #16a34a;">E</div>
+              <div>
+                <div class="testimonial-name">E***y R*****a, S.P</div>
+                <div class="testimonial-role">Proteksi Tanaman • Universitas Lampung (Unila)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card-marquee" aria-hidden="true">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Platform ini sangat kami rekomendasikan bagi mahasiswa bimbingan maupun dosen peneliti muda. Pustaka faktual, parafrase beretika, dan akselerasi riset yang terukur."</p>
+            <div class="testimonial-author-row">
+              <div class="testimonial-avatar" style="background: #1e40af;">M</div>
+              <div>
+                <div class="testimonial-name">Dr. M*****d A***f, S.T, M.T</div>
+                <div class="testimonial-role">Dosen & Peneliti Teknik Lingkungan • Institut Teknologi Sepuluh Nopember (ITS)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FAQ INTERACTIVE ACCORDION (MATCHING USER SCREENSHOTS 2 & 3) -->
+  <section id="faq" class="landing-section">
+    <div class="container">
+      <div class="landing-section-header">
+        <span class="section-tag-pill">FAQ</span>
+        <h2 class="section-main-title">Pertanyaan yang sering diajukan</h2>
+        <p class="section-lead-subtitle">
+          Segala hal yang perlu Anda ketahui mengenai etika, cara kerja, dan pemanfaatan Dentshub Riset.
+        </p>
+      </div>
+
+      <div class="faq-container" id="faqAccordion">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <button class="faq-question-btn" type="button">
+            <span>Apakah saya perlu paham prompt AI untuk memakai Dentshub Riset?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Tidak sama sekali. Platform Dentshub Riset dirancang dengan filosofi <em>Zero Prompt Barrier</em>. Anda tidak perlu mempelajari sintaks prompt engineering yang rumit atau trik penulisan instruksi khusus. Anda hanya perlu memasukkan data dasar penelitian seperti judul gagasan, topik minat, variabel independen/dependen, metode (kuantitatif, kualitatif, atau eksperimental), dan target bab.<br><br>
+              Seluruh rekayasa prompt akademis, rantai penalaran ilmiah terstruktur (structured academic chain-of-thought), serta standarisasi format jurnal telah kami susun secara otomatis di balik layar bersama dewan pakar metodologi penelitian dan dokter spesialis. Sistem langsung menyajikan draf ilmiah berkualitas tinggi yang siap Anda telaah.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Bagaimana Dentshub Riset menjamin keaslian sitasi (Zero AI Fabrication)?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Kelemahan terbesar AI generatif umum (seperti ChatGPT biasa) adalah kecenderungan mengarang sitasi fiktif (halusinasi referensi) yang tampak meyakinkan namun tidak pernah ada di dunia nyata. Di Dentshub Riset, kami memegang teguh prinsip <strong>Zero AI Fabrication</strong>.<br><br>
+              Setiap kali artikel rujukan diusulkan dalam draf Anda, sistem melakukan penarikan metadata langsung via API pangkalan data ilmiah dunia seperti Crossref, PubMed/NLM, SINTA Kemendikbudristek, DOAJ, dan Scopus. Setiap referensi dilengkapi tautan Digital Object Identifier (DOI) resmi aktif. Anda dan dosen pembimbing dapat mengeklik tautan tersebut langsung untuk memeriksa dokumen sumber aslinya di penerbit jurnal internasional.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Apakah format dan susunan bab dapat disesuaikan dengan pedoman kampus saya?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Sangat sesuai dan fleksibel. Kami memahami bahwa setiap universitas, fakultas, bahkan departemen di Indonesia memiliki pedoman selingkung penulisan karya ilmiah yang unik. Fitur <strong>BAB Skripsi Dinamis</strong> kami memungkinkan penyesuaian struktur penuh:<br><br>
+              Mulai dari struktur baku 5 Bab (Pendahuluan, Tinjauan Pustaka, Metodologi Penelitian, Hasil & Pembahasan, Kesimpulan & Saran), struktur 6 Bab (dengan pemisahan Landasan Teori dan Kerangka Konsep), hingga format penulisan manuskrip publikasi IMRaD (Introduction, Methods, Results, and Discussion) untuk jurnal ilmiah nasional maupun internasional. Seluruh alur penulisan bab dapat diatur modular sesuai kebutuhan Anda.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Apakah penggunaan Dentshub Riset menggantikan peran dosen pembimbing saya?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Tentu saja tidak. Dentshub Riset memposisikan diri sebagai <em>Pre-Consultation Research Assistant</em> — asisten persiapan mandiri sebelum Anda berhadapan dengan dosen pembimbing (dospem). Kami membantu Anda menajamkan latar belakang masalah, memetakan celah ilmiah (research gap), menyintesis literatur pendukung, dan merapikan susunan argumen.<br><br>
+              Dengan demikian, saat proses bimbingan tatap muka berlangsung, Anda tidak lagi datang dengan naskah kosong atau bingung, melainkan membawa draf penelitian yang matang, komparatif, dan berbobot. Keputusan substansi, etika klinis, dan persetujuan (ACC) akhir tetap sepenuhnya merupakan otoritas dewan pembimbing dan penguji Anda.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Bagaimana jaminan keamanan dari deteksi plagiarisme dan uji Turnitin?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Modul <strong>Academic Paraphraser & Synthesizer</strong> kami bekerja berdasarkan tata bahasa baku bahasa Indonesia akademik (EYD V dan KBBI) serta kaidah penulisan saintifik global. Berbeda dari spinner teks biasa yang hanya menukar kata dengan sinonim serampangan, sistem kami merombak konstruksi sintaksis, memadukan variasi klausa aktif-pasif ilmiah, serta merajut kohesi antar-paragraf.<br><br>
+              Hasilnya adalah tulisan yang mempertahankan makna terminologi teknis disiplin ilmu Anda, mengalir secara wajar tanpa pola repetitif khas bot, dan terbukti efektif menekan angka indeks kemiripan (similarity index) pada Turnitin maupun iThenticate ke batas ambang aman universitas (umumnya di bawah 10%–20%).
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Apakah data mentah, judul, dan draf karya tulis saya aman serta dijamin rahasia?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Kerahasiaan dan integritas data intelektual Anda dijamin 100%. Setiap akun pengguna diisolasi secara mandiri dalam basis data terenkripsi (AES-256 dan protokol SSL/TLS modern). Kami menjunjung komitmen privasi ketat:<br><br>
+              Data penelitian, tabel statistik, instrumen kuesioner, dan seluruh manuskrip Anda <strong>TIDAK PERNAH</strong> digunakan sebagai bahan pelatihan (training data) untuk model AI pihak ketiga, serta tidak dapat diintip oleh pengguna lain. Hak cipta moral dan ekonomi atas karya tulis yang dibuat sepenuhnya merupakan hak milik intelektual Anda.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Bagaimana sistem saldo kredit bekerja? Apakah memiliki masa kedaluwarsa?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Sistem kredit Dentshub Riset menerapkan skema <strong>Lifetime Ownership (Tanpa Batas Waktu / No Expiry)</strong>. Kredit yang Anda beli atau dapatkan saat promo tidak akan pernah hangus, kedaluwarsa, maupun terpotong otomatis setiap bulan.<br><br>
+              Kredit hanya akan terpotong saat Anda mengeksekusi aksi komputasi modul tertentu (seperti eksplorasi ide, parafrase naskah bab, validasi DOI jurnal, atau simulasi tanya-jawab sidang). Riwayat pemotongan kredit tercatat transparan detik demi detik di Buku Besar Akun (Audit Ledger) yang dapat Anda periksa langsung kapan saja di dashboard.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Karya tulis apa saja yang didukung selain skripsi Sarjana (S1)?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Dentshub Riset dirancang untuk melayani seluruh spektrum civitas akademika dan jenjang pendidikan tinggi di Indonesia:<br><br>
+              • <strong>Sarjana & Profesi (S1/Profesi):</strong> Skripsi, Karya Tulis Ilmiah (KTI), studi literatur, dan laporan kasus klinis (Case Report) kedokteran/kesehatan.<br>
+              • <strong>Magister (S2):</strong> Tesis penelitian terapan, telaah sistematis (Systematic Literature Review/SLR), dan meta-analisis kuantitatif.<br>
+              • <strong>Doktoral (S3):</strong> Disertasi, perumusan peta jalan riset (research roadmap), dan justifikasi kebaruan teori (theoretical novelty).<br>
+              • <strong>Dosen & Peneliti Lembaga:</strong> Naskah manuskrip publikasi jurnal bereputasi (SINTA 1–6, Scopus Q1–Q4, PubMed), proposal hibah penelitian BIMA/Kemendikbudristek, serta telaah artikel ilmiah internasional.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Bagaimana cara kerja modul Simulasi Sidang & Ujian Skripsi (Defense AI)?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Modul <strong>Simulasi Sidang AI</strong> berfungsi sebagai mitra latihan intensif sebelum Anda melangkah ke ruang ujian seminar proposal (Sempro) maupun sidang skripsi/tesis akhir. Berdasarkan draf karya tulis yang Anda unggah, sistem menganalisis titik-titik krusial yang kerap dicecar oleh dewan penguji — seperti rasionalisasi penentuan jumlah sampel, justifikasi teknik sampling, bias metodologis, atau batasan penelitian.<br><br>
+              AI kemudian menyimulasikan pertanyaan berbobot tinggi lengkap dengan rekomendasi strategi jawaban diplomatis berbasis bukti (evidence-based defense), sehingga mental Anda jauh lebih siap dan tenang menghadapi dewan dosen penguji.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Apakah platform ini mendukung analisis data statistik (SPSS, SEM-PLS, Uji Klinis)?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Ya, kami menyediakan modul asisten penulisan <strong>BAB 4 Hasil & Pembahasan</strong>. Anda dapat menginput tabel ringkasan hasil olah data statistik (seperti uji normalitas Shapiro-Wilk/Kolmogorov-Smirnov, uji beda t-test/Mann-Whitney, ANOVA/Kruskal-Wallis, regresi linier, Chi-Square, hingga outer/inner model SmartPLS/SEM).<br><br>
+              Sistem akan membantu merangkai interpretasi statistik tersebut ke dalam kalimat ilmiah akademis yang baku, menerangkan signifikansi p-value dan koefisien determinasi, lalu menyambungkannya dengan pembahasan kritis yang dikomparasikan terhadap hasil-hasil penelitian terdahulu yang relevan.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 11 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Metode pembayaran apa saja yang didukung untuk pembelian kredit atau langganan?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Kami bekerja sama dengan gerbang pembayaran digital resmi berstandar nasional untuk menjamin proses transaksi aman, cepat, dan otomatis 24 jam non-stop:<br><br>
+              • <strong>QRIS Real-Time:</strong> Pindai QRIS instan melalui GoPay, OVO, DANA, ShopeePay, LinkAja, serta seluruh aplikasi Mobile Banking (BCA, Mandiri, BRI, BNI, BSI, CIMB Niaga, dll).<br>
+              • <strong>Virtual Account (VA):</strong> Pembayaran otomatis tanpa perlu kirim bukti transfer manual.<br>
+              • <strong>Paket Institusi & Transfer Bank:</strong> Untuk fakultas atau laboratorium kampus, tersedia faktur resmi dan pembayaran korporat. Begitu pembayaran selesai, kredit Anda langsung aktif dalam hitungan detik.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 12 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Bagaimana cara menghubungi tim Customer Care & Konsultasi Resmi Dentshub Riset?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer-panel">
+            <p class="faq-answer-text">
+              Tim operasional, riset, dan layanan pelanggan kami siap mendampingi perjalanan akademik Anda setiap hari kerja (Senin–Sabtu, 08.00–21.00 WIB). Anda dapat menghubungi kami melalui:<br><br>
+              • <strong>WhatsApp Customer Care Resmi:</strong> <a href="https://wa.me/<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.whatsapp : '6285338922586' %>" target="_blank" style="color: #0284c7; font-weight: 700; text-decoration: underline;"><%= (companyProfile && companyProfile.contact) ? (companyProfile.contact.whatsappDisplay || companyProfile.contact.whatsapp) : '+62 853-3892-2586' %></a><br>
+              • <strong>Surel Resmi:</strong> <a href="mailto:<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.email : 'kontak@dentshubriset.id' %>" style="color: #0284c7; font-weight: 700; text-decoration: underline;"><%= (companyProfile && companyProfile.contact) ? companyProfile.contact.email : 'kontak@dentshubriset.id' %></a><br>
+              • <strong>Chat Interaktif WhatsApp:</strong> Klik bubble hijau di sudut kanan bawah layar Anda untuk konsultasi langsung dengan Admin bertugas dalam hitungan menit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: AJAKAN / FINAL CTA BANNER (MATCHING USER SCREENSHOT 1) -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="final-cta-banner">
+        <h2 class="final-cta-title">Siap mempercepat risetmu?</h2>
+        <p class="final-cta-lead">
+          Bergabung dengan mahasiswa & peneliti yang menulis lebih cepat dan percaya diri bersama Dentshub Riset.
+        </p>
+        <div>
+          <a href="/register" class="btn-hero-primary" style="padding: 1.15rem 2.85rem; font-size: 1.15rem;">
+            <span>Daftar Gratis Sekarang</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: PUBLIC FOOTER (MATCHING USER SCREENSHOT 1) -->
+  <footer class="landing-footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <!-- Brand & Description Column -->
+        <div>
+          <a href="/" class="brand-logo" style="color: #ffffff;">
+            <img src="/img/dentshubriset.png" alt="Dentshub Riset Logo" class="logo-icon-img">
+            <span>DENTSHUB<span class="text-primary">RISET</span></span>
+          </a>
+          <p class="footer-brand-bio">
+            Platform AI untuk mahasiswa S1–S3 dan peneliti. Susun skripsi, tesis, disertasi, hingga artikel jurnal (SINTA & Scopus) secara otomatis — lengkap dengan referensi jurnal valid, verifikasi sitasi yang bisa diklik, parafrase anti-plagiasi, dan ekspor Word/PPT.
+          </p>
+        </div>
+
+        <!-- Column: Produk -->
+        <div>
+          <div class="footer-heading">Produk</div>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#fitur">Fitur Utama</a></li>
+            <li class="footer-link-item"><a href="#fitur">13 Tahapan Riset</a></li>
+            <li class="footer-link-item"><a href="#harga">Harga & Paket</a></li>
+            <li class="footer-link-item"><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: Perusahaan -->
+        <div>
+          <div class="footer-heading">Perusahaan</div>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#tentang">Tentang Kami</a></li>
+            <li class="footer-link-item"><a href="#pendiri">Visi & Misi</a></li>
+            <li class="footer-link-item"><a href="#pendiri">Struktur Pendiri</a></li>
+            <li class="footer-link-item"><a href="https://wa.me/<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.whatsapp : '6285338922586' %>" target="_blank">Kontak Tim</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: Legal & Integritas -->
+        <div>
+          <div class="footer-heading">Legal & Integritas</div>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#tentang">Integritas Akademik</a></li>
+            <li class="footer-link-item"><a href="/health">System Diagnostics</a></li>
+            <li class="footer-link-item"><a href="/login">Portal Peneliti</a></li>
+            <li class="footer-link-item"><a href="/register">Registrasi Mahasiswa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>
+          &copy; <%= new Date().getFullYear() %> Dentshub Riset. Seluruh hak cipta dilindungi.
+        </div>
+        <div>
+          Dibuat untuk mahasiswa & peneliti Indonesia 🇮🇩
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP INTERACTIVE CHAT POPUP (MATCHING GAMBAR 2) -->
+  <div class="floating-wa-popup" id="floatingWaPopup" role="dialog" aria-modal="true" aria-labelledby="floatingWaTitle">
+    <div class="wa-popup-header">
+      <div class="wa-popup-title" id="floatingWaTitle">
+        <!-- Official WhatsApp Icon SVG -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25d366">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>Chat Admin Dentshub Riset</span>
+      </div>
+      <button type="button" class="wa-popup-close-btn" id="floatingWaCloseBtn" aria-label="Tutup Dialog WhatsApp">✕</button>
+    </div>
+    <div class="wa-popup-body">
+      <p class="wa-popup-prompt">
+        Ada yang bisa kami bantu seputar informasi riset, konsultasi judul skripsi, atau aktivasi paket?
+      </p>
+      <textarea id="floatingWaInput" class="wa-popup-input" placeholder="Ketik pesan konsultasi singkat..." rows="3"></textarea>
+      <button type="button" id="floatingWaSendBtn" class="wa-popup-send-btn">
+        <span>Kirim ke WhatsApp</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING WA TRIGGER CIRCULAR BUTTON WITH OFFICIAL WHATSAPP HANDSET SVG (MATCHING GAMBAR 2) -->
+  <button type="button" class="floating-wa-btn" id="floatingWaBtn" aria-label="Buka Chat WhatsApp Dentshub Riset" title="Hubungi Admin WhatsApp">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="#ffffff">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </button>
+
+  <!-- INTERACTIVE SCRIPTS -->
+  <script>
+    // 1. FAQ Accordion Interaction
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const btn = item.querySelector('.faq-question-btn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(other => other.classList.remove('active'));
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+
+    // 2. Pricing Switcher Tabs (Mahasiswa vs Profesor)
+    function switchPricingTab(tab) {
+      const tabBtnMhs = document.getElementById('tabBtnMahasiswa');
+      const tabBtnProf = document.getElementById('tabBtnProfesor');
+      const panelMhs = document.getElementById('panelMahasiswa');
+      const panelProf = document.getElementById('panelProfesor');
+
+      if (tab === 'mahasiswa') {
+        if (tabBtnMhs) tabBtnMhs.classList.add('active');
+        if (tabBtnProf) tabBtnProf.classList.remove('active');
+        if (panelMhs) panelMhs.classList.add('active');
+        if (panelProf) panelProf.classList.remove('active');
+      } else {
+        if (tabBtnProf) tabBtnProf.classList.add('active');
+        if (tabBtnMhs) tabBtnMhs.classList.remove('active');
+        if (panelProf) panelProf.classList.add('active');
+        if (panelMhs) panelMhs.classList.remove('active');
+      }
+    }
+
+    // 3. Mobile Navigation Drawer
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('active');
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('active');
+        });
+      });
+    }
+
+    // 4. Sticky Header Blur Shadow on Scroll
+    const navbar = document.getElementById('publicNavbar');
+    window.addEventListener('scroll', () => {
+      if (navbar) {
+        if (window.scrollY > 20) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+    });
+
+    // 5. Default Light Theme & Instant Theme Toggler (Strict Default: Light)
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const mobileThemeBtn = document.getElementById('mobileThemeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+    const mobileThemeText = document.getElementById('mobileThemeText');
+
+    function updateThemeUI(isDark) {
+      if (isDark) {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+        if (themeIcon) themeIcon.textContent = '☀️';
+        if (themeText) themeText.textContent = 'Mode Terang';
+        if (mobileThemeIcon) mobileThemeIcon.textContent = '☀️';
+        if (mobileThemeText) mobileThemeText.textContent = 'Ganti ke Mode Terang';
+      } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        if (themeIcon) themeIcon.textContent = '🌙';
+        if (themeText) themeText.textContent = 'Mode Gelap';
+        if (mobileThemeIcon) mobileThemeIcon.textContent = '🌙';
+        if (mobileThemeText) mobileThemeText.textContent = 'Ganti ke Mode Gelap';
+      }
+    }
+
+    // STRICT DEFAULT IS LIGHT MODE:
+    // If user explicitly switched to dark before, honor it; otherwise ensure light theme
+    const savedTheme = localStorage.getItem('dentshub_theme');
+    let isDarkMode = (savedTheme === 'dark');
+    updateThemeUI(isDarkMode);
+
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      localStorage.setItem('dentshub_theme', isDarkMode ? 'dark' : 'light');
+      updateThemeUI(isDarkMode);
+    }
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleTheme();
+      });
+    }
+
+    if (mobileThemeBtn) {
+      mobileThemeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleTheme();
+      });
+    }
+
+    // 6. Interactive Floating WhatsApp Popup (Gambar 2)
+    const waBtn = document.getElementById('floatingWaBtn');
+    const waPopup = document.getElementById('floatingWaPopup');
+    const waCloseBtn = document.getElementById('floatingWaCloseBtn');
+    const waSendBtn = document.getElementById('floatingWaSendBtn');
+    const waInput = document.getElementById('floatingWaInput');
+    const adminWaNumber = '<%= (companyProfile && companyProfile.contact && companyProfile.contact.whatsapp) ? companyProfile.contact.whatsapp : "6285338922586" %>';
+
+    if (waBtn && waPopup) {
+      waBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = waPopup.classList.toggle('active');
+        if (isOpen && waInput) {
+          setTimeout(() => waInput.focus(), 150);
+        }
+      });
+    }
+
+    if (waCloseBtn && waPopup) {
+      waCloseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        waPopup.classList.remove('active');
+      });
+    }
+
+    if (waSendBtn) {
+      waSendBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const msg = (waInput && waInput.value.trim()) 
+          ? waInput.value.trim() 
+          : 'Halo Admin Dentshub Riset, saya ingin konsultasi seputar layanan riset & skripsi.';
+        const targetUrl = 'https://wa.me/' + adminWaNumber + '?text=' + encodeURIComponent(msg);
+        window.open(targetUrl, '_blank', 'noopener,noreferrer');
+        if (waPopup) waPopup.classList.remove('active');
+      });
+    }
+
+    if (waInput) {
+      waInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          if (waSendBtn) waSendBtn.click();
+        }
+      });
+    }
+
+    // Close WhatsApp popup when clicking outside
+    document.addEventListener('click', (e) => {
+      if (waPopup && waPopup.classList.contains('active')) {
+        if (!waPopup.contains(e.target) && !waBtn.contains(e.target)) {
+          waPopup.classList.remove('active');
+        }
+      }
+    });
+
+    // 7. Progressive Web App (PWA) & Service Worker Controller
+    let deferredPwaPrompt = null;
+    const isIosDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then((reg) => console.log('[PWA] Service Worker aktif:', reg.scope))
+          .catch((err) => console.warn('[PWA] Service Worker gagal terdaftar:', err));
+      });
+    }
+
+    // Capture beforeinstallprompt (Android, Chrome, Edge)
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPwaPrompt = e;
+      const pwaBtn = document.getElementById('btnInstallPwa');
+      if (pwaBtn) pwaBtn.classList.add('pulse');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPwaPrompt = null;
+      showPwaToast('Aplikasi Dentshub Riset berhasil dipasang di perangkat Anda!');
+    });
+
+    function showPwaToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'pwa-toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    function openPwaModal() {
+      const modal = document.getElementById('pwaInstallModal');
+      const backdrop = document.getElementById('pwaModalBackdrop');
+      const iosGuide = document.getElementById('pwaIosGuide');
+      const desktopGuide = document.getElementById('pwaDesktopGuide');
+
+      if (isIosDevice) {
+        if (iosGuide) iosGuide.style.display = 'block';
+        if (desktopGuide) desktopGuide.style.display = 'none';
+      } else {
+        if (iosGuide) iosGuide.style.display = 'none';
+        if (desktopGuide) desktopGuide.style.display = 'block';
+      }
+
+      if (modal && backdrop) {
+        modal.classList.add('active');
+        backdrop.classList.add('active');
+      }
+    }
+
+    function closePwaModalFunc() {
+      const modal = document.getElementById('pwaInstallModal');
+      const backdrop = document.getElementById('pwaModalBackdrop');
+      if (modal && backdrop) {
+        modal.classList.remove('active');
+        backdrop.classList.remove('active');
+      }
+    }
+
+    async function handlePwaInstall() {
+      if (isStandalone) {
+        showPwaToast('Aplikasi Dentshub Riset sudah terpasang di perangkat Anda!');
+        return;
+      }
+
+      if (deferredPwaPrompt) {
+        try {
+          deferredPwaPrompt.prompt();
+          const { outcome } = await deferredPwaPrompt.userChoice;
+          if (outcome === 'accepted') {
+            showPwaToast('Memasang Dentshub Riset...');
+          }
+          deferredPwaPrompt = null;
+        } catch (err) {
+          openPwaModal();
+        }
+      } else {
+        openPwaModal();
+      }
+    }
+
+    const btnInstall = document.getElementById('btnInstallPwa');
+    const btnMobileInstall = document.getElementById('btnMobileInstallPwa');
+    const closePwaBtn = document.getElementById('closePwaModal');
+    const pwaBackdrop = document.getElementById('pwaModalBackdrop');
+    const btnPwaAction = document.getElementById('btnPwaModalAction');
+
+    if (btnInstall) btnInstall.addEventListener('click', handlePwaInstall);
+    if (btnMobileInstall) btnMobileInstall.addEventListener('click', handlePwaInstall);
+    if (closePwaBtn) closePwaBtn.addEventListener('click', closePwaModalFunc);
+    if (pwaBackdrop) pwaBackdrop.addEventListener('click', closePwaModalFunc);
+    if (btnPwaAction) btnPwaAction.addEventListener('click', closePwaModalFunc);
+  </script>
+
+  <!-- =========================================================
+       MODAL PANDUAN INSTALASI PWA (IOS SAFARI, CHROME EXTENSIONS & DESKTOP)
+       ========================================================= -->
+  <div class="pwa-modal-backdrop" id="pwaModalBackdrop"></div>
+  <div class="pwa-install-modal" id="pwaInstallModal" role="dialog" aria-modal="true" aria-labelledby="pwaModalTitle">
+    <div class="pwa-modal-header">
+      <div class="pwa-modal-header-left">
+        <div class="pwa-app-icon">
+          <img src="/img/dentshubriset.png" alt="Dentshub Riset Logo">
+        </div>
+        <div>
+          <h3 id="pwaModalTitle" class="pwa-modal-title">Pasang Dentshub Riset</h3>
+          <p class="pwa-modal-subtitle">Aplikasi Web Progresif (PWA) Cepat & Ringan</p>
+        </div>
+      </div>
+      <button type="button" class="pwa-modal-close" id="closePwaModal" aria-label="Tutup Panduan">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="pwa-modal-body">
+      <!-- State iOS -->
+      <div class="pwa-ios-guide" id="pwaIosGuide">
+        <div class="pwa-notice-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Khusus pengguna iPhone / iPad di Safari</span>
+        </div>
+        <div class="pwa-steps-list">
+          <div class="pwa-step-item">
+            <div class="pwa-step-number">1</div>
+            <div class="pwa-step-content">
+              <strong>Ketuk Tombol Bagikan (Share)</strong>
+              <p>Tekan ikon kotak panah ke atas <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> di bilah bawah Safari.</p>
+            </div>
+          </div>
+          <div class="pwa-step-item">
+            <div class="pwa-step-number">2</div>
+            <div class="pwa-step-content">
+              <strong>Pilih "Tambahkan ke Layar Utama"</strong>
+              <p>Gulir menu ke bawah lalu pilih opsi <em>"Add to Home Screen"</em> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>.</p>
+            </div>
+          </div>
+          <div class="pwa-step-item">
+            <div class="pwa-step-number">3</div>
+            <div class="pwa-step-content">
+              <strong>Ketuk "Tambah" di Pojok Kanan Atas</strong>
+              <p>Ikon Dentshub Riset akan terpasang di layar utama iPhone/iPad Anda layaknya aplikasi native App Store.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- State Desktop / Chrome Extension / Umum -->
+      <div class="pwa-desktop-guide" id="pwaDesktopGuide" style="display: none;">
+        <div class="pwa-notice-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Pemasangan di Komputer / Laptop (Chrome / Edge)</span>
+        </div>
+        <div class="pwa-steps-list">
+          <div class="pwa-step-item">
+            <div class="pwa-step-number">1</div>
+            <div class="pwa-step-content">
+              <strong>Klik Ikon Install di Bilah Alamat</strong>
+              <p>Di ujung kanan URL browser Chrome/Edge, klik ikon pasang komputer/laptop <em>"Install Dentshub Riset"</em>.</p>
+            </div>
+          </div>
+          <div class="pwa-step-item">
+            <div class="pwa-step-number">2</div>
+            <div class="pwa-step-content">
+              <strong>Akses Instan dari Desktop</strong>
+              <p>Aplikasi akan terbuka di jendela mandiri tanpa bilah browser dengan performa super kilat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pwa-modal-footer">
+      <button type="button" class="btn-holo" id="btnPwaModalAction" style="width: 100%; justify-content: center;">
+        <span>Saya Mengerti</span>
+      </button>
+    </div>
+  </div>
+</body>
+</html>

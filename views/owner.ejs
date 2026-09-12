@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    .prompt-tab-btn {
+      white-space: nowrap;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .prompt-tab-btn:hover {
+      background: rgba(79, 70, 229, 0.08);
+      color: #4f46e5;
+    }
+    .prompt-tab-btn.active {
+      background: #4f46e5 !important;
+      color: #ffffff !important;
+      border-color: #4f46e5 !important;
+    }
+    .prompt-panel {
+      display: none;
+    }
+    .prompt-panel.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Executive Suite</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/owner" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Owner BI Analytics</span></a></li>
+            <li><a href="/admin" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Konsol Admin</span></a></li>
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Workspace Pengguna</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar" style="background: #a21caf;">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'O' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Owner' %></span>
+            <span class="user-role-badge" style="color: #a21caf; font-weight: 800;">PLATFORM OWNER</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Ringkasan Kinerja Bisnis & Monetisasi</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="badge badge-owner">Wewenang: OWNER (Akses Penuh)</span>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-success" style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #065f46; padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span><strong>Berhasil:</strong> <%= message %></span>
+          </div>
+        <% } %>
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #991b1b; padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span><strong>Peringatan:</strong> <%= error %></span>
+          </div>
+        <% } %>
+
+        <div style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.65rem; margin-bottom: 0.25rem;">Executive Overview & Monetisasi</h2>
+          <p style="color: var(--text-muted); margin: 0;">Pemantauan performa finansial, volume pembakaran kredit AI, dan tingkat konversi pengguna berbayar.</p>
+        </div>
+
+        <!-- EXECUTIVE KPIS -->
+        <div class="kpi-stat-grid">
+          <div class="kpi-card emerald">
+            <span class="kpi-label">Total Pendapatan (Gross)</span>
+            <span class="kpi-value" style="color: #047857;">Rp <%= metrics.totalRevenue.toLocaleString('id-ID') %></span>
+            <span class="kpi-footer">Dari <%= metrics.totalPaidOrders %> transaksi paket lunas</span>
+          </div>
+
+          <div class="kpi-card purple">
+            <span class="kpi-label">Konsumsi Kredit AI (Burn)</span>
+            <span class="kpi-value"><%= metrics.totalCreditsBurned.toLocaleString('id-ID') %></span>
+            <span class="kpi-footer">Kredit terpakai di seluruh modul riset</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Konversi Berbayar</span>
+            <span class="kpi-value"><%= metrics.conversionRate %>%</span>
+            <span class="kpi-footer">Rasio pengguna beli paket dari <%= metrics.totalUsers %> akun</span>
+          </div>
+
+          <div class="kpi-card amber">
+            <span class="kpi-label">Order Sukses</span>
+            <span class="kpi-value"><%= metrics.totalPaidOrders %></span>
+            <span class="kpi-footer">Transaksi terverifikasi webhook</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+          <!-- SALES BY PACKAGE -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Distribusi Penjualan Paket</h3>
+            </div>
+            <div class="card-body">
+              <%
+                const totalOrdersCount = Number(metrics.totalPaidOrders) || 0;
+                const starterPct = totalOrdersCount ? Math.round((metrics.packageSales.starter / totalOrdersCount) * 100) : 0;
+                const completePct = totalOrdersCount ? Math.round((metrics.packageSales.complete / totalOrdersCount) * 100) : 0;
+                const pascasarjanaPct = totalOrdersCount ? Math.round((metrics.packageSales.pascasarjana / totalOrdersCount) * 100) : 0;
+              %>
+              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.885rem; margin-bottom: 0.35rem;">
+                    <strong>Starter Riset (Rp 49k)</strong>
+                    <span style="font-family: var(--font-mono); font-weight: 700;"><%= metrics.packageSales.starter %> Paket</span>
+                  </div>
+                  <div class="progress-bar-container" style="height: 8px;">
+                    <div class="progress-bar-fill" data-progress="<%= starterPct %>"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.885rem; margin-bottom: 0.35rem;">
+                    <strong>Skripsi Complete (Rp 129k - Terpopuler)</strong>
+                    <span style="font-family: var(--font-mono); font-weight: 700;"><%= metrics.packageSales.complete %> Paket</span>
+                  </div>
+                  <div class="progress-bar-container" style="height: 8px;">
+                    <div class="progress-bar-fill" data-progress="<%= completePct %>" style="background: #0284c7;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.885rem; margin-bottom: 0.35rem;">
+                    <strong>Magister & Doktoral (Rp 249k)</strong>
+                    <span style="font-family: var(--font-mono); font-weight: 700;"><%= metrics.packageSales.pascasarjana %> Paket</span>
+                  </div>
+                  <div class="progress-bar-container" style="height: 8px;">
+                    <div class="progress-bar-fill" data-progress="<%= pascasarjanaPct %>" style="background: #a21caf;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SYSTEM HEALTH & INTEGRITY -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Integritas Operasional Platform</h3>
+            </div>
+            <div class="card-body" style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.885rem;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                <span style="color: var(--text-muted);">Database Layer:</span>
+                <strong style="color: #15803d;">Upstash Redis (REST Stateless)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                <span style="color: var(--text-muted);">Payment Webhook Security:</span>
+                <strong style="color: #0284c7;">HMAC-SHA256 Idempotent Verified</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                <span style="color: var(--text-muted);">Ledger Double-Spending Protection:</span>
+                <strong style="color: #15803d;">Active (Atomic Redis Decrby)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                <span style="color: var(--text-muted);">AI Citation Policy:</span>
+                <strong style="color: #92400e;">Zero-Hallucination Guardrails</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KONFIGURASI MULTI-PROVIDER AI ENGINE (GEMINI / AI STUDIO, OPENAI, GROQ) -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid #7c3aed; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.08);">
+          <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 0.5rem; color: #6b21a8;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10z"/><path d="M12 6v6l4 2"/></svg>
+                Master AI Engine & Multi-Provider API Key (Gemini, OpenAI, Groq)
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.25rem 0 0;">
+                Konfigurasi engine komputasi cerdas platform. Pilih provider aktif dan sesuaikan model riset Gemini (sesuai Google AI Studio), OpenAI, atau Groq LPU.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="badge" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed; font-weight: 800;">
+                PROVIDER AKTIF: <%= (locals.aiConfig && aiConfig.activeProvider) ? aiConfig.activeProvider.toUpperCase() : 'GEMINI' %>
+              </span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <form action="/owner/ai-config/update" method="POST">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+
+              <!-- PILIH PROVIDER UTAMA -->
+              <div style="margin-bottom: 1.75rem; background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                <label class="form-label" style="font-weight: 700; margin-bottom: 0.75rem; display: block;">
+                  Pilih AI Engine Utama (Routing Request Peneliti):
+                </label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                  <label style="display: flex; align-items: center; gap: 0.65rem; background: var(--bg-card); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); cursor: pointer;">
+                    <input type="radio" name="active_provider" value="gemini" <%= (!locals.aiConfig || aiConfig.activeProvider === 'gemini') ? 'checked' : '' %>>
+                    <div>
+                      <strong style="color: #0284c7; display: block; font-size: 0.9rem;">Google AI Studio / Gemini</strong>
+                      <small style="color: var(--text-muted); font-size: 0.75rem;">Model Gemini 2.5, 3.x, Agents & Flash</small>
+                    </div>
+                  </label>
+
+                  <label style="display: flex; align-items: center; gap: 0.65rem; background: var(--bg-card); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); cursor: pointer;">
+                    <input type="radio" name="active_provider" value="openai" <%= (locals.aiConfig && aiConfig.activeProvider === 'openai') ? 'checked' : '' %>>
+                    <div>
+                      <strong style="color: #10b981; display: block; font-size: 0.9rem;">OpenAI Official</strong>
+                      <small style="color: var(--text-muted); font-size: 0.75rem;">GPT-4o, o1, o3-mini & Reasoning</small>
+                    </div>
+                  </label>
+
+                  <label style="display: flex; align-items: center; gap: 0.65rem; background: var(--bg-card); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); cursor: pointer;">
+                    <input type="radio" name="active_provider" value="groq" <%= (locals.aiConfig && aiConfig.activeProvider === 'groq') ? 'checked' : '' %>>
+                    <div>
+                      <strong style="color: #f97316; display: block; font-size: 0.9rem;">Groq Cloud (Ultra LPU)</strong>
+                      <small style="color: var(--text-muted); font-size: 0.75rem;">Llama 3.3 70B & DeepSeek R1</small>
+                    </div>
+                  </label>
+
+                  <label style="display: flex; align-items: center; gap: 0.65rem; background: var(--bg-card); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); cursor: pointer;">
+                    <input type="radio" name="active_provider" value="local" <%= (locals.aiConfig && aiConfig.activeProvider === 'local') ? 'checked' : '' %>>
+                    <div>
+                      <strong style="color: #64748b; display: block; font-size: 0.9rem;">Local Engine (Offline)</strong>
+                      <small style="color: var(--text-muted); font-size: 0.75rem;">Algoritma Deterministik Internal</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 3 PROVIDER CREDENTIALS GRID -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.75rem;">
+                <!-- 1. GOOGLE AI STUDIO / GEMINI -->
+                <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; border-top: 3px solid #0284c7;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                    <span class="badge" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; font-weight: 700;">1. GOOGLE AI STUDIO / GEMINI</span>
+                    <small style="color: var(--text-muted); font-family: var(--font-mono);">Rate Limit: Live</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0.85rem;">
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Gemini API Key (Google AI Studio)</label>
+                    <input type="password" id="input_gemini_key" name="gemini_api_key" class="form-control" value="<%= (locals.aiConfig && aiConfig.geminiApiKey) ? aiConfig.geminiApiKey : '' %>" placeholder="AIzaSy...">
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Didapatkan dari aistudio.google.com/apikey</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Pilihan Model Gemini (Lengkap)</label>
+                    <select id="select_gemini_model" name="gemini_model" class="form-control" style="font-size: 0.825rem;">
+                      <% const curGem = (locals.aiConfig && aiConfig.geminiModel) ? aiConfig.geminiModel : 'gemini-2.5-flash'; %>
+                      <optgroup label="Agents & Deep Research (Gambar 2-6)">
+                        <option value="antigravity" <%= curGem === 'antigravity' ? 'selected' : '' %>>Antigravity (Agents)</option>
+                        <option value="deep-research-pro-preview" <%= curGem === 'deep-research-pro-preview' ? 'selected' : '' %>>Deep Research Pro Preview (Map Grounding)</option>
+                        <option value="computer-use-preview" <%= curGem === 'computer-use-preview' ? 'selected' : '' %>>Computer Use Preview</option>
+                      </optgroup>
+                      <optgroup label="High-Speed Flash & Text-Out Models">
+                        <option value="gemini-2.5-flash" <%= curGem === 'gemini-2.5-flash' ? 'selected' : '' %>>Gemini 2.5 Flash (Sangat Direkomendasikan)</option>
+                        <option value="gemini-2.0-flash" <%= curGem === 'gemini-2.0-flash' ? 'selected' : '' %>>Gemini 2 Flash</option>
+                        <option value="gemini-2.0-flash-lite" <%= curGem === 'gemini-2.0-flash-lite' ? 'selected' : '' %>>Gemini 2 Flash Lite</option>
+                        <option value="gemini-2.5-flash-lite" <%= curGem === 'gemini-2.5-flash-lite' ? 'selected' : '' %>>Gemini 2.5 Flash Lite</option>
+                        <option value="gemini-3-flash" <%= curGem === 'gemini-3-flash' ? 'selected' : '' %>>Gemini 3 Flash</option>
+                        <option value="gemini-3.1-flash-lite" <%= curGem === 'gemini-3.1-flash-lite' ? 'selected' : '' %>>Gemini 3.1 Flash Lite</option>
+                        <option value="gemini-3.5-flash" <%= curGem === 'gemini-3.5-flash' ? 'selected' : '' %>>Gemini 3.5 Flash</option>
+                        <option value="gemini-3.5-flash-lite" <%= curGem === 'gemini-3.5-flash-lite' ? 'selected' : '' %>>Gemini 3.5 Flash Lite</option>
+                        <option value="gemini-3.6-flash" <%= curGem === 'gemini-3.6-flash' ? 'selected' : '' %>>Gemini 3.6 Flash</option>
+                        <option value="gemini-3.7-flash" <%= curGem === 'gemini-3.7-flash' ? 'selected' : '' %>>Gemini 3.7 Flash</option>
+                        <option value="gemini-3.8-flash" <%= curGem === 'gemini-3.8-flash' ? 'selected' : '' %>>Gemini 3.8 Flash</option>
+                      </optgroup>
+                      <optgroup label="Deep Reasoning & Pro Synthesis">
+                        <option value="gemini-2.5-pro" <%= curGem === 'gemini-2.5-pro' ? 'selected' : '' %>>Gemini 2.5 Pro (Heavy Thesis Synthesis)</option>
+                        <option value="gemini-3.1-pro" <%= curGem === 'gemini-3.1-pro' ? 'selected' : '' %>>Gemini 3.1 Pro (Ultra Analysis)</option>
+                      </optgroup>
+                      <optgroup label="Multimodal Image & Video Generative">
+                        <option value="nano-banana" <%= curGem === 'nano-banana' ? 'selected' : '' %>>Nano Banana (Gemini 2.5 Flash Preview Image)</option>
+                        <option value="nano-banana-pro" <%= curGem === 'nano-banana-pro' ? 'selected' : '' %>>Nano Banana Pro (Gemini 3 Pro Image)</option>
+                        <option value="nano-banana-2" <%= curGem === 'nano-banana-2' ? 'selected' : '' %>>Nano Banana 2 (Gemini 3.1 Flash Image)</option>
+                        <option value="nano-banana-2-lite" <%= curGem === 'nano-banana-2-lite' ? 'selected' : '' %>>Nano Banana 2 Lite</option>
+                        <option value="gemini-omni-flash" <%= curGem === 'gemini-omni-flash' ? 'selected' : '' %>>Gemini Omni Flash</option>
+                        <option value="gemini-omni-1.1-flash" <%= curGem === 'gemini-omni-1.1-flash' ? 'selected' : '' %>>Gemini Omni 1.1 Flash</option>
+                        <option value="veo-3-fast-generate" <%= curGem === 'veo-3-fast-generate' ? 'selected' : '' %>>Veo 3 Fast Generate</option>
+                        <option value="veo-3-generate" <%= curGem === 'veo-3-generate' ? 'selected' : '' %>>Veo 3 Generate</option>
+                        <option value="veo-3-lite-generate" <%= curGem === 'veo-3-lite-generate' ? 'selected' : '' %>>Veo 3 Lite Generate</option>
+                      </optgroup>
+                      <optgroup label="Open-Science Gemma Family">
+                        <option value="gemma-4-26b" <%= curGem === 'gemma-4-26b' ? 'selected' : '' %>>Gemma 4 26B</option>
+                        <option value="gemma-4-31b" <%= curGem === 'gemma-4-31b' ? 'selected' : '' %>>Gemma 4 31B</option>
+                      </optgroup>
+                      <optgroup label="Audio Live & Transcribe Models">
+                        <option value="gemini-2.5-flash-tts" <%= curGem === 'gemini-2.5-flash-tts' ? 'selected' : '' %>>Gemini 2.5 Flash TTS</option>
+                        <option value="gemini-2.5-flash-native-audio-dialog" <%= curGem === 'gemini-2.5-flash-native-audio-dialog' ? 'selected' : '' %>>Gemini 2.5 Flash Native Audio Dialog</option>
+                        <option value="gemini-3-flash-live" <%= curGem === 'gemini-3-flash-live' ? 'selected' : '' %>>Gemini 3 Flash Live</option>
+                        <option value="gemini-3.1-flash-tts" <%= curGem === 'gemini-3.1-flash-tts' ? 'selected' : '' %>>Gemini 3.1 Flash TTS</option>
+                        <option value="gemini-3.5-transcribe" <%= curGem === 'gemini-3.5-transcribe' ? 'selected' : '' %>>Gemini 3.5 Transcribe</option>
+                        <option value="gemini-3.5-transcribe-live" <%= curGem === 'gemini-3.5-transcribe-live' ? 'selected' : '' %>>Gemini 3.5 Transcribe Live</option>
+                        <option value="gemini-3.5-live-translate" <%= curGem === 'gemini-3.5-live-translate' ? 'selected' : '' %>>Gemini 3.5 Live Translate</option>
+                      </optgroup>
+                      <optgroup label="Embeddings & Semantic Search">
+                        <option value="gemini-embedding-1" <%= curGem === 'gemini-embedding-1' ? 'selected' : '' %>>Gemini Embedding 1</option>
+                        <option value="gemini-embedding-2" <%= curGem === 'gemini-embedding-2' ? 'selected' : '' %>>Gemini Embedding 2</option>
+                        <option value="gemini-robotics-er-2-preview" <%= curGem === 'gemini-robotics-er-2-preview' ? 'selected' : '' %>>Gemini Robotics ER 2 Preview</option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed var(--border-color);">
+                    <button type="button" class="btn btn-outline" onclick="testAiConnection('gemini')" id="btn-test-gemini" style="width: 100%; font-size: 0.785rem; padding: 0.45rem 0.6rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; color: #0284c7; border-color: #0284c7; background: rgba(2, 132, 199, 0.05); font-weight: 700;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      ⚡ Test Koneksi Gemini (200 OK)
+                    </button>
+                    <div id="test-result-gemini" style="margin-top: 0.45rem; font-size: 0.75rem; min-height: 1.2rem;"></div>
+                  </div>
+                </div>
+
+                <!-- 2. OPENAI OFFICIAL -->
+                <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; border-top: 3px solid #10b981;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                    <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 700;">2. OPENAI OFFICIAL</span>
+                    <small style="color: var(--text-muted); font-family: var(--font-mono);">GPT-4o & o-Series</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0.85rem;">
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">OpenAI API Key</label>
+                    <input type="password" id="input_openai_key" name="openai_api_key" class="form-control" value="<%= (locals.aiConfig && aiConfig.openaiApiKey) ? aiConfig.openaiApiKey : '' %>" placeholder="sk-proj-...">
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Didapatkan dari platform.openai.com</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Pilihan Model OpenAI (Lengkap)</label>
+                    <select id="select_openai_model" name="openai_model" class="form-control" style="font-size: 0.825rem;">
+                      <% const curOai = (locals.aiConfig && aiConfig.openaiModel) ? aiConfig.openaiModel : 'gpt-4o'; %>
+                      <optgroup label="Flagship & Multimodal">
+                        <option value="gpt-4o" <%= curOai === 'gpt-4o' ? 'selected' : '' %>>GPT-4o (Omni Flagship - 128k context)</option>
+                        <option value="gpt-4o-mini" <%= curOai === 'gpt-4o-mini' ? 'selected' : '' %>>GPT-4o Mini (Fast & Cost Efficient)</option>
+                        <option value="gpt-4-turbo" <%= curOai === 'gpt-4-turbo' ? 'selected' : '' %>>GPT-4 Turbo Vision</option>
+                        <option value="gpt-4" <%= curOai === 'gpt-4' ? 'selected' : '' %>>GPT-4 Standard</option>
+                      </optgroup>
+                      <optgroup label="Deep Reasoning (STEM & Mathematics)">
+                        <option value="o1" <%= curOai === 'o1' ? 'selected' : '' %>>OpenAI o1 (Advanced Research & Reasoning)</option>
+                        <option value="o1-mini" <%= curOai === 'o1-mini' ? 'selected' : '' %>>OpenAI o1-mini (Fast Mathematical Reasoning)</option>
+                        <option value="o1-preview" <%= curOai === 'o1-preview' ? 'selected' : '' %>>OpenAI o1-preview</option>
+                        <option value="o3-mini" <%= curOai === 'o3-mini' ? 'selected' : '' %>>OpenAI o3-mini (Latest High-Speed Reasoning)</option>
+                      </optgroup>
+                      <optgroup label="Legacy Models">
+                        <option value="gpt-3.5-turbo" <%= curOai === 'gpt-3.5-turbo' ? 'selected' : '' %>>GPT-3.5 Turbo</option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed var(--border-color);">
+                    <button type="button" class="btn btn-outline" onclick="testAiConnection('openai')" id="btn-test-openai" style="width: 100%; font-size: 0.785rem; padding: 0.45rem 0.6rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; color: #10b981; border-color: #10b981; background: rgba(16, 185, 129, 0.05); font-weight: 700;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      ⚡ Test Koneksi OpenAI (200 OK)
+                    </button>
+                    <div id="test-result-openai" style="margin-top: 0.45rem; font-size: 0.75rem; min-height: 1.2rem;"></div>
+                  </div>
+                </div>
+
+                <!-- 3. GROQ AI LPU -->
+                <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; border-top: 3px solid #f97316;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                    <span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #ea580c; font-weight: 700;">3. GROQ CLOUD LPU</span>
+                    <small style="color: var(--text-muted); font-family: var(--font-mono);">500+ Tokens/sec</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0.85rem;">
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Groq API Key</label>
+                    <input type="password" id="input_groq_key" name="groq_api_key" class="form-control" value="<%= (locals.aiConfig && aiConfig.groqApiKey) ? aiConfig.groqApiKey : '' %>" placeholder="gsk_...">
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Didapatkan dari console.groq.com/keys</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Pilihan Model Groq LPU (Lengkap)</label>
+                    <select id="select_groq_model" name="groq_model" class="form-control" style="font-size: 0.825rem;">
+                      <% const curGroq = (locals.aiConfig && aiConfig.groqModel) ? aiConfig.groqModel : 'llama-3.3-70b-versatile'; %>
+                      <option value="llama-3.3-70b-versatile" <%= curGroq === 'llama-3.3-70b-versatile' ? 'selected' : '' %>>Llama 3.3 70B Versatile (128k - Rekomendasi)</option>
+                      <option value="llama-3.1-70b-versatile" <%= curGroq === 'llama-3.1-70b-versatile' ? 'selected' : '' %>>Llama 3.1 70B Versatile</option>
+                      <option value="llama-3.1-8b-instant" <%= curGroq === 'llama-3.1-8b-instant' ? 'selected' : '' %>>Llama 3.1 8B Instant (Ultra Cepat)</option>
+                      <option value="deepseek-r1-distill-llama-70b" <%= curGroq === 'deepseek-r1-distill-llama-70b' ? 'selected' : '' %>>DeepSeek R1 Distill Llama 70B (High Reasoning)</option>
+                      <option value="mixtral-8x7b-32768" <%= curGroq === 'mixtral-8x7b-32768' ? 'selected' : '' %>>Mixtral 8x7B (MoE 32k context)</option>
+                      <option value="gemma2-9b-it" <%= curGroq === 'gemma2-9b-it' ? 'selected' : '' %>>Google Gemma 2 9B Instruct</option>
+                      <option value="llama-guard-3-8b" <%= curGroq === 'llama-guard-3-8b' ? 'selected' : '' %>>Llama Guard 3 8B (Safety & Compliance)</option>
+                    </select>
+                  </div>
+
+                  <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed var(--border-color);">
+                    <button type="button" class="btn btn-outline" onclick="testAiConnection('groq')" id="btn-test-groq" style="width: 100%; font-size: 0.785rem; padding: 0.45rem 0.6rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; color: #ea580c; border-color: #ea580c; background: rgba(249, 115, 22, 0.05); font-weight: 700;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      ⚡ Test Koneksi Groq (200 OK)
+                    </button>
+                    <div id="test-result-groq" style="margin-top: 0.45rem; font-size: 0.75rem; min-height: 1.2rem;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- HYPERPARAMETERS & TOKEN CONTROL -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+                <div class="form-group">
+                  <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Model Temperature (Kreativitas Akademik vs Determinisme)</label>
+                  <input type="number" name="temperature" class="form-control" step="0.05" min="0" max="1" value="<%= (locals.aiConfig && aiConfig.temperature !== undefined) ? aiConfig.temperature : 0.65 %>">
+                  <small style="color: var(--text-muted); font-size: 0.75rem;">Default: 0.65 (Seimbang antara ketepatan metodologis dan variasi diksi)</small>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Batas Maksimum Output Tokens per Permintaan</label>
+                  <input type="number" name="max_tokens" class="form-control" step="100" min="500" max="16000" value="<%= (locals.aiConfig && aiConfig.maxTokens !== undefined) ? aiConfig.maxTokens : 2500 %>">
+                  <small style="color: var(--text-muted); font-size: 0.75rem;">Default: 2500 Tokens (~1.800 kata per bab/draft riset)</small>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); border: none; padding: 0.75rem 2rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  Simpan & Terapkan Konfigurasi AI Engine
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- MASTER CRUD CUSTOM PROMPT ENGINE (PROMPT SYSTEM TIAP MODUL AKADEMIK) -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid #4f46e5; box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);">
+          <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 0.5rem; color: #4338ca;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                Master CRUD Custom Prompts Engine (Prompt System Tiap Modul)
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.25rem 0 0;">
+                Kelola, tinjau, dan modifikasi instruksi sistem (system prompt) untuk seluruh modul AI & komputasi platform. Perubahan otomatis tersimpan ke Upstash Redis dan langsung aktif bagi seluruh peneliti.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" onclick="resetAllPrompts()" class="btn btn-outline" style="font-size: 0.8rem; color: #ef4444; border-color: #fca5a5; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                Reset Semua ke Standar
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <%
+              const promptModules = [
+                { key: 'bab_sampul', label: '1. Halaman Sampul (Cover)', desc: 'Format baku cover luar & dalam piramida terbalik, institusi, dan tahun' },
+                { key: 'lembar_persetujuan', label: '2. Lembar Persetujuan Pembimbing', desc: 'Pernyataan kesiapan naskah diuji oleh Dosen Pembimbing I & II' },
+                { key: 'lembar_pengesahan', label: '3. Lembar Pengesahan & Koreksi Ujian', desc: 'Pengesahan dewan penguji, dekan, kaprodi, dan lembar catatan revisi sidang' },
+                { key: 'pernyataan_orisinalitas', label: '4. Pernyataan Keaslian (Bebas Plagiasi)', desc: 'Surat pernyataan bermaterai bebas plagiarisme sesuai UU No. 20/2003' },
+                { key: 'kata_pengantar', label: '5. Kata Pengantar Formal', desc: 'Ucapan syukur dan apresiasi hierarkis dekan, kaprodi, pembimbing, dan keluarga' },
+                { key: 'abstrak', label: '6. Abstrak Dwibahasa (ID/EN)', desc: 'Abstrak 200-250 kata memuat latar belakang, tujuan, metode, hasil, simpulan + 5 keywords' },
+                { key: 'daftar_isi', label: '7. Daftar Isi, Tabel & Gambar', desc: 'Sistematika struktur penomoran halaman dengan tabulasi baku' },
+                { key: 'bab_1', label: '8. BAB I: Pendahuluan (Mantra Riset)', desc: 'Piramida terbalik: fenomena empiris, research gap, novelty, rumusan, tujuan, manfaat' },
+                { key: 'bab_2', label: '9. BAB II: Tinjauan Pustaka & Gap', desc: 'Grand/Middle/Applied theory, matriks riset terdahulu, kerangka konseptual, hipotesis' },
+                { key: 'bab_3', label: '10. BAB III: Metode Penelitian', desc: 'Desain riset, populasi/sampel, definisi operasional, uji instrumen & analisis data' },
+                { key: 'bab_4', label: '11. BAB IV: Hasil & Pembahasan Mendalam', desc: 'Deskripsi data statistik, uji hipotesis, dan pembahasan komparasi 5 jurnal bereputasi' },
+                { key: 'bab_5', label: '12. BAB V: Kesimpulan & Saran', desc: 'Simpulan lugas menjawab rumusan masalah, keterbatasan, dan saran praktis/teoretis' },
+                { key: 'daftar_pustaka', label: '13. Daftar Pustaka (APA 7th / Vancouver)', desc: 'Format daftar rujukan valid dengan DOI terindeks Sinta / Scopus 5 tahun terakhir' },
+                { key: 'brainstorming', label: '14. Brainstorming 10 Judul', desc: 'Instruksi perumusan 10 ide judul riset, rasionalisasi latar belakang, dan struktur variabel empiris' },
+                { key: 'novelty', label: '15. Novelty & Research Gap', desc: 'Pemetaan state of the art, apa yang sudah diteliti, dan celah kebaruan Bab 1' },
+                { key: 'ai_writer', label: '16. AI Writer Akademis', desc: 'Penyusunan naskah bab/sub-bab ilmiah formal bebas fabrikasi' },
+                { key: 'paraphrase', label: '17. Parafrase Akademis', desc: 'Restrukturisasi kalimat ilmiah dan penyesuaian diksi bebas Turnitin' },
+                { key: 'artikel_search', label: '18. Pencarian Artikel & DOI', desc: 'Katalog rujukan jurnal ilmiah bereputasi dengan metadata DOI' },
+                { key: 'olah_data_spss', label: '19. Olah Data SPSS (Kuantitatif)', desc: 'Analisis uji instrumen, asumsi klasik, regresi linier, ANOVA, dan interpretasi Bab IV' },
+                { key: 'olah_data_smartpls', label: '20. Olah Data SmartPLS (PLS-SEM)', desc: 'Evaluasi Outer Model (loading, AVE, CR, HTMT) dan Inner Model (R2, path, mediasi VAF)' },
+                { key: 'olah_data_transkrip', label: '21. Transkrip Audio/Video', desc: 'Transkripsi wawancara verbatim kualitatif dengan timestamp dan penandaan kutipan Bab IV' },
+                { key: 'olah_data_kualitatif', label: '22. Analisis Kualitatif (Koding)', desc: 'Koding tematik dan matriks tema informan model Miles & Huberman / Braun & Clarke' },
+                { key: 'olah_data_dokumen', label: '23. Analisis Dokumen & Teks', desc: 'Analisis isi dan wacana terhadap buku, novel, atau regulasi dengan nomor halaman terverifikasi' },
+                { key: 'olah_data_visual', label: '24. Analisis Visual Video', desc: 'Semiotika Roland Barthes (denotasi, konotasi, mitos) dan mise-en-scène adegan' },
+                { key: 'revisi', label: '25. Lab Revisi Dosen', desc: 'Analisis catatan pembimbing, checklist revisi, draf perbaikan, dan etika rebuttal' },
+                { key: 'sidang', label: '26. Simulasi Sidang Skripsi', desc: 'Generasi pertanyaan penguji dan evaluasi kesiapan jawaban lisan mahasiswa' }
+              ];
+              const curPrompts = locals.customPrompts || {};
+            %>
+
+            <!-- TABS NAVIGATOR -->
+            <div style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.75rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-color);">
+              <% promptModules.forEach((m, idx) => { %>
+                <button type="button" onclick="switchPromptTab('<%= m.key %>')" id="tab-btn-<%= m.key %>" class="prompt-tab-btn <%= idx === 0 ? 'active' : '' %>">
+                  <%= m.label %>
+                </button>
+              <% }); %>
+            </div>
+
+            <!-- PROMPT EDITORS PANELS -->
+            <% promptModules.forEach((m, idx) => { %>
+              <div id="panel-<%= m.key %>" class="prompt-panel <%= idx === 0 ? 'active' : '' %>">
+                <div style="background: var(--bg-subtle); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 1rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <strong style="color: #4338ca; font-size: 0.95rem;"><%= m.label %></strong>
+                    <span class="badge" style="background: rgba(79, 70, 229, 0.12); color: #4f46e5; font-size: 0.75rem;">KEY REDIS: system:custom_prompts.<%= m.key %></span>
+                  </div>
+                  <p style="color: var(--text-muted); font-size: 0.825rem; margin: 0;"><%= m.desc %></p>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1rem;">
+                  <label class="form-label" style="font-weight: 700; font-size: 0.825rem; display: flex; justify-content: space-between;">
+                    <span>System Prompt Aktif:</span>
+                    <span id="badge-status-<%= m.key %>" style="font-weight: 600; font-size: 0.75rem; color: #16a34a;">● Tersimpan di Upstash Redis</span>
+                  </label>
+                  <textarea id="prompt-<%= m.key %>" class="form-control" rows="8" style="font-family: var(--font-mono); font-size: 0.825rem; line-height: 1.5; resize: vertical;"><%= curPrompts[m.key] || (locals.defaultPrompts && defaultPrompts[m.key]) || '' %></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                  <button type="button" onclick="resetPromptModule('<%= m.key %>')" class="btn btn-outline" style="font-size: 0.8rem; color: #64748b; border-color: var(--border-color); display: inline-flex; align-items: center; gap: 0.35rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                    Kembalikan ke Default Pabrik
+                  </button>
+
+                  <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span id="save-msg-<%= m.key %>" style="font-size: 0.8rem; font-weight: 600;"></span>
+                    <button type="button" onclick="savePromptModule('<%= m.key %>')" id="btn-save-<%= m.key %>" class="btn btn-primary" style="background: #4f46e5; border: none; font-size: 0.825rem; padding: 0.5rem 1.25rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                      Simpan Prompt <%= m.label %>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+
+        <!-- PENGATURAN PROFIL PUBLIK & TIM PENDIRI (CRUD) -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--primary-600);">
+          <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Kelola Profil Tim Pendiri, Visi & Misi Dentshub Riset (Landing Page)
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.25rem 0 0;">Perubahan di sini langsung tersimpan ke Upstash Redis dan tampil secara dinamis pada Landing Page publik.</p>
+            </div>
+            <span class="badge badge-owner">FITUR OWNER RESMI</span>
+          </div>
+
+          <div class="card-body">
+            <form action="/owner/profile/update" method="POST">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+
+              <!-- VISI & MISI -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.75rem;">
+                <div class="form-group">
+                  <label class="form-label" style="font-weight: 700;">Visi Platform Dentshub Riset</label>
+                  <textarea name="vision" class="form-control" rows="4" required style="resize: vertical;"><%= (companyProfile && companyProfile.vision) ? companyProfile.vision : '' %></textarea>
+                  <small style="color: var(--text-muted); font-size: 0.775rem;">Pernyataan visi ilmiah dan etika riset jangka panjang.</small>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" style="font-weight: 700;">Misi Platform (1 Baris = 1 Butir Misi)</label>
+                  <textarea name="mission" class="form-control" rows="4" required style="resize: vertical;"><%= (companyProfile && companyProfile.mission) ? companyProfile.mission.join('\n') : '' %></textarea>
+                  <small style="color: var(--text-muted); font-size: 0.775rem;">Tuliskan butir-butir misi dipisahkan dengan baris baru (enter).</small>
+                </div>
+              </div>
+
+              <!-- TIM PENDIRI (3 CARDS) -->
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+                  <span>Struktur Pendiri & Dewan Akademik</span>
+                  <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-muted);">(Owner, Admin, Supervisor)</span>
+                </h4>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
+                  <!-- OWNER CARD -->
+                  <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; border-top: 3px solid #9333ea;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                      <span class="badge" style="background: rgba(147, 51, 234, 0.15); color: #9333ea; font-weight: 700;">1. PLATFORM OWNER</span>
+                      <small style="color: var(--text-muted); font-family: var(--font-mono);">Role: owner</small>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Nama Lengkap & Gelar</label>
+                      <input type="text" name="owner_name" class="form-control" value="<%= (companyProfile && companyProfile.founders && companyProfile.founders[0]) ? companyProfile.founders[0].name : 'drg. M. Aksa Arsyad, S.KG' %>" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Jabatan / Spesialisasi</label>
+                      <input type="text" name="owner_title" class="form-control" value="<%= (companyProfile && companyProfile.founders && companyProfile.founders[0]) ? companyProfile.founders[0].title : 'Founder & Lead System Architect' %>" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Biografi Singkat</label>
+                      <textarea name="owner_bio" class="form-control" rows="3" style="resize: vertical;"><%= (companyProfile && companyProfile.founders && companyProfile.founders[0]) ? companyProfile.founders[0].bio : '' %></textarea>
+                    </div>
+                  </div>
+
+                  <!-- ADMIN CARD -->
+                  <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; border-top: 3px solid #2563eb;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                      <span class="badge" style="background: rgba(37, 99, 235, 0.15); color: #2563eb; font-weight: 700;">2. ADMINISTRATOR</span>
+                      <small style="color: var(--text-muted); font-family: var(--font-mono);">Role: admin</small>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Nama Lengkap & Gelar</label>
+                      <input type="text" name="admin_name" class="form-control" value="<%= (companyProfile && companyProfile.founders && companyProfile.founders[1]) ? companyProfile.founders[1].name : 'drg. Andi Rifka Rahmayanti, S.KG' %>" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Jabatan / Spesialisasi</label>
+                      <input type="text" name="admin_title" class="form-control" value="<%= (companyProfile && companyProfile.founders && companyProfile.founders[1]) ? companyProfile.founders[1].title : 'Co-Founder & Operations Director' %>" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Biografi Singkat</label>
+                      <textarea name="admin_bio" class="form-control" rows="3" style="resize: vertical;"><%= (companyProfile && companyProfile.founders && companyProfile.founders[1]) ? companyProfile.founders[1].bio : '' %></textarea>
+                    </div>
+                  </div>
+
+                  <!-- SUPERVISOR CARD -->
+                  <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; border-top: 3px solid #059669;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                      <span class="badge" style="background: rgba(5, 150, 105, 0.15); color: #059669; font-weight: 700;">3. SUPERVISOR AKADEMIK</span>
+                      <small style="color: var(--text-muted); font-family: var(--font-mono);">Role: supervisor</small>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Nama Lengkap & Gelar</label>
+                      <input type="text" name="supervisor_name" class="form-control" value="<%= (companyProfile && companyProfile.founders && companyProfile.founders[2]) ? companyProfile.founders[2].name : 'drg. Tasya Awaliyah Arsyad, S.KG' %>" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Jabatan / Spesialisasi</label>
+                      <input type="text" name="supervisor_title" class="form-control" value="<%= (companyProfile && companyProfile.founders && companyProfile.founders[2]) ? companyProfile.founders[2].title : 'Head of Academic Quality & Supervision' %>" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Biografi Singkat</label>
+                      <textarea name="supervisor_bio" class="form-control" rows="3" style="resize: vertical;"><%= (companyProfile && companyProfile.founders && companyProfile.founders[2]) ? companyProfile.founders[2].bio : '' %></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- KONTAK & SALURAN KOMUNIKASI -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.75rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+                <div class="form-group">
+                  <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Nomor WhatsApp Layanan (628...)</label>
+                  <input type="text" name="whatsapp" class="form-control" value="<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.whatsapp : '6285338922586' %>" placeholder="6285338922586">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Email Resmi Layanan</label>
+                  <input type="email" name="email" class="form-control" value="<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.email : 'kontak@dentshubriset.id' %>">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" style="font-size: 0.8rem; font-weight: 600;">Domisili / Wilayah Operasional</label>
+                  <input type="text" name="address" class="form-control" value="<%= (companyProfile && companyProfile.contact) ? companyProfile.contact.address : 'Makassar & Jakarta, Indonesia' %>">
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary" style="padding: 0.75rem 2rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  Simpan & Terapkan ke Landing Page
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RECENT RESEARCHERS TABLE -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">10 Peneliti Terbaru yang Bergabung</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table-custom">
+              <thead>
+                <tr>
+                  <th>Nama Peneliti</th>
+                  <th>Alamat Email</th>
+                  <th>Peran</th>
+                  <th>Status Akun</th>
+                  <th>Saldo Kredit</th>
+                  <th>Tanggal Daftar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% users.forEach(u => { %>
+                  <tr>
+                    <td><strong><%= u.name %></strong></td>
+                    <td style="color: var(--text-muted);"><%= u.email %></td>
+                    <td>
+                      <span class="badge <%= u.role === 'owner' ? 'badge-owner' : u.role === 'admin' ? 'badge-admin' : u.role === 'supervisor' ? 'badge-supervisor' : 'badge-user' %>">
+                        <%= u.role.toUpperCase() %>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="badge <%= u.status === 'active' ? 'badge-emerald' : 'badge-danger' %>">
+                        <%= u.status.toUpperCase() %>
+                      </span>
+                    </td>
+                    <td style="font-family: var(--font-mono); font-weight: 700;">
+                      <% if (['owner', 'admin', 'supervisor'].includes((u.role || '').toLowerCase())) { %>
+                        <span class="badge badge-unlimited">UNLIMITED</span>
+                      <% } else { %>
+                        <%= u.credit_balance || 0 %> Cr
+                      <% } %>
+                    </td>
+                    <td style="font-size: 0.8rem; color: var(--text-muted);"><%= new Date(u.created_at).toLocaleDateString('id-ID') %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Inisialisasi Lebar Progress Bar Dinamis & Animasi Mulus
+    document.querySelectorAll('.progress-bar-fill[data-progress]').forEach(function(el) {
+      el.style.width = (el.getAttribute('data-progress') || 0) + '%';
+    });
+
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    // ==========================================
+    // OWNER AI CONNECTION TESTER (200 OK & LATENCY)
+    // ==========================================
+    async function testAiConnection(provider) {
+      const btn = document.getElementById('btn-test-' + provider);
+      const resContainer = document.getElementById('test-result-' + provider);
+      if (!btn || !resContainer) return;
+
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<span style="display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin 0.6s linear infinite;margin-right:4px;"></span> Menguji...`;
+      btn.disabled = true;
+      resContainer.innerHTML = `<span style="color: var(--text-muted); font-size: 0.75rem;">Mengirim ping uji koneksi...</span>`;
+
+      let key = '';
+      let model = '';
+      if (provider === 'gemini') {
+        key = document.getElementById('input_gemini_key')?.value || '';
+        model = document.getElementById('select_gemini_model')?.value || '';
+      } else if (provider === 'openai') {
+        key = document.getElementById('input_openai_key')?.value || '';
+        model = document.getElementById('select_openai_model')?.value || '';
+      } else if (provider === 'groq') {
+        key = document.getElementById('input_groq_key')?.value || '';
+        model = document.getElementById('select_groq_model')?.value || '';
+      }
+
+      try {
+        const csrfEl = document.querySelector('input[name="_csrf"]');
+        const csrfToken = csrfEl ? csrfEl.value : '';
+
+        const resp = await fetch('/owner/ai-config/test-connection', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken
+          },
+          body: JSON.stringify({
+            provider,
+            api_key: key,
+            model,
+            _csrf: csrfToken
+          })
+        });
+
+        const data = await resp.json();
+        if (resp.ok && data.success) {
+          resContainer.innerHTML = `
+            <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; border-radius: 4px; padding: 0.4rem 0.6rem; color: #047857; margin-top: 0.35rem;">
+              <strong>✓ 200 OK (${data.latencyMs}ms)</strong>: ${data.message}
+            </div>
+          `;
+        } else {
+          resContainer.innerHTML = `
+            <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid #ef4444; border-radius: 4px; padding: 0.4rem 0.6rem; color: #b91c1c; margin-top: 0.35rem;">
+              <strong>✗ Error (${data.status || resp.status})</strong>: ${data.message || 'Koneksi gagal'}
+            </div>
+          `;
+        }
+      } catch (err) {
+        resContainer.innerHTML = `
+          <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid #ef4444; border-radius: 4px; padding: 0.4rem 0.6rem; color: #b91c1c; margin-top: 0.35rem;">
+            <strong>✗ Network Error</strong>: ${err.message}
+          </div>
+        `;
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+
+    // ==========================================
+    // OWNER MASTER CUSTOM PROMPT CRUD SCRIPTS
+    // ==========================================
+    function switchPromptTab(activeKey) {
+      document.querySelectorAll('.prompt-tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '';
+        b.style.color = '';
+      });
+      document.querySelectorAll('.prompt-panel').forEach(p => {
+        p.classList.remove('active');
+        p.style.display = 'none';
+      });
+
+      const activeBtn = document.getElementById('tab-btn-' + activeKey);
+      const activePanel = document.getElementById('panel-' + activeKey);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.style.background = '#4f46e5';
+        activeBtn.style.color = '#fff';
+      }
+      if (activePanel) {
+        activePanel.classList.add('active');
+        activePanel.style.display = 'block';
+      }
+    }
+
+    async function savePromptModule(moduleKey) {
+      const textarea = document.getElementById('prompt-' + moduleKey);
+      const msgEl = document.getElementById('save-msg-' + moduleKey);
+      const btn = document.getElementById('btn-save-' + moduleKey);
+      if (!textarea || !btn) return;
+
+      const promptText = textarea.value;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Menyimpan...';
+      btn.disabled = true;
+
+      try {
+        const csrfEl = document.querySelector('input[name="_csrf"]');
+        const csrfToken = csrfEl ? csrfEl.value : '';
+
+        const resp = await fetch('/owner/prompts/update', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken
+          },
+          body: JSON.stringify({
+            module_name: moduleKey,
+            prompt_text: promptText,
+            _csrf: csrfToken
+          })
+        });
+
+        const data = await resp.json();
+        if (resp.ok && data.success) {
+          msgEl.style.color = '#15803d';
+          msgEl.textContent = '✓ Tersimpan di Redis!';
+          setTimeout(() => { msgEl.textContent = ''; }, 4000);
+        } else {
+          msgEl.style.color = '#b91c1c';
+          msgEl.textContent = '✗ ' + (data.error || 'Gagal menyimpan');
+        }
+      } catch (err) {
+        msgEl.style.color = '#b91c1c';
+        msgEl.textContent = '✗ ' + err.message;
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+
+    async function resetPromptModule(moduleKey) {
+      if (!confirm('Kembalikan prompt modul ini ke format standar bawaan?')) return;
+      const textarea = document.getElementById('prompt-' + moduleKey);
+      const msgEl = document.getElementById('save-msg-' + moduleKey);
+
+      try {
+        const csrfEl = document.querySelector('input[name="_csrf"]');
+        const csrfToken = csrfEl ? csrfEl.value : '';
+
+        const resp = await fetch('/owner/prompts/reset', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken
+          },
+          body: JSON.stringify({
+            module_name: moduleKey,
+            _csrf: csrfToken
+          })
+        });
+
+        const data = await resp.json();
+        if (resp.ok && data.success) {
+          if (data.defaultPrompt && textarea) textarea.value = data.defaultPrompt;
+          msgEl.style.color = '#15803d';
+          msgEl.textContent = '↺ Format bawaan dipulihkan!';
+          setTimeout(() => { msgEl.textContent = ''; }, 4000);
+        } else {
+          alert('Gagal me-reset: ' + (data.error || 'Terjadi kesalahan'));
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+
+    async function resetAllPrompts() {
+      if (!confirm('PERINGATAN: Apakah Anda yakin ingin mengembalikan SELURUH system prompt ke format standar awal?')) return;
+      try {
+        const csrfEl = document.querySelector('input[name="_csrf"]');
+        const csrfToken = csrfEl ? csrfEl.value : '';
+
+        const resp = await fetch('/owner/prompts/reset', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken
+          },
+          body: JSON.stringify({
+            module_name: 'all',
+            _csrf: csrfToken
+          })
+        });
+
+        const data = await resp.json();
+        if (resp.ok && data.success) {
+          alert('Seluruh prompt sistem telah berhasil dikembalikan ke standar awal!');
+          window.location.reload();
+        } else {
+          alert('Gagal me-reset: ' + (data.error || 'Terjadi kesalahan'));
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+  </script>
+</body>
+</html>

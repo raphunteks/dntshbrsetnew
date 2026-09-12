@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Proyek Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Lanjutkan Skripsi</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/artikel" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Cari Artikel</span></a></li>
+            <li><a href="/olah-data" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Olah Data</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+            <% if (currentUser && currentUser.role === 'owner') { %>
+              <li><a href="/owner" class="sidebar-nav-link" style="color: #a855f7;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>Owner Portal</span></a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(37, 99, 235, 0.1); color: var(--primary-600); display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
+            </div>
+            <div>
+              <h3 style="font-size: 1.15rem; margin: 0; font-weight: 700;">Brainstorming Judul</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Temukan 10 ide judul penelitian sesuai topik dan kebutuhanmu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span id="headerCreditBalance">
+              <% if (creditBalance === 'UNLIMITED') { %>
+                <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+              <% } else { %>
+                <%= creditBalance %> Kredit
+              <% } %>
+            </span>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert" style="margin-bottom: 1.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <form action="/brainstorming" method="POST" id="brainstormingForm">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+
+          <!-- CARD 1: TOPIK PENELITIAN (STEP 1) -->
+          <div class="card" style="margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+            <div class="card-body">
+              <div class="step-header-box">
+                <div class="step-circle-badge">1</div>
+                <div class="step-header-text">
+                  <h4>Topik penelitian</h4>
+                  <p>Mulai dari topik yang ingin kamu teliti.</p>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label for="topic" class="form-label" style="font-weight: 600; font-size: 0.885rem;">Topik umum *</label>
+                <textarea id="topic" name="topic" class="form-control" rows="3" placeholder="Contoh: Pengaruh media sosial terhadap prestasi belajar siswa SMA" required style="resize: vertical;"><%= (locals.input && input.topic) ? input.topic : '' %></textarea>
+              </div>
+
+              <div class="step-grid-2col">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="field" class="form-label" style="font-weight: 600; font-size: 0.885rem;">Bidang ilmu</label>
+                  <input type="text" id="field" name="field" class="form-control" placeholder="Contoh: Pendidikan, Ilmu Tafsir, Manajemen" value="<%= (locals.input && input.field) ? input.field : '' %>">
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="location" class="form-label" style="font-weight: 600; font-size: 0.885rem;">Lokasi penelitian <span style="color: var(--text-muted); font-weight: 400;">Opsional</span></label>
+                  <input type="text" id="location" name="location" class="form-control" placeholder="Contoh: SMA Negeri 1 Bandung" value="<%= (locals.input && input.location) ? input.location : '' %>">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: JENIS DAN METODE (STEP 2) -->
+          <div class="card" style="margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+            <div class="card-body">
+              <div class="step-header-box">
+                <div class="step-circle-badge">2</div>
+                <div class="step-header-text">
+                  <h4>Jenis dan metode</h4>
+                  <p>Pilih jenis karya dan metode penelitian yang sesuai.</p>
+                </div>
+              </div>
+
+              <div class="step-grid-chips">
+                <!-- KOLOM KIRI: JENIS KARYA -->
+                <div>
+                  <label class="form-label" style="font-weight: 600; font-size: 0.885rem; margin-bottom: 0.75rem; display: block;">Jenis karya</label>
+                  <%
+                    const curWork = (locals.input && input.work_type) ? input.work_type : 'Skripsi';
+                    const workOptions = [
+                      { id: 'w_skripsi', val: 'Skripsi', label: 'Skripsi' },
+                      { id: 'w_tesis', val: 'Tesis', label: 'Tesis' },
+                      { id: 'w_disertasi', val: 'Disertasi', label: 'Disertasi' },
+                      { id: 'w_sinta', val: 'Artikel Sinta', label: 'Artikel Sinta' },
+                      { id: 'w_scopus', val: 'Artikel Scopus', label: 'Artikel Scopus' },
+                      { id: 'w_slr', val: 'Review Literatur (SLR)', label: 'Review Literatur (SLR)' }
+                    ];
+                  %>
+                  <div class="chip-grid chip-grid-2">
+                    <% workOptions.forEach(opt => { %>
+                      <label class="chip-card-item <%= curWork === opt.val ? 'active' : '' %>">
+                        <input type="radio" name="work_type" value="<%= opt.val %>" <%= curWork === opt.val ? 'checked' : '' %>>
+                        <span><%= opt.label %></span>
+                      </label>
+                    <% }); %>
+                  </div>
+                  <p style="font-size: 0.775rem; color: var(--text-muted); margin-top: 0.75rem; margin-bottom: 0;">Judul terpilih akan diarahkan ke jenis karya ini.</p>
+                </div>
+
+                <!-- KOLOM KANAN: METODE PENELITIAN -->
+                <div>
+                  <label class="form-label" style="font-weight: 600; font-size: 0.885rem; margin-bottom: 0.75rem; display: block;">Metode penelitian</label>
+                  <%
+                    const curMethod = (locals.input && input.research_method) ? input.research_method : 'Kuantitatif';
+                    const methodOptions = [
+                      { val: 'Kualitatif', label: 'Kualitatif' },
+                      { val: 'Kuantitatif', label: 'Kuantitatif' },
+                      { val: 'Studi Pustaka', label: 'Studi Pustaka' },
+                      { val: 'PTK', label: 'PTK' },
+                      { val: 'R&D', label: 'R&D' },
+                      { val: 'Mixed Method', label: 'Mixed Method' },
+                      { val: 'Hukum Normatif', label: 'Hukum Normatif' },
+                      { val: 'Hukum Empiris', label: 'Hukum Empiris' },
+                      { val: 'Eksperimen/Rekayasa', label: 'Eksperimen/Rekayasa' },
+                      { val: 'Belum tahu', label: 'Belum tahu' }
+                    ];
+                  %>
+                  <div class="chip-grid chip-grid-3">
+                    <% methodOptions.forEach(m => { %>
+                      <label class="chip-card-item <%= curMethod === m.val ? 'active' : '' %>">
+                        <input type="radio" name="research_method" value="<%= m.val %>" <%= curMethod === m.val ? 'checked' : '' %>>
+                        <span><%= m.label %></span>
+                      </label>
+                    <% }); %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: PENGATURAN VARIABEL (STEP 3) -->
+          <div class="card" style="margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+            <div class="card-body">
+              <div class="step-header-box">
+                <div class="step-circle-badge">3</div>
+                <div class="step-header-text">
+                  <h4>Pengaturan variabel</h4>
+                  <p>Atur jumlah variabel dan peran variabel tambahan jika ada.</p>
+                </div>
+              </div>
+
+              <div class="step-grid-vars">
+                <!-- JUMLAH VARIABEL BEBAS X -->
+                <div>
+                  <label class="form-label" style="font-weight: 600; font-size: 0.885rem; margin-bottom: 0.75rem; display: block;">Jumlah variabel bebas (X)</label>
+                  <%
+                    const curX = (locals.input && input.x_var_count) ? String(input.x_var_count) : '2';
+                    const xOptions = ['1', '2', '3', '4'];
+                  %>
+                  <div class="chip-grid chip-grid-4">
+                    <% xOptions.forEach(opt => { %>
+                      <label class="chip-card-item <%= curX === opt ? 'active' : '' %>" style="justify-content: center;">
+                        <input type="radio" name="x_var_count" value="<%= opt %>" <%= curX === opt ? 'checked' : '' %>>
+                        <span><%= opt %> variabel</span>
+                      </label>
+                    <% }); %>
+                  </div>
+                  <p style="font-size: 0.775rem; color: var(--text-muted); margin-top: 0.75rem; margin-bottom: 0;">Setiap judul menyertakan 1 variabel terikat (Y).</p>
+                </div>
+
+                <!-- VARIABEL TAMBAHAN -->
+                <div>
+                  <label class="form-label" style="font-weight: 600; font-size: 0.885rem; margin-bottom: 0.75rem; display: block;">Variabel tambahan <span style="color: var(--text-muted); font-weight: 400;">Opsional</span></label>
+                  <%
+                    const curAdd = Array.isArray(locals.input && input.additional_vars) ? input.additional_vars : (locals.input && input.additional_vars ? [input.additional_vars] : []);
+                  %>
+                  <div class="chip-grid chip-grid-3">
+                    <label class="chip-card-item <%= curAdd.includes('Mediasi') ? 'active' : '' %>" style="justify-content: center;">
+                      <input type="checkbox" name="additional_vars" value="Mediasi" <%= curAdd.includes('Mediasi') ? 'checked' : '' %>>
+                      <span>Mediasi</span>
+                    </label>
+
+                    <label class="chip-card-item <%= curAdd.includes('Moderasi') ? 'active' : '' %>" style="justify-content: center;">
+                      <input type="checkbox" name="additional_vars" value="Moderasi" <%= curAdd.includes('Moderasi') ? 'checked' : '' %>>
+                      <span>Moderasi</span>
+                    </label>
+
+                    <label class="chip-card-item <%= curAdd.includes('Kontrol') ? 'active' : '' %>" style="justify-content: center;">
+                      <input type="checkbox" name="additional_vars" value="Kontrol" <%= curAdd.includes('Kontrol') ? 'checked' : '' %>>
+                      <span>Kontrol</span>
+                    </label>
+                  </div>
+                  <p style="font-size: 0.775rem; color: var(--text-muted); margin-top: 0.75rem; margin-bottom: 0;">Pilihan ini akan disertakan pada setiap judul.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACTION BAR -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; background: var(--bg-card); border: 1px solid var(--border-color); padding: 1rem 1.25rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.85rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>Lengkapi topik untuk mulai membuat judul. Biaya: <strong><%= creditCost %> Kredit</strong></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btnSubmitGenerate" style="background: #2563eb; padding: 0.75rem 1.75rem; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ✨ Buat 10 Judul &rarr;
+            </button>
+          </div>
+        </form>
+
+        <!-- OUTPUT SECTION: 10 JUDUL HASIL REKOMENDASI -->
+        <div>
+          <% if (result && result.recommendations && result.recommendations.length > 0) { %>
+            <div style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                10 Rekomendasi Judul Riset Terarah
+              </h3>
+              <span class="badge" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-weight: 700;">
+                <%= result.recommendations.length %> Opsi Judul Siap Pakai
+              </span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <% result.recommendations.forEach((rec, idx) => { %>
+                <div class="card" style="border: 1px solid var(--border-color); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                  <div class="card-header" style="background: var(--bg-subtle); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                      <span class="badge" style="background: #2563eb; color: #fff; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.6rem;">
+                        JUDUL #<%= idx + 1 %>
+                      </span>
+                      <span style="font-size: 0.8rem; color: var(--text-muted);"><%= (locals.input && input.work_type) ? input.work_type : 'Karya Ilmiah' %></span>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="copyTitle(this, '<%= encodeURIComponent(rec.title) %>')" style="font-size: 0.775rem; padding: 0.35rem 0.75rem;">
+                      Salin Judul
+                    </button>
+                  </div>
+
+                  <div class="card-body">
+                    <h4 style="font-size: 1.125rem; font-weight: 700; color: var(--text-main); line-height: 1.5; margin: 0 0 1rem;">
+                      <%= rec.title %>
+                    </h4>
+
+                    <div style="margin-bottom: 1rem;">
+                      <strong style="font-size: 0.825rem; color: var(--text-main); display: block; margin-bottom: 0.25rem;">Rasionalisasi Masalah:</strong>
+                      <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; margin: 0;">
+                        <%= rec.background_rationale %>
+                      </p>
+                    </div>
+
+                    <div style="background: var(--bg-subtle); border-radius: var(--radius-md); padding: 0.85rem 1rem; font-size: 0.825rem; margin-bottom: 1rem; border: 1px solid var(--border-color); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+                      <div>
+                        <span style="color: var(--text-muted); display: block; font-size: 0.75rem;">Variabel Bebas (X):</span>
+                        <strong><%= (rec.variables && rec.variables.independent) ? rec.variables.independent : '-' %></strong>
+                      </div>
+                      <div>
+                        <span style="color: var(--text-muted); display: block; font-size: 0.75rem;">Variabel Terikat (Y):</span>
+                        <strong><%= (rec.variables && rec.variables.dependent) ? rec.variables.dependent : '-' %></strong>
+                      </div>
+                      <% if (rec.variables && rec.variables.moderating) { %>
+                        <div>
+                          <span style="color: var(--text-muted); display: block; font-size: 0.75rem;">Variabel Tambahan / Mediasi:</span>
+                          <strong style="color: #2563eb;"><%= rec.variables.moderating %></strong>
+                        </div>
+                      <% } %>
+                    </div>
+
+                    <div style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 0.4rem;">
+                      <strong style="color: var(--text-main); white-space: nowrap;">Saran Metodologi:</strong>
+                      <span><%= rec.recommended_methodology %></span>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+                      <a href="/penelitian" class="btn btn-primary btn-sm" style="font-size: 0.8rem; padding: 0.45rem 1rem;">
+                        Jadikan Project Riset Baru &rarr;
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          <% } else { %>
+            <div class="card" style="border: 1px dashed var(--border-color); text-align: center; padding: 4.5rem 1.5rem;">
+              <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--bg-subtle); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--text-muted);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h4 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.35rem; font-weight: 700;">Hasil judul akan muncul di sini setelah kamu generate</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 440px; margin: 0 auto;">
+                Pilih parameter pada Step 1, 2, dan 3 di atas, lalu tekan tombol "Buat 10 Judul" untuk menghasilkan 10 judul penelitian ilmiah lengkap beserta variabel dan metodologi.
+              </p>
+            </div>
+          <% } %>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    // Interactive chip state synchronization
+    document.querySelectorAll('.chip-card-item input').forEach(input => {
+      input.addEventListener('change', function() {
+        if (this.type === 'radio') {
+          const name = this.name;
+          document.querySelectorAll(`.chip-card-item input[name="${name}"]`).forEach(r => {
+            r.closest('.chip-card-item').classList.remove('active');
+          });
+          if (this.checked) {
+            this.closest('.chip-card-item').classList.add('active');
+          }
+        } else if (this.type === 'checkbox') {
+          if (this.checked) {
+            this.closest('.chip-card-item').classList.add('active');
+          } else {
+            this.closest('.chip-card-item').classList.remove('active');
+          }
+        }
+      });
+    });
+
+    function copyTitle(btn, encodedTitle) {
+      const text = decodeURIComponent(encodedTitle);
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.innerText;
+        btn.innerText = 'Tersalin!';
+        btn.style.color = '#10b981';
+        setTimeout(() => {
+          btn.innerText = old;
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    // Submit loading state
+    const form = document.getElementById('brainstormingForm');
+    const submitBtn = document.getElementById('btnSubmitGenerate');
+    if (form && submitBtn) {
+      form.addEventListener('submit', function() {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span style="display:inline-block;width:14px;height:14px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin 0.6s linear infinite;margin-right:6px;"></span> Merumuskan 10 Judul...`;
+      });
+    }
+  </script>
+</body>
+</html>

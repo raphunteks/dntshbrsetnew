@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/dashboard" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/asisten" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="3" y="8" width="18" height="12" rx="4"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/><path d="M9 18h6"/></svg>
+                <span>AI Asisten Riset</span>
+              </a>
+            </li>
+            <li>
+              <a href="/penelitian" class="sidebar-nav-link active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>Project Penelitian</span>
+              </a>
+            </li>
+            <li>
+              <a href="/skripsi" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Penyusunan BAB</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Project Penelitian</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-info" role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <!-- SECTION HEADER & MODAL TRIGGER -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.65rem; margin-bottom: 0.25rem;">Naskah & Karya Ilmiah Anda</h2>
+            <p style="color: var(--text-muted); margin: 0;">Kelola judul riset, pantau bab tersusun, dan lanjutkan penulisan terarah.</p>
+          </div>
+          <button class="btn btn-primary" id="openNewProjectBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Buat Project Baru
+          </button>
+        </div>
+
+        <% if (projects && projects.length > 0) { %>
+          <div class="project-grid">
+            <% projects.forEach(project => { %>
+              <div class="project-card">
+                <div class="project-card-header">
+                  <span class="badge badge-primary" style="text-transform: uppercase;">
+                    <%= project.research_type %>
+                  </span>
+                  <span class="badge <%= project.status === 'completed' ? 'badge-emerald' : 'badge-outline' %>">
+                    <%= project.status === 'active' ? 'Aktif' : project.status %>
+                  </span>
+                </div>
+
+                <h3 class="project-card-title">
+                  <a href="/skripsi/<%= project.id %>"><%= project.title %></a>
+                </h3>
+
+                <p class="project-card-desc">
+                  <%= project.description ? project.description : 'Belum ada deskripsi atau abstrak singkat untuk naskah ini.' %>
+                </p>
+
+                <div class="project-card-meta">
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    <span><%= project.institution %> &bull; <%= project.field %></span>
+                  </div>
+                </div>
+
+                <div class="project-card-progress">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.775rem; margin-bottom: 0.35rem;">
+                    <span style="font-weight: 600;">Progres Bab Naskah</span>
+                    <span style="font-weight: 700; color: var(--primary-600);"><%= project.progress %>%</span>
+                  </div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" data-progress="<%= project.progress %>"></div>
+                  </div>
+                </div>
+
+                <div class="project-card-actions">
+                  <a href="/skripsi/<%= project.id %>" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    Buka Editor Bab
+                  </a>
+                  <button type="button" class="btn btn-secondary btn-sm edit-project-btn" 
+                    data-id="<%= project.id %>" 
+                    data-title="<%= project.title %>" 
+                    data-desc="<%= project.description || '' %>" 
+                    data-field="<%= project.field %>" 
+                    data-inst="<%= project.institution %>" 
+                    data-status="<%= project.status %>" 
+                    title="Edit Metadata Project">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </button>
+                  <form action="/penelitian/<%= project.id %>/delete" method="POST" style="margin: 0;" onsubmit="return confirmDeleteProject(event, this)">
+                    <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                    <button type="submit" class="btn btn-secondary btn-sm" style="color: var(--accent-rose);" title="Hapus Project">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        <% } else { %>
+          <div class="card">
+            <div class="card-body" style="text-align: center; padding: 4rem 1.5rem;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
+              <h3 style="margin-bottom: 0.5rem;">Mulai Riset Anda Hari Ini</h3>
+              <p style="max-width: 500px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+                Buat project skripsi atau penelitian Anda. Sistem secara otomatis menyusun struktur awal BAB 1 hingga BAB 5 yang siap Anda kembangkan.
+              </p>
+              <button class="btn btn-primary" id="openNewProjectEmptyBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Buat Project Pertama
+              </button>
+            </div>
+          </div>
+        <% } %>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop-custom" id="createProjectModal">
+    <div class="modal-dialog-custom" style="max-width: 760px; width: 95%;">
+      <div class="card">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color);">
+          <div>
+            <h3 class="card-title" style="margin: 0; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🎓 Inisialisasi Naskah Ilmiah Baru</span>
+            </h3>
+            <span style="font-size: 0.775rem; color: var(--text-muted);">Sesuai Pedoman Kampus di Indonesia &amp; Formula Mantra Riset</span>
+          </div>
+          <button type="button" class="input-icon-btn" id="closeCreateModalBtn" aria-label="Tutup">&times;</button>
+        </div>
+
+        <form action="/penelitian" method="POST" id="createAcademicProjectForm">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+
+          <div class="card-body" style="padding: 1.25rem 1.5rem;">
+            
+            <!-- STEP TABS -->
+            <div class="academic-modal-tabs">
+              <button type="button" class="academic-modal-tab-btn active" data-tab="tab-jenis-metode">
+                <span>1. Jenis &amp; Metode</span>
+              </button>
+              <button type="button" class="academic-modal-tab-btn" data-tab="tab-identitas-kampus">
+                <span>2. Identitas Mahasiswa</span>
+              </button>
+              <button type="button" class="academic-modal-tab-btn" data-tab="tab-judul-sitasi">
+                <span>3. Judul, Data &amp; Sitasi</span>
+              </button>
+            </div>
+
+            <!-- TAB 1: JENIS & METODE PENELITIAN (GAMBAR 1 - 3) -->
+            <div class="academic-tab-section active" id="tab-jenis-metode">
+              
+              <!-- JENIS PENELITIAN (GAMBAR 1) -->
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" style="font-weight: 700; font-size: 0.85rem;">Pilih Jenjang / Jenis Karya Ilmiah *</label>
+                <div class="academic-select-grid">
+                  <label class="academic-radio-card">
+                    <input type="radio" name="degree_type" value="skripsi" checked>
+                    <div class="academic-card-content">
+                      <div class="academic-card-icon">📘</div>
+                      <div class="academic-card-title">Skripsi (S1)</div>
+                      <div class="academic-card-sub">Gelar Sarjana</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="degree_type" value="tesis">
+                    <div class="academic-card-content">
+                      <div class="academic-card-icon">📗</div>
+                      <div class="academic-card-title">Tesis (S2)</div>
+                      <div class="academic-card-sub">Gelar Magister</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="degree_type" value="disertasi">
+                    <div class="academic-card-content">
+                      <div class="academic-card-icon">📕</div>
+                      <div class="academic-card-title">Disertasi (S3)</div>
+                      <div class="academic-card-sub">Gelar Doktor</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="degree_type" value="artikel">
+                    <div class="academic-card-content">
+                      <div class="academic-card-icon">📄</div>
+                      <div class="academic-card-title">Ubah Skripsi</div>
+                      <div class="academic-card-sub">Ke Artikel Jurnal</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- TAHAP PENGERJAAN (GAMBAR 2) -->
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" style="font-weight: 700; font-size: 0.85rem;">Pilih Tahap Pengerjaan *</label>
+                <div class="stage-switch-container">
+                  <label class="stage-radio-card">
+                    <input type="radio" name="stage" value="proposal">
+                    <div class="stage-card-content">
+                      <div class="stage-icon-badge">III</div>
+                      <div>
+                        <div style="font-weight: 700; font-size: 0.875rem;">Proposal Penelitian</div>
+                        <div style="font-size: 0.725rem; color: var(--text-muted);">Sampul, Persetujuan, BAB I s.d BAB III, Daftar Pustaka &amp; Lampiran</div>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="stage-radio-card">
+                    <input type="radio" name="stage" value="skripsi_penuh" checked>
+                    <div class="stage-card-content">
+                      <div class="stage-icon-badge">V</div>
+                      <div>
+                        <div style="font-weight: 700; font-size: 0.875rem;">Skripsi / Karya Penuh</div>
+                        <div style="font-size: 0.725rem; color: var(--text-muted);">Sampul, Pengesahan, Orisinalitas, Abstrak Dwibahasa, BAB I–V Lengkap</div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- METODE PENELITIAN (GAMBAR 3: 9 PILIHAN) -->
+              <div class="form-group">
+                <label class="form-label" style="font-weight: 700; font-size: 0.85rem;">Pilih Pendekatan &amp; Metode Penelitian *</label>
+                <div class="academic-methods-grid">
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="kuantitatif" checked>
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Kuantitatif</div>
+                      <div class="academic-card-sub">Uji Statistik / Regresi</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="kualitatif">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Kualitatif</div>
+                      <div class="academic-card-sub">Wawancara &amp; Koding</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="studi_pustaka">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Studi Pustaka</div>
+                      <div class="academic-card-sub">Literature Review</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="ptk">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">PTK</div>
+                      <div class="academic-card-sub">Tindakan Kelas / Siklus</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="rnd">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">R&amp;D</div>
+                      <div class="academic-card-sub">Pengembangan Produk</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="mixed_method">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Mixed Method</div>
+                      <div class="academic-card-sub">Kuantitatif + Kualitatif</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="hukum_normatif">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Hukum Normatif</div>
+                      <div class="academic-card-sub">Statute &amp; Doktrin</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="hukum_empiris">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Hukum Empiris</div>
+                      <div class="academic-card-sub">Yuridis Sosiologis</div>
+                    </div>
+                  </label>
+                  <label class="academic-radio-card">
+                    <input type="radio" name="method_type" value="eksperimen">
+                    <div class="academic-card-content">
+                      <div class="academic-card-title">Eksperimen</div>
+                      <div class="academic-card-sub">Uji Lab / Rekayasa</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- TAB 2: IDENTITAS MAHASISWA & KAMPUS (GAMBAR 4) -->
+            <div class="academic-tab-section" id="tab-identitas-kampus">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                <div class="form-group">
+                  <label for="author_name" class="form-label">Nama Lengkap Mahasiswa *</label>
+                  <input type="text" id="author_name" name="author_name" class="form-control" placeholder="Contoh: Muhammad Aksa Arsyad" value="<%= currentUser ? currentUser.name : '' %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="author_nim" class="form-label">Nomor Induk Mahasiswa (NIM) *</label>
+                  <input type="text" id="author_nim" name="author_nim" class="form-control" placeholder="Contoh: 2106789012" required>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="institution" class="form-label">Nama Kampus / Universitas *</label>
+                <input type="text" id="institution" name="institution" class="form-control" placeholder="Contoh: Universitas Hasanuddin / Universitas Indonesia" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label for="faculty" class="form-label">Fakultas *</label>
+                  <input type="text" id="faculty" name="faculty" class="form-control" placeholder="Contoh: Fakultas Kedokteran Gigi" required>
+                </div>
+                <div class="form-group">
+                  <label for="study_program" class="form-label">Jurusan / Program Studi *</label>
+                  <input type="text" id="study_program" name="study_program" class="form-control" placeholder="Contoh: Pendidikan Dokter Gigi" required>
+                </div>
+              </div>
+              <input type="hidden" id="field" name="field" value="Kedokteran Gigi / Ilmu Terkait">
+
+              <div style="margin-top: 1rem; padding: 0.85rem; background: var(--bg-subtle); border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-muted);">
+                ℹ️ <strong>Otomatisasi Berkas:</strong> Data identitas di atas akan otomatis dicetak pada <strong>Halaman Sampul Luar, Sampul Dalam, Lembar Persetujuan Pembimbing, Lembar Pengesahan Dewan Penguji,</strong> dan <strong>Surat Pernyataan Keaslian</strong>.
+              </div>
+            </div>
+
+            <!-- TAB 3: JUDUL, DATA AWAL & SITASI (GAMBAR 4) -->
+            <div class="academic-tab-section" id="tab-judul-sitasi">
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="title" class="form-label">Judul Lengkap Penelitian / Skripsi *</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="Contoh: Efektivitas Ekstrak Daun Sirih Hijau Terhadap Penghambatan Biofilm Streptococcus mutans" required minlength="5" maxlength="300">
+                <span style="font-size: 0.725rem; color: var(--text-muted); display: block; margin-top: 0.25rem;">
+                  Gunakan judul spesifik memuat variabel bebas (X), variabel terikat (Y), dan objek/lokasi riset.
+                </span>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="initial_data" class="form-label">Data Awal Penelitian &amp; Fenomena Masalah (Opsional)</label>
+                <textarea id="initial_data" name="initial_data" class="form-control" rows="3" placeholder="Tuliskan latar belakang masalah, data survei awal, kesenjangan teori, atau catatan khusus bimbingan dosen..."></textarea>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                  <label for="citation_style" class="form-label">Gaya Sitasi *</label>
+                  <select id="citation_style" name="citation_style" class="form-control">
+                    <option value="apa7" selected>APA 7th Edition</option>
+                    <option value="vancouver">Vancouver (Medis)</option>
+                    <option value="harvard">Harvard Style</option>
+                    <option value="ieee">IEEE Style</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="min_year" class="form-label">Tahun Min Referensi</label>
+                  <select id="min_year" name="min_year" class="form-control">
+                    <option value="2020" selected>5 Tahun (≥ 2020)</option>
+                    <option value="2021">4 Tahun (≥ 2021)</option>
+                    <option value="2022">3 Tahun (≥ 2022)</option>
+                    <option value="2023">2 Tahun (≥ 2023)</option>
+                    <option value="2018">Bebas / Klasik (≥ 2018)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="citation_source" class="form-label">Sumber Rujukan</label>
+                  <select id="citation_source" name="citation_source" class="form-control">
+                    <option value="umum" selected>Umum &amp; Nasional</option>
+                    <option value="sinta">Jurnal Sinta (1-6)</option>
+                    <option value="scopus">Internasional (Scopus)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding: 1rem 1.5rem;">
+            <div>
+              <button type="button" class="btn btn-secondary btn-sm" id="prevTabBtn" style="display: none;">
+                &larr; Sebelumnya
+              </button>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" class="btn btn-secondary btn-sm" id="cancelCreateModalBtn">Batal</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="nextTabBtn">
+                Lanjut ke Identitas &rarr;
+              </button>
+              <button type="submit" class="btn btn-primary btn-sm" id="submitCreateProjectBtn" style="display: none;">
+                ✨ Inisialisasi Project &amp; Bab Naskah
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop-custom" id="editProjectModal">
+    <div class="modal-dialog-custom">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Ubah Informasi Project</h3>
+          <button type="button" class="input-icon-btn" id="closeEditModalBtn" aria-label="Tutup">&times;</button>
+        </div>
+        <form id="editProjectForm" method="POST">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="edit_title" class="form-label">Judul Penelitian *</label>
+              <input type="text" id="edit_title" name="title" class="form-control" required minlength="5" maxlength="300">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="edit_field" class="form-label">Bidang Ilmu</label>
+                <input type="text" id="edit_field" name="field" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_status" class="form-label">Status Naskah</label>
+                <select id="edit_status" name="status" class="form-control">
+                  <option value="draft">Draf Awal</option>
+                  <option value="active">Sedang Berjalan</option>
+                  <option value="revision">Tahap Revisi</option>
+                  <option value="completed">Selesai</option>
+                  <option value="archived">Diarsipkan</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edit_institution" class="form-label">Institusi / Universitas</label>
+              <input type="text" id="edit_institution" name="institution" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edit_description" class="form-label">Deskripsi</label>
+              <textarea id="edit_description" name="description" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="card-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button type="button" class="btn btn-secondary btn-sm" id="cancelEditModalBtn">Batal</button>
+            <button type="submit" class="btn btn-primary btn-sm">Simpan Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    // Modal Create Project
+    const createModal = document.getElementById('createProjectModal');
+    const openCreateBtn = document.getElementById('openNewProjectBtn');
+    const openEmptyBtn = document.getElementById('openNewProjectEmptyBtn');
+    const closeCreateBtn = document.getElementById('closeCreateModalBtn');
+    const cancelCreateBtn = document.getElementById('cancelCreateModalBtn');
+
+    function showCreateModal() { if (createModal) createModal.classList.add('show'); }
+    function hideCreateModal() { if (createModal) createModal.classList.remove('show'); }
+
+    if (openCreateBtn) openCreateBtn.addEventListener('click', showCreateModal);
+    if (openEmptyBtn) openEmptyBtn.addEventListener('click', showCreateModal);
+    if (closeCreateBtn) closeCreateBtn.addEventListener('click', hideCreateModal);
+    if (cancelCreateBtn) cancelCreateBtn.addEventListener('click', hideCreateModal);
+
+    // Tab Navigation within Create Modal
+    const tabBtns = document.querySelectorAll('.academic-modal-tab-btn');
+    const tabSections = document.querySelectorAll('.academic-tab-section');
+    const prevBtn = document.getElementById('prevTabBtn');
+    const nextBtn = document.getElementById('nextTabBtn');
+    const submitBtn = document.getElementById('submitCreateProjectBtn');
+
+    const tabOrder = ['tab-jenis-metode', 'tab-identitas-kampus', 'tab-judul-sitasi'];
+    let activeTabIndex = 0;
+
+    function activateTab(index) {
+      if (index < 0 || index >= tabOrder.length) return;
+      activeTabIndex = index;
+      const targetId = tabOrder[activeTabIndex];
+
+      tabBtns.forEach((btn, i) => {
+        btn.classList.toggle('active', i === activeTabIndex);
+      });
+
+      tabSections.forEach((sec) => {
+        sec.classList.toggle('active', sec.id === targetId);
+      });
+
+      // Update button states
+      if (prevBtn) prevBtn.style.display = activeTabIndex > 0 ? 'inline-block' : 'none';
+      if (nextBtn) {
+        if (activeTabIndex === 0) {
+          nextBtn.innerHTML = 'Lanjut ke Identitas &rarr;';
+          nextBtn.style.display = 'inline-block';
+        } else if (activeTabIndex === 1) {
+          nextBtn.innerHTML = 'Lanjut ke Judul &rarr;';
+          nextBtn.style.display = 'inline-block';
+        } else {
+          nextBtn.style.display = 'none';
+        }
+      }
+      if (submitBtn) {
+        submitBtn.style.display = activeTabIndex === 2 ? 'inline-flex' : 'none';
+      }
+    }
+
+    tabBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => activateTab(idx));
+    });
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (activeTabIndex < tabOrder.length - 1) {
+          activateTab(activeTabIndex + 1);
+        }
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (activeTabIndex > 0) {
+          activateTab(activeTabIndex - 1);
+        }
+      });
+    }
+
+    // Sync study_program to field
+    const studyProgInput = document.getElementById('study_program');
+    const fieldInput = document.getElementById('field');
+    if (studyProgInput && fieldInput) {
+      studyProgInput.addEventListener('input', () => {
+        if (studyProgInput.value.trim()) {
+          fieldInput.value = studyProgInput.value.trim();
+        }
+      });
+    }
+
+    // Modal Edit Project
+    const editModal = document.getElementById('editProjectModal');
+    const editForm = document.getElementById('editProjectForm');
+    const closeEditBtn = document.getElementById('closeEditModalBtn');
+    const cancelEditBtn = document.getElementById('cancelEditModalBtn');
+
+    function hideEditModal() { if (editModal) editModal.classList.remove('show'); }
+    if (closeEditBtn) closeEditBtn.addEventListener('click', hideEditModal);
+    if (cancelEditBtn) cancelEditBtn.addEventListener('click', hideEditModal);
+
+    document.querySelectorAll('.progress-bar-fill[data-progress]').forEach((el) => {
+      el.style.width = (el.getAttribute('data-progress') || 0) + '%';
+    });
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.edit-project-btn');
+      if (btn) {
+        if (!editModal || !editForm) return;
+        editForm.action = `/penelitian/${btn.dataset.id}/update`;
+        document.getElementById('edit_title').value = btn.dataset.title || '';
+        document.getElementById('edit_description').value = btn.dataset.desc || '';
+        document.getElementById('edit_field').value = btn.dataset.field || '';
+        document.getElementById('edit_institution').value = btn.dataset.inst || '';
+        document.getElementById('edit_status').value = btn.dataset.status || 'draft';
+        editModal.classList.add('show');
+      }
+    });
+
+    function confirmDeleteProject(e, form) {
+      e.preventDefault();
+      const confirmed = window.confirm('Apakah Anda yakin ingin menghapus project ini beserta seluruh bab di dalamnya?');
+      if (confirmed) {
+        form.submit();
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

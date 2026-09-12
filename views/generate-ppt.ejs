@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Project Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Penyusunan BAB</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/artikel" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Pencarian Artikel</span></a></li>
+            <li><a href="/olah-data" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Olah Data Riset</span></a></li>
+            <li><a href="/generate-ppt" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Generate PPT Sidang</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Generate Outline Slide PPT Sidang</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <div class="tool-hero-header">
+          <div>
+            <h2 style="font-size: 1.65rem; margin-bottom: 0.25rem;">Struktur Slide Deck Ujian &amp; Speaker Notes</h2>
+            <p style="color: var(--text-muted); margin: 0;">
+              Susun kerangka 6 slide presentasi sidang (Judul, Masalah, Teori, Metodologi, Hasil, Saran) beserta catatan lisan yang teratur &amp; siap tayang.
+            </p>
+          </div>
+          <div class="tool-badge-pill">
+            <span>Biaya Generator:</span>
+            <strong><%= creditCost %> Kredit</strong>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <form action="/generate-ppt" method="POST">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <div class="card-body">
+              <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="topic" class="form-label" style="font-weight: 600;">Topik atau Judul Lengkap Penelitian *</label>
+                  <input type="text" id="topic" name="topic" class="form-control" placeholder="Contoh: Pengaruh Kualitas Pelayanan Terhadap Loyalitas Pasien Rawat Inap" value="<%= input.topic || '' %>" required minlength="3">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="purpose" class="form-label" style="font-weight: 600;">Tujuan Presentasi</label>
+                  <select id="purpose" name="purpose" class="form-control">
+                    <option value="Ujian Sidang Skripsi (Sarjana)" <%= input.purpose === 'Ujian Sidang Skripsi (Sarjana)' ? 'selected' : '' %>>Ujian Sidang Skripsi (Sarjana)</option>
+                    <option value="Seminar Proposal Penelitian (Sempro)" <%= input.purpose === 'Seminar Proposal Penelitian (Sempro)' ? 'selected' : '' %>>Seminar Proposal (Sempro)</option>
+                    <option value="Seminar Hasil Penelitian (Semhas)" <%= input.purpose === 'Seminar Hasil Penelitian (Semhas)' ? 'selected' : '' %>>Seminar Hasil (Semhas)</option>
+                    <option value="Ujian Tesis (Magister)" <%= input.purpose === 'Ujian Tesis (Magister)' ? 'selected' : '' %>>Ujian Tesis (Magister)</option>
+                    <option value="Ujian Disertasi (Doktoral)" <%= input.purpose === 'Ujian Disertasi (Doktoral)' ? 'selected' : '' %>>Ujian Disertasi (Doktoral)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="department" class="form-label" style="font-weight: 600;">Bidang Keilmuan / Fakultas</label>
+                  <select id="department" name="department" class="form-control">
+                    <option value="Kedokteran Gigi & Mulut" <%= input.department === 'Kedokteran Gigi & Mulut' ? 'selected' : '' %>>Kedokteran Gigi &amp; Mulut</option>
+                    <option value="Kedokteran Umum & Klinis" <%= input.department === 'Kedokteran Umum & Klinis' ? 'selected' : '' %>>Kedokteran Umum &amp; Spesialis</option>
+                    <option value="Farmasi & Biomedis" <%= input.department === 'Farmasi & Biomedis' ? 'selected' : '' %>>Farmasi &amp; Biomedis</option>
+                    <option value="Ilmu Keperawatan & Kebidanan" <%= input.department === 'Ilmu Keperawatan & Kebidanan' ? 'selected' : '' %>>Ilmu Keperawatan &amp; Kebidanan</option>
+                    <option value="Manajemen, Bisnis & Akuntansi" <%= input.department === 'Manajemen, Bisnis & Akuntansi' ? 'selected' : '' %>>Manajemen, Bisnis &amp; Akuntansi</option>
+                    <option value="Ilmu Hukum & Peradilan" <%= input.department === 'Ilmu Hukum & Peradilan' ? 'selected' : '' %>>Ilmu Hukum (Pidana/Perdata/Tata Negara)</option>
+                    <option value="Teknik Informatika & Sistem Informasi" <%= input.department === 'Teknik Informatika & Sistem Informasi' ? 'selected' : '' %>>Teknik Informatika &amp; Ilmu Komputer</option>
+                    <option value="Teknik Sipil, Mesin & Industri" <%= input.department === 'Teknik Sipil, Mesin & Industri' ? 'selected' : '' %>>Teknik Sipil, Mesin, Elektro, Industri</option>
+                    <option value="Psikologi & Ilmu Perilaku" <%= input.department === 'Psikologi & Ilmu Perilaku' ? 'selected' : '' %>>Psikologi &amp; Ilmu Perilaku</option>
+                    <option value="Ilmu Komunikasi & FISIP" <%= input.department === 'Ilmu Komunikasi & FISIP' ? 'selected' : '' %>>Ilmu Komunikasi &amp; Hubungan Internasional</option>
+                    <option value="Pendidikan & Keguruan (FKIP/Tarbiyah)" <%= input.department === 'Pendidikan & Keguruan (FKIP/Tarbiyah)' ? 'selected' : '' %>>Pendidikan &amp; Keguruan (FKIP/Tarbiyah)</option>
+                    <option value="Umum / Multidisiplin" <%= input.department === 'Umum / Multidisiplin' ? 'selected' : '' %>>Umum / Multidisiplin</option>
+                  </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="slide_style" class="form-label" style="font-weight: 600;">Gaya Visual Template Slide</label>
+                  <select id="slide_style" name="slide_style" class="form-control">
+                    <option value="academic_dark" <%= input.slide_style === 'academic_dark' ? 'selected' : '' %>>Academic Dark Modern (Kontras Tinggi)</option>
+                    <option value="minimalist_clean" <%= input.slide_style === 'minimalist_clean' ? 'selected' : '' %>>Minimalist Clean White</option>
+                    <option value="teal_health" <%= input.slide_style === 'teal_health' ? 'selected' : '' %>>Teal Emerald (Bidang Kesehatan &amp; Sains)</option>
+                    <option value="navy_executive" <%= input.slide_style === 'navy_executive' ? 'selected' : '' %>>Navy Blue (Eksekutif &amp; Hukum)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.775rem; color: var(--text-muted);">
+                💡 <strong>Kaidah Waktu:</strong> Menghasilkan kerangka 10–15 menit presentasi yang padat data, bebas teks panjang, dan dilengkapi catatan lisan verbatim.
+              </span>
+              <button type="submit" class="btn btn-primary" style="font-weight: 700;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Generate Outline Slide PPT
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <% if (result && result.slides && result.slides.length > 0) { %>
+          <div style="margin-bottom: 2.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <h3 style="font-size: 1.3rem; margin: 0; font-weight: 700;"><%= result.presentation_title %></h3>
+                <span style="font-size: 0.825rem; color: var(--text-muted);">
+                  <%= result.presentation_purpose %> &bull; <%= result.department %> &bull; <%= result.total_slides %> Slide Terstruktur
+                </span>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button type="button" class="btn btn-primary btn-sm" onclick="startFullscreenPresentation()" style="background: #2563eb; display: inline-flex; align-items: center; gap: 0.4rem;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                  Mode Presentasi Layar Penuh
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="copyAllSlides()">
+                  Salin Seluruh Slide &amp; Notes
+                </button>
+              </div>
+            </div>
+
+            <!-- 2-COL SLIDE DECK GRID PERSIS GBR 12-13 -->
+            <div class="ppt-deck-container" id="slideDeckContainer">
+              <% result.slides.forEach((slide) => { %>
+                <div class="ppt-card">
+                  <div class="ppt-card-topbar">
+                    <span class="badge badge-primary" style="font-weight: 700;">SLIDE <%= slide.slide_number %></span>
+                    <strong style="font-size: 0.875rem; color: var(--text-main); margin-left: 0.5rem; flex-grow: 1;">
+                      <%= slide.title %>
+                    </strong>
+                    <span style="font-size: 0.75rem; color: #2dd4bf; background: rgba(13, 148, 136, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600;">
+                      ⏱️ <%= slide.time_alloc || '2 Menit' %>
+                    </span>
+                  </div>
+
+                  <div class="ppt-card-body">
+                    <ul class="slide-bullet-list" style="margin: 0 0 1rem; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.6; color: var(--text-main);">
+                      <% slide.bullets.forEach(bullet => { %>
+                        <li style="margin-bottom: 0.35rem;"><%= bullet %></li>
+                      <% }); %>
+                    </ul>
+
+                    <% if (slide.visual_guide) { %>
+                      <div class="ppt-visual-diagram-box">
+                        <span><%= slide.visual_guide %></span>
+                      </div>
+                    <% } %>
+
+                    <% if (slide.probing_alert) { %>
+                      <div class="ppt-probing-box">
+                        <strong>⚠️ Titik Kritis Penguji:</strong> <%= slide.probing_alert %>
+                      </div>
+                    <% } %>
+                  </div>
+
+                  <div class="ppt-speaker-notes-box">
+                    <strong style="display: block; font-size: 0.775rem; text-transform: uppercase; margin-bottom: 0.35rem; color: #fbbf24;">
+                      🎙️ Catatan Lisan (Speaker Notes):
+                    </strong>
+                    <%= slide.speaker_notes %>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+        <% } else { %>
+          <div class="card">
+            <div class="card-body" style="text-align: center; padding: 4rem 1.5rem;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">📽️</div>
+              <h4>Kerangka Presentasi Siap Diformulasikan</h4>
+              <p style="max-width: 440px; margin: 0 auto; font-size: 0.9rem; color: var(--text-muted);">
+                Ketikkan judul atau topik penelitian Anda di atas untuk menghasilkan 6 slide presentasi terstruktur beserta speaker notes yang memandu pembicaraan Anda di hadapan Dewan Penguji.
+              </p>
+            </div>
+          </div>
+        <% } %>
+      </main>
+    </div>
+  </div>
+
+  <!-- FULL-SCREEN PRESENTATION VIEWER MODAL -->
+  <div class="ppt-fullscreen-modal" id="pptFsModal">
+    <div class="ppt-fs-header">
+      <div>
+        <span class="badge badge-primary" id="fsSlideNumberBadge">SLIDE 1</span>
+        <strong id="fsSlideTitle" style="font-size: 1.2rem; margin-left: 0.75rem; color: #fff;">Judul Slide</strong>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 1.1rem; color: #2dd4bf; background: rgba(13, 148, 136, 0.2); padding: 0.35rem 0.85rem; border-radius: 6px;">
+          ⏱️ <span id="fsTimer">10:00</span>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeFullscreenPresentation()">✕ Tutup Layar Penuh</button>
+      </div>
+    </div>
+
+    <div class="ppt-fs-slide-content">
+      <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 16px; padding: 2.5rem; min-height: 380px; display: flex; flex-direction: column; justify-content: space-between;">
+        <ul id="fsBulletList" style="font-size: 1.25rem; line-height: 1.8; color: #f8fafc; padding-left: 1.5rem; margin: 0 0 1.5rem;"></ul>
+        <div id="fsVisualGuide" style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem 1.25rem; border-radius: 8px; font-size: 0.95rem; color: #93c5fd; border: 1px dashed #3b82f6;"></div>
+      </div>
+
+      <div style="margin-top: 1.5rem; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-size: 0.8rem; font-weight: 700; color: #fbbf24; text-transform: uppercase; margin-bottom: 0.35rem;">
+          🎙️ Speaker Notes (Apa yang harus Anda ucapkan):
+        </div>
+        <p id="fsSpeakerNotes" style="font-size: 0.95rem; line-height: 1.6; color: #fef08a; margin: 0;"></p>
+      </div>
+    </div>
+
+    <div class="ppt-fs-footer">
+      <span style="font-size: 0.85rem; color: #94a3b8;">Gunakan tombol panah &larr; / &rarr; atau Spasi untuk berpindah slide</span>
+      <div style="display: flex; gap: 0.75rem;">
+        <button type="button" class="btn btn-secondary" onclick="prevSlide()">&larr; Slide Sebelumnya</button>
+        <button type="button" class="btn btn-primary" onclick="nextSlide()">Slide Selanjutnya &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <script id="pptSlidesData" type="application/json">
+    <%- JSON.stringify((locals.result && locals.result.slides) ? locals.result.slides : []) %>
+  </script>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    function copyAllSlides() {
+      const container = document.getElementById('slideDeckContainer');
+      if (!container) return;
+      navigator.clipboard.writeText(container.innerText).then(() => {
+        window.alert('Seluruh kerangka slide dan speaker notes berhasil disalin ke clipboard!');
+      });
+    }
+
+    // Full-Screen Interactive Slide Presentation Mode
+    const slidesDataEl = document.getElementById('pptSlidesData');
+    const slidesData = slidesDataEl ? JSON.parse(slidesDataEl.textContent || '[]') : [];
+    let currentSlideIdx = 0;
+    let timerInterval = null;
+    let secondsLeft = 10 * 60; // 10 menit countdown default
+
+    function startFullscreenPresentation() {
+      if (!slidesData || slidesData.length === 0) return;
+      const modal = document.getElementById('pptFsModal');
+      if (!modal) return;
+      currentSlideIdx = 0;
+      secondsLeft = 10 * 60;
+      renderFsSlide();
+      modal.classList.add('active');
+
+      // Start timer
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (secondsLeft > 0) {
+          secondsLeft--;
+          const mins = Math.floor(secondsLeft / 60);
+          const secs = secondsLeft % 60;
+          const timerEl = document.getElementById('fsTimer');
+          if (timerEl) timerEl.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+      }, 1000);
+
+      document.addEventListener('keydown', handleSlideKeydown);
+    }
+
+    function closeFullscreenPresentation() {
+      const modal = document.getElementById('pptFsModal');
+      if (modal) modal.classList.remove('active');
+      clearInterval(timerInterval);
+      document.removeEventListener('keydown', handleSlideKeydown);
+    }
+
+    function renderFsSlide() {
+      const slide = slidesData[currentSlideIdx];
+      if (!slide) return;
+      const badge = document.getElementById('fsSlideNumberBadge');
+      if (badge) badge.innerText = `SLIDE ${slide.slide_number} / ${slidesData.length}`;
+      const title = document.getElementById('fsSlideTitle');
+      if (title) title.innerText = slide.title;
+      
+      const bulletList = document.getElementById('fsBulletList');
+      if (bulletList) bulletList.innerHTML = (slide.bullets || []).map(b => `<li>${b}</li>`).join('');
+
+      const visualEl = document.getElementById('fsVisualGuide');
+      if (visualEl) {
+        if (slide.visual_guide) {
+          visualEl.style.display = 'block';
+          visualEl.innerText = slide.visual_guide;
+        } else {
+          visualEl.style.display = 'none';
+        }
+      }
+
+      const notes = document.getElementById('fsSpeakerNotes');
+      if (notes) notes.innerText = slide.speaker_notes || '';
+    }
+
+    function nextSlide() {
+      if (currentSlideIdx < slidesData.length - 1) {
+        currentSlideIdx++;
+        renderFsSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlideIdx > 0) {
+        currentSlideIdx--;
+        renderFsSlide();
+      }
+    }
+
+    function handleSlideKeydown(e) {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'Escape') {
+        closeFullscreenPresentation();
+      }
+    }
+  </script>
+</body>
+</html>

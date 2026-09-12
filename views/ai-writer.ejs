@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Project Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Penyusunan BAB</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">AI Writer Akademis</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <div style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h2 style="font-size: 1.65rem; margin-bottom: 0.25rem;">Penyusun Naskah Ilmiah Terarah</h2>
+              <p style="color: var(--text-muted); margin: 0;">Bantu penyusunan draft argumen, elaborasi paragraf bab skripsi, dan sintesis teoretis berintegritas tinggi.</p>
+            </div>
+            <div class="token-cost-badge">
+              <span>⚡ Biaya Pembuatan:</span>
+              <strong><%= creditCost %> Kredit</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-tool-layout">
+          <!-- PANEL INPUT INSTRUKSI -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Instruksi & Konteks Paragraf</h3>
+            </div>
+            <form action="/ai-writer" method="POST" id="aiWriterForm">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+              <div class="card-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                  <div class="form-group">
+                    <label for="project_id" class="form-label">Project Riset Terkait</label>
+                    <select id="project_id" name="project_id" class="form-control" onchange="loadChaptersForProject(this.value)">
+                      <option value="">-- Pilih Project (Opsional) --</option>
+                      <% if (projects) { %>
+                        <% projects.forEach(p => { %>
+                          <option value="<%= p.id %>" <%= selectedProjectId === p.id ? 'selected' : '' %>><%= p.title %></option>
+                        <% }); %>
+                      <% } %>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="chapter_id" class="form-label">Target Bab Naskah</label>
+                    <select id="chapter_id" name="chapter_id" class="form-control">
+                      <option value="">-- Pilih Bab (Opsional) --</option>
+                      <% if (chapters) { %>
+                        <% chapters.forEach(ch => { %>
+                          <option value="<%= ch.id %>" <%= selectedChapterId === ch.id ? 'selected' : '' %>><%= ch.title %></option>
+                        <% }); %>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                  <div class="form-group">
+                    <label for="section" class="form-label">Seksi / Bagian Naskah *</label>
+                    <select id="section" name="section" class="form-control">
+                      <option value="Latar Belakang Masalah">Latar Belakang Masalah</option>
+                      <option value="Rumusan Masalah & Hipotesis">Rumusan Masalah & Hipotesis</option>
+                      <option value="Kajian Teori / Landasan Pustaka">Kajian Teori / Landasan Pustaka</option>
+                      <option value="Desain & Prosedur Metodologi">Desain & Prosedur Metodologi</option>
+                      <option value="Pembahasan Hasil Penelitian">Pembahasan Hasil Penelitian</option>
+                      <option value="Kesimpulan & Rekomendasi">Kesimpulan & Rekomendasi</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tone" class="form-label">Tone Penulisan Ilmiah</label>
+                    <select id="tone" name="tone" class="form-control">
+                      <option value="Akademis Formal">Akademis Formal & Objektif</option>
+                      <option value="Kritis dan Sintesis Komparatif">Kritis dan Sintesis Komparatif</option>
+                      <option value="Eksplanatif Deskriptif">Eksplanatif Deskriptif</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="prompt" class="form-label">Instruksi Fokus / Poin Pembahasan *</label>
+                  <textarea id="prompt" name="prompt" class="form-control" rows="4" placeholder="Jelaskan poin atau argumen spesifik yang ingin dielaborasi. Contoh: Jelaskan mengapa konsentrasi ekstrak 25% menunjukkan daya hambat maksimal berdasarkan teori permeabilitas dinding sel bakteri..." required minlength="5"><%= input.prompt || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="context" class="form-label">Data Pendukung / Konteks Tambahan (Opsional)</label>
+                  <textarea id="context" name="context" class="form-control" rows="3" placeholder="Salin tabel data uji singkat, temuan awal, atau ringkasan literatur acuan..."><%= input.context || '' %></textarea>
+                </div>
+              </div>
+
+              <div class="card-footer" style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary" id="writerSubmitBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  Susun Draf Paragraf
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- HASIL GENERATE NASKAH -->
+          <div>
+            <div class="card" style="height: 100%; display: flex; flex-direction: column;">
+              <div class="card-header">
+                <h3 class="card-title">Draf Naskah Akademik</h3>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button type="button" class="btn btn-secondary btn-sm" id="copyResultBtn" onclick="copyGeneratedText()" <%= generatedText ? '' : 'disabled' %>>
+                    Salin Naskah
+                  </button>
+                  <% if (selectedProjectId && selectedChapterId) { %>
+                    <a href="/skripsi/<%= selectedProjectId %>?chapterId=<%= selectedChapterId %>" class="btn btn-primary btn-sm">
+                      Buka di Editor Bab &rarr;
+                    </a>
+                  <% } %>
+                </div>
+              </div>
+
+              <div class="card-body" style="flex: 1;">
+                <% if (generatedText) { %>
+                  <div class="ai-editor-preview-content" id="previewArea">
+                    <pre style="white-space: pre-wrap; font-family: var(--font-sans); line-height: 1.8; color: var(--text-main); font-size: 0.95rem;"><%= generatedText %></pre>
+                  </div>
+                <% } else { %>
+                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 3rem 1.5rem; color: var(--text-muted);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✍️</div>
+                    <h4>Ruang Hasil Penulisan</h4>
+                    <p style="max-width: 380px; font-size: 0.885rem;">
+                      Draf paragraf akademik yang dihasilkan akan muncul di sini. Anda dapat langsung menyalinnya atau mentransfernya ke editor bab skripsi Anda.
+                    </p>
+                  </div>
+                <% } %>
+              </div>
+
+              <div class="card-footer" style="font-size: 0.775rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+                <span>💡 AI Assistant: Periksa kembali konsistensi istilah teknis dan sitasi.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    async function loadChaptersForProject(projectId) {
+      const chapterSelect = document.getElementById('chapter_id');
+      if (!chapterSelect) return;
+      chapterSelect.innerHTML = '<option value="">Memuat bab...</option>';
+
+      if (!projectId) {
+        chapterSelect.innerHTML = '<option value="">-- Pilih Bab (Opsional) --</option>';
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/projects/${projectId}/chapters`);
+        const data = await res.json();
+        if (data.success && data.chapters) {
+          chapterSelect.innerHTML = '<option value="">-- Pilih Bab (Opsional) --</option>';
+          data.chapters.forEach(ch => {
+            chapterSelect.innerHTML += `<option value="${ch.id}">BAB ${ch.number}: ${ch.title}</option>`;
+          });
+        }
+      } catch (err) {
+        chapterSelect.innerHTML = '<option value="">Gagal memuat bab</option>';
+      }
+    }
+
+    function copyGeneratedText() {
+      const area = document.getElementById('previewArea');
+      if (!area) return;
+      navigator.clipboard.writeText(area.innerText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const old = btn.innerText;
+        btn.innerText = 'Tersalin!';
+        setTimeout(() => btn.innerText = old, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

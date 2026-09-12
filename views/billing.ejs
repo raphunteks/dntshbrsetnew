@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css?v=<%= Date.now() %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/dashboard" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+            <li><a href="/penelitian" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Project Penelitian</span></a></li>
+            <li><a href="/skripsi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Penyusunan BAB</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/brainstorming" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg><span>Brainstorming Judul</span></a></li>
+            <li><a href="/novelty" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg><span>Temukan Novelty</span></a></li>
+            <li><a href="/ai-writer" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>AI Writer Akademis</span></a></li>
+            <li><a href="/parafrase" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Parafrase Skripsi</span></a></li>
+            <li><a href="/revisi" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Lab Revisi Bimbingan</span></a></li>
+            <li><a href="/sidang" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Simulasi Sidang</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li><a href="/kredit" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg><span>Saldo Kredit</span></a></li>
+            <li><a href="/billing" class="sidebar-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Beli Paket</span></a></li>
+            <li><a href="/pengaturan" class="sidebar-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Pengaturan Akun</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">
+            <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 style="font-size: 1.15rem; margin: 0;">Paket Langganan & Pembayaran</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti Tema">
+            <span id="themeToggleIcon">🌙</span>
+            <span id="themeToggleText" class="theme-text-desktop">Mode Gelap</span>
+          </button>
+          <a href="/kredit" class="credit-pill <%= creditBalance === 'UNLIMITED' ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= creditBalance %> Kredit</span>
+            <% } %>
+          </a>
+          <form action="/logout" method="POST" style="margin: 0;">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="alert alert-info" role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <!-- MODAL / INVOICE BANNER FOR ACTIVE ORDER -->
+        <% if (activeOrder) { %>
+          <div class="sandbox-card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <span class="badge <%= activeOrder.status === 'paid' ? 'badge-paid' : activeOrder.status === 'pending' ? 'badge-pending' : 'badge-failed' %>" style="margin-bottom: 0.5rem;">
+                  STATUS: <%= activeOrder.status.toUpperCase() %>
+                </span>
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem;">
+                  Tagihan Pesanan: <%= activeOrder.package_name %> (<%= activeOrder.external_id %>)
+                </h3>
+                <p style="margin: 0; font-size: 0.885rem; color: var(--text-muted);">
+                  Nominal Pembayaran: <strong>Rp <%= activeOrder.amount.toLocaleString('id-ID') %></strong> untuk penambahan <strong>+<%= activeOrder.credits %> Kredit Riset</strong>.
+                </p>
+              </div>
+
+              <% if (activeOrder.status === 'pending') { %>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <form action="/billing/simulate-webhook" method="POST" style="margin: 0;">
+                    <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                    <input type="hidden" name="payment_id" value="<%= activeOrder.id %>">
+                    <input type="hidden" name="status" value="PAID">
+                    <button type="submit" class="btn btn-primary btn-sm" style="box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); background: #059669; border-color: #059669;">
+                      ⚡ Simulasi Pelunasan (Sandbox Webhook)
+                    </button>
+                  </form>
+                  <form action="/billing/simulate-webhook" method="POST" style="margin: 0;">
+                    <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                    <input type="hidden" name="payment_id" value="<%= activeOrder.id %>">
+                    <input type="hidden" name="status" value="FAILED">
+                    <button type="submit" class="btn btn-secondary btn-sm">
+                      Tandai Gagal
+                    </button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+
+            <div style="margin-top: 1rem; border-top: 1px dashed #fcd34d; padding-top: 0.85rem; font-size: 0.8rem; color: #92400e;">
+              <strong>🛡️ Prinsip Keamanan Finansial:</strong> Redirect URL peramban tidak pernah dianggap bukti pembayaran sah. Kredit hanya akan diberikan secara otomatis apabila server menerima webhook dengan tanda tangan kriptografis HMAC-SHA256 yang valid.
+            </div>
+          </div>
+        <% } %>
+
+        <div style="margin-bottom: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 style="font-size: 1.65rem; margin-bottom: 0.25rem;">Investasi Kredit Riset Akademik</h2>
+              <p style="color: var(--text-muted); margin: 0;">
+                Kredit bersifat permanen tanpa tanggal kedaluwarsa. Gunakan kapan saja sesuai dengan jadwal bimbingan dan sidang skripsi Anda.
+              </p>
+            </div>
+            <a href="/kredit" class="btn btn-secondary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              Buka Buku Besar (Ledger)
+            </a>
+          </div>
+        </div>
+
+        <!-- PRICING TABS SWITCHER -->
+        <div class="pricing-tabs-wrapper" style="margin-bottom: 2.5rem;">
+          <div class="pricing-tabs-container">
+            <button type="button" class="pricing-tab-btn active" id="tabBtnMahasiswa" onclick="switchPricingTab('mahasiswa')">
+              <span>🎓 Paket Mahasiswa</span>
+              <small style="opacity: 0.8; font-weight: 500;">— fitur inti penulisan</small>
+            </button>
+            <button type="button" class="pricing-tab-btn" id="tabBtnProfesor" onclick="switchPricingTab('profesor')">
+              <span>✨ Paket Profesor</span>
+              <small style="opacity: 0.8; font-weight: 500;">— semua fitur + Artikel Sinta/Scopus & AI Writer</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 1: PAKET MAHASISWA -->
+        <div class="pricing-tab-panel active" id="panelMahasiswa">
+          <div class="pricing-grid-4">
+            <!-- Bulanan -->
+            <div class="plan-card">
+              <div class="plan-period-label">BULANAN</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 99.000</span>
+                <span class="plan-price-duration">/ bulan</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">100 + 10 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 4 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="mahasiswa_1m">
+                <button type="submit" class="btn-plan btn-plan-secondary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- 3 Bulan (Populer) -->
+            <div class="plan-card popular">
+              <div class="plan-pop-badge">★ Populer</div>
+              <div class="plan-period-label">3 BULAN</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 299.000</span>
+                <span class="plan-price-duration">/ 3 bulan</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">300 + 65 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 12 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="mahasiswa_3m">
+                <button type="submit" class="btn-plan btn-plan-primary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Semester 6 Bulan -->
+            <div class="plan-card">
+              <div class="plan-period-label">SEMESTER (6 BLN)</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 599.000</span>
+                <span class="plan-price-duration">/ 6 bulan</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">600 + 150 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 24 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="mahasiswa_6m">
+                <button type="submit" class="btn-plan btn-plan-secondary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Tahunan -->
+            <div class="plan-card">
+              <div class="plan-period-label">TAHUNAN</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 999.000</span>
+                <span class="plan-price-duration">/ tahun</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">1200 + 300 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 48 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Skripsi lengkap Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Unduh Word & Generate PPT</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Parafrase Bab 1–5</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Sitasi otomatis valid</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Lab Revisi bimbingan</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Simulasi Sidang dengan AI</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Grup WA konsultasi selamanya</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="mahasiswa_1y">
+                <button type="submit" class="btn-plan btn-plan-secondary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 2: PAKET PROFESOR & PASCASARJANA -->
+        <div class="pricing-tab-panel" id="panelProfesor">
+          <div class="pricing-grid-4">
+            <!-- Bulanan -->
+            <div class="plan-card">
+              <div class="plan-period-label">BULANAN</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 149.000</span>
+                <span class="plan-price-duration">/ bulan</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">150 + 10 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 5 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="profesor_1m">
+                <button type="submit" class="btn-plan btn-plan-secondary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- 3 Bulan (Populer) -->
+            <div class="plan-card popular">
+              <div class="plan-pop-badge">★ Populer</div>
+              <div class="plan-period-label">3 BULAN</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 450.000</span>
+                <span class="plan-price-duration">/ 3 bulan</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">450 + 75 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 17 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="profesor_3m">
+                <button type="submit" class="btn-plan btn-plan-primary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Semester 6 Bulan -->
+            <div class="plan-card">
+              <div class="plan-period-label">SEMESTER (6 BLN)</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 900.000</span>
+                <span class="plan-price-duration">/ 6 bulan</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">900 + 200 bonus <span style="font-size: 0.8rem; font-weight: 500;">kredit</span></div>
+                <div class="plan-credits-sub">📄 ≈ 35 skripsi lengkap (Bab 1–5) atau ribuan parafrase & PPT</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="profesor_6m">
+                <button type="submit" class="btn-plan btn-plan-secondary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Tahunan Unlimited -->
+            <div class="plan-card">
+              <div class="plan-period-label">TAHUNAN</div>
+              <div class="plan-price-row">
+                <span class="plan-price-amount">Rp 1.800.000</span>
+                <span class="plan-price-duration">/ tahun</span>
+              </div>
+              <div class="plan-credits-pill">
+                <div class="plan-credits-title">Unlimited <span style="font-size: 0.8rem; font-weight: 500;">akses</span></div>
+                <div class="plan-credits-sub">📄 Skripsi, tesis & artikel tanpa batas. Pakai sepuasnya selama setahun.</div>
+              </div>
+              <ul class="plan-features-list">
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Semua fitur Mahasiswa</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Tesis (S2) & Disertasi (S3)</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek kecocokan referensi</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cari & ubah referensi otomatis</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Ubah skripsi → artikel jurnal</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>AI Academic Writer Ekstra</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Artikel Scopus & SINTA</span></li>
+                <li class="plan-feature-item"><span class="plan-check-icon">✓</span><span>Cek Turnitin (plagiarisme)</span></li>
+              </ul>
+              <form action="/billing/create" method="POST" style="margin-top: auto; width: 100%;">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <input type="hidden" name="package_id" value="profesor_1y">
+                <button type="submit" class="btn-plan btn-plan-secondary">
+                  <span>Bayar Sekarang</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- UNIVERSITY / INSTITUSI ENTERPRISE CARD -->
+        <div class="enterprise-card" style="margin-bottom: 2.5rem;">
+          <div class="enterprise-header">
+            <div>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">Paket Kampus & Institusi</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Untuk fakultas, program studi, atau laboratorium riset — banyak akun, tahunan, seluruh fitur premium terbuka.</p>
+            </div>
+            <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #0284c7; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: var(--radius-full);">INSTITUSI RESMI</span>
+          </div>
+
+          <div class="enterprise-tiers-grid">
+            <div class="enterprise-tier-box">
+              <div class="enterprise-tier-count">20 Akun</div>
+              <div class="enterprise-tier-cta">Hubungi Kami</div>
+              <small style="color: var(--text-muted);">Harga khusus fakultas / lab</small>
+            </div>
+            <div class="enterprise-tier-box">
+              <div class="enterprise-tier-count">50 Akun</div>
+              <div class="enterprise-tier-cta">Hubungi Kami</div>
+              <small style="color: var(--text-muted);">Harga khusus fakultas / lab</small>
+            </div>
+            <div class="enterprise-tier-box">
+              <div class="enterprise-tier-count">100 Akun</div>
+              <div class="enterprise-tier-cta">Hubungi Kami</div>
+              <small style="color: var(--text-muted);">Harga khusus institusi besar</small>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.75rem; font-size: 0.9rem; color: var(--text-main);">
+            <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #059669; font-weight: 800;">✓</span><span>Semua fitur Profesor & Pascasarjana</span></div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #059669; font-weight: 800;">✓</span><span>Kelola banyak akun mahasiswa & dosen terpusat</span></div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #059669; font-weight: 800;">✓</span><span>Dashboard admin analitik institusi</span></div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #059669; font-weight: 800;">✓</span><span>Prioritas dukungan & pendampingan implementasi</span></div>
+          </div>
+
+          <a href="https://wa.me/<%= (locals.companyProfile && companyProfile.contact) ? companyProfile.contact.whatsapp : '6285338922586' %>?text=Halo%20Tim%20Dentshub%20Riset,%20kami%20tertarik%20dengan%20Paket%20Institusi%20Kampus" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.75rem 2rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span>Hubungi Tim Institusi Kami</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- TRANSACTION HISTORY TABLE -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Riwayat Tagihan & Pembayaran</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Seluruh order pembelian kredit yang terbit di sistem.</p>
+            </div>
+          </div>
+
+          <% if (payments && payments.length > 0) { %>
+            <div class="table-responsive">
+              <table class="table-custom">
+                <thead>
+                  <tr>
+                    <th>Waktu Dibuat</th>
+                    <th>Nomor Tagihan (External ID)</th>
+                    <th>Paket Pembelian</th>
+                    <th>Total Biaya</th>
+                    <th>Kredit</th>
+                    <th>Status Pembayaran</th>
+                    <th>Aksi / Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% payments.forEach(p => { %>
+                    <tr>
+                      <td style="white-space: nowrap; font-size: 0.825rem; color: var(--text-muted);">
+                        <%= new Date(p.created_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %>
+                      </td>
+                      <td>
+                        <code style="font-family: var(--font-mono); font-size: 0.775rem; color: var(--primary-700); background: var(--bg-subtle); padding: 0.15rem 0.4rem; border-radius: var(--radius-sm);"><%= p.external_id %></code>
+                      </td>
+                      <td>
+                        <strong style="font-size: 0.885rem; color: var(--text-main);"><%= p.package_name %></strong>
+                      </td>
+                      <td style="font-weight: 700; font-family: var(--font-mono); font-size: 0.9rem;">
+                        Rp <%= p.amount.toLocaleString('id-ID') %>
+                      </td>
+                      <td style="font-weight: 700; color: #047857; font-family: var(--font-mono);">
+                        +<%= p.credits %> Cr
+                      </td>
+                      <td>
+                        <% if (p.status === 'paid') { %>
+                          <span class="badge badge-paid">LUNAS</span>
+                        <% } else if (p.status === 'pending') { %>
+                          <span class="badge badge-pending">MENUNGGU</span>
+                        <% } else { %>
+                          <span class="badge badge-expired"><%= p.status.toUpperCase() %></span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <% if (p.status === 'pending') { %>
+                          <a href="/billing?orderId Antonio=<%= p.id %>" class="btn btn-primary btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;">
+                            Proses Tagihan
+                          </a>
+                        <% } else { %>
+                          <span style="font-size: 0.75rem; color: var(--text-muted);">
+                            <%= p.paid_at ? `Selesai ${new Date(p.paid_at).toLocaleDateString('id-ID')}` : '-' %>
+                          </span>
+                        <% } %>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          <% } else { %>
+            <div class="card-body" style="text-align: center; padding: 3.5rem 1.5rem; color: var(--text-muted);">
+              <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">💳</div>
+              <h4 style="margin-bottom: 0.25rem;">Belum Ada Riwayat Tagihan</h4>
+              <p style="font-size: 0.885rem; max-width: 420px; margin: 0 auto;">
+                Pilih salah satu paket kredit di atas untuk memulai transaksi pertama Anda.
+              </p>
+            </div>
+          <% } %>
+        </div>
+
+        <!-- INTEGRATION DEVELOPER REFERENCE BOX -->
+        <div style="margin-top: 2rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🔌</span> Spesifikasi Webhook Idempotent (Payment Gateway Integration)
+          </h4>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Endpoint ini memverifikasi integritas hash HMAC-SHA256 untuk memastikan pesan berasal dari penyedia payment gateway resmi.
+          </p>
+          <div class="code-display-block">
+POST /api/webhooks/payment
+Header: x-webhook-signature: &lt;HMAC-SHA256&gt;
+Body:
+{
+  "external_id": "DENTS-1710000000-ABC",
+  "amount": 129000,
+  "status": "PAID",
+  "signature": "&lt;hex_signature&gt;"
+}
+          </div>
+          <div style="font-size: 0.775rem; color: var(--text-muted);">
+            Formula Signature: <code>HMAC_SHA256(external_id + ":" + amount + ":" + status, PAYMENT_WEBHOOK_SECRET)</code>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+    function switchPricingTab(tab) {
+      const tabBtnMhs = document.getElementById('tabBtnMahasiswa');
+      const tabBtnProf = document.getElementById('tabBtnProfesor');
+      const panelMhs = document.getElementById('panelMahasiswa');
+      const panelProf = document.getElementById('panelProfesor');
+
+      if (tab === 'mahasiswa') {
+        if (tabBtnMhs) tabBtnMhs.classList.add('active');
+        if (tabBtnProf) tabBtnProf.classList.remove('active');
+        if (panelMhs) panelMhs.classList.add('active');
+        if (panelProf) panelProf.classList.remove('active');
+      } else {
+        if (tabBtnProf) tabBtnProf.classList.add('active');
+        if (tabBtnMhs) tabBtnMhs.classList.remove('active');
+        if (panelProf) panelProf.classList.add('active');
+        if (panelMhs) panelMhs.classList.remove('active');
+      }
+    }
+
+    // THEME SWITCHER & LOCALSTORAGE SYNC (CONSISTENT LIGHT/DARK TOGGLE)
+    function updateThemeUI(isDark) {
+      const themeIcon = document.getElementById('themeToggleIcon');
+      const themeText = document.getElementById('themeToggleText');
+      if (isDark) {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+        if (themeIcon) themeIcon.textContent = '☀️';
+        if (themeText) themeText.textContent = 'Mode Terang';
+      } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        if (themeIcon) themeIcon.textContent = '🌙';
+        if (themeText) themeText.textContent = 'Mode Gelap';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('dentshub_theme');
+    let isDarkMode = (savedTheme === 'dark');
+    updateThemeUI(isDarkMode);
+
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        isDarkMode = !isDarkMode;
+        localStorage.setItem('dentshub_theme', isDarkMode ? 'dark' : 'light');
+        updateThemeUI(isDarkMode);
+      });
+    }
+  </script>
+</body>
+</html>

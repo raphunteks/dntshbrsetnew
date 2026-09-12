@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'Pengaturan Akun - DENTSHUB RISET' %></title>
+  <link rel="icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="shortcut icon" type="image/png" href="/img/dentshubriset.png">
+  <link rel="apple-touch-icon" href="/img/dentshubriset.png">
+  <link rel="stylesheet" href="/css/main.css?v=3.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="brand-logo">
+          <img src="/img/dentshubriset.png" alt="DENTSHUB RISET Logo" class="logo-icon-img">
+          <span>DENTSHUB<span class="text-primary">RISET</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <!-- MODUL UTAMA -->
+        <div>
+          <div class="sidebar-nav-group-title">Navigasi Utama</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/dashboard" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/penelitian" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>Project Penelitian</span>
+              </a>
+            </li>
+            <li>
+              <a href="/skripsi" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Penyusunan BAB</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- AI RESEARCH TOOLS -->
+        <div>
+          <div class="sidebar-nav-group-title">AI Research Tools</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/brainstorming" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg>
+                <span>Brainstorming Judul</span>
+              </a>
+            </li>
+            <li>
+              <a href="/novelty" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3 7 4-14 3 7h5"/></svg>
+                <span>Temukan Novelty</span>
+              </a>
+            </li>
+            <li>
+              <a href="/artikel" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Pencarian Artikel</span>
+              </a>
+            </li>
+            <li>
+              <a href="/olah-data" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Olah Data Riset</span>
+              </a>
+            </li>
+            <li>
+              <a href="/generate-ppt" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Generate PPT Sidang</span>
+              </a>
+            </li>
+            <li>
+              <a href="/sidang" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Simulasi Sidang</span>
+              </a>
+            </li>
+            <li>
+              <a href="/ai-writer" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span>AI Writer Akademis</span>
+              </a>
+            </li>
+            <li>
+              <a href="/parafrase" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                <span>Parafrase Skripsi</span>
+              </a>
+            </li>
+            <li>
+              <a href="/revisi" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <span>Lab Revisi Bimbingan</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SISTEM & AKUN -->
+        <div>
+          <div class="sidebar-nav-group-title">Sistem & Akun</div>
+          <ul class="sidebar-nav-list">
+            <li>
+              <a href="/kredit" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+                <span>Saldo Kredit</span>
+              </a>
+            </li>
+            <li>
+              <a href="/billing" class="sidebar-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Beli Paket</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pengaturan" class="sidebar-nav-link active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span>Pengaturan Akun</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar" id="sidebarAvatarPreview">
+            <% if (currentUser && currentUser.avatar_url) { %>
+              <img src="<%= currentUser.avatar_url %>" alt="Avatar" class="avatar-sidebar-img">
+            <% } else { %>
+              <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+            <% } %>
+          </div>
+          <div class="user-meta">
+            <span class="user-name"><%= currentUser ? currentUser.name : 'Peneliti' %></span>
+            <span class="user-role-badge"><%= currentUser ? currentUser.role.toUpperCase() : 'USER' %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div><h3 class="topbar-page-title">Pengaturan Akun &amp; Preferensi</h3></div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/kredit" class="credit-pill <%= (typeof creditBalance !== 'undefined' && creditBalance === 'UNLIMITED') ? 'unlimited' : '' %>" title="Saldo Kredit Aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <% if (typeof creditBalance !== 'undefined' && creditBalance === 'UNLIMITED') { %>
+              <span class="unlimited-text"><span class="infinity-symbol">∞</span> UNLIMITED</span>
+            <% } else { %>
+              <span><%= (typeof creditBalance !== 'undefined') ? creditBalance : 0 %> Kredit</span>
+            <% } %>
+          </a>
+
+          <form action="/logout" method="POST" class="settings-inline-form">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+            <button type="submit" class="btn btn-secondary btn-sm" title="Keluar dari sesi riset">Keluar</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <% if (locals.message) { %>
+          <div class="toast-alert toast-success" role="status">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <div><%= message %></div>
+          </div>
+        <% } %>
+
+        <% if (locals.error) { %>
+          <div class="toast-alert toast-danger" role="alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <div><%= error %></div>
+          </div>
+        <% } %>
+
+        <div class="settings-container">
+          <!-- GLASSMORPHIC HERO BANNER -->
+          <div class="settings-hero-banner">
+            <div class="holographic-pill-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+              </svg>
+              <span>PUSAT KENDALI AKUN &amp; PRIVASI AKADEMISI</span>
+            </div>
+            <h1 class="holographic-title">Pengaturan Akun &amp; Kredensial</h1>
+            <p class="settings-hero-desc">
+              Kelola identitas sivitas akademika, keamanan kata sandi berkualifikasi tinggi, preferensi penulisan naskah AI, dan kepatuhan perlindungan data pribadi UU PDP.
+            </p>
+          </div>
+
+          <!-- KARTU 1: PROFIL SIVITAS AKADEMIKA -->
+          <section class="settings-card">
+            <h2 class="card-heading">
+              <div class="heading-icon-capsule">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <span>Profil Sivitas Akademika</span>
+            </h2>
+
+            <form action="/pengaturan/profile" method="POST" id="profileForm">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+              <input type="hidden" name="avatar_url" id="avatarUrlHidden" value="<%= (currentUser && currentUser.avatar_url) || '' %>">
+
+              <div class="avatar-upload-row">
+                <div class="avatar-holographic-wrapper">
+                  <div class="avatar-large-circle" id="profileAvatarPreview">
+                    <% if (currentUser && currentUser.avatar_url) { %>
+                      <img src="<%= currentUser.avatar_url %>" alt="Avatar">
+                    <% } else { %>
+                      <%= (currentUser && currentUser.name) ? currentUser.name.charAt(0).toUpperCase() : 'P' %>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="avatar-info-col">
+                  <span class="avatar-label-title">Foto Profil Peneliti</span>
+                  <label for="avatarFileInput" class="avatar-upload-trigger">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                      <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    <span>Unggah foto baru (JPG, PNG, WebP maks. 8 MB)</span>
+                  </label>
+                  <input type="file" id="avatarFileInput" accept="image/png, image/jpeg, image/webp" class="avatar-hidden-file-input">
+                </div>
+              </div>
+
+              <div class="form-group form-group-spaced-lg">
+                <label for="nameInput" class="form-label">
+                  <span>Nama Lengkap &amp; Gelar Akademik</span>
+                </label>
+                <input type="text" id="nameInput" name="name" class="form-input" value="<%= (currentUser && currentUser.name) || '' %>" required placeholder="Contoh: Dr. Muhammad Aksa Arsyad, S.Kom., M.T.">
+              </div>
+
+              <div class="form-group form-group-spaced">
+                <label for="emailInput" class="form-label">
+                  <span>Alamat Email Terverifikasi</span>
+                  <span class="locked-badge">Terkunci 🔒</span>
+                </label>
+                <input type="email" id="emailInput" class="form-input" value="<%= (currentUser && currentUser.email) || '' %>" readonly disabled>
+                <span class="form-hint">Email dilindungi sebagai identitas primer login dan pengamanan buku besar saldo kredit.</span>
+              </div>
+
+              <div class="form-grid-2 form-group-spaced">
+                <div class="form-group">
+                  <label for="univInput" class="form-label">Institusi / Universitas</label>
+                  <input type="text" id="univInput" name="university" class="form-input" placeholder="Contoh: Universitas Hasanuddin" value="<%= (currentUser && currentUser.university) || '' %>">
+                </div>
+
+                <div class="form-group">
+                  <label for="jurusanInput" class="form-label">Program Studi / Jurusan</label>
+                  <input type="text" id="jurusanInput" name="major" class="form-input" placeholder="Contoh: Magister Kedokteran Gigi" value="<%= (currentUser && currentUser.major) || '' %>">
+                </div>
+              </div>
+
+              <div class="form-group form-group-mb">
+                <label for="degreeSelect" class="form-label">Jenjang Pendidikan</label>
+                <select id="degreeSelect" name="degree" class="form-select">
+                  <option value="D3" <%= (currentUser && currentUser.degree === 'D3') ? 'selected' : '' %>>Diploma 3 (D3)</option>
+                  <option value="D4" <%= (currentUser && currentUser.degree === 'D4') ? 'selected' : '' %>>Diploma 4 / Sarjana Terapan (D4)</option>
+                  <option value="S1" <%= (!currentUser || !currentUser.degree || currentUser.degree === 'S1') ? 'selected' : '' %>>Sarjana (S1)</option>
+                  <option value="S2" <%= (currentUser && currentUser.degree === 'S2') ? 'selected' : '' %>>Magister (S2)</option>
+                  <option value="S3" <%= (currentUser && currentUser.degree === 'S3') ? 'selected' : '' %>>Doktoral (S3)</option>
+                  <option value="Spesialis (Sp-1)" <%= (currentUser && currentUser.degree === 'Spesialis (Sp-1)') ? 'selected' : '' %>>Pendidikan Dokter/Dokter Gigi Spesialis (Sp-1)</option>
+                  <option value="Sub-Spesialis (Sp-2)" <%= (currentUser && currentUser.degree === 'Sub-Spesialis (Sp-2)') ? 'selected' : '' %>>Sub-Spesialis / Konsultan (Sp-2)</option>
+                  <option value="Profesi" <%= (currentUser && currentUser.degree === 'Profesi') ? 'selected' : '' %>>Pendidikan Profesi</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-holographic-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                  <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                  <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                <span>Simpan Perubahan Profil</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- KARTU 2: KEAMANAN KATA SANDI -->
+          <section class="settings-card">
+            <h2 class="card-heading">
+              <div class="heading-icon-capsule">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="7.5" cy="15.5" r="5.5"></circle>
+                  <path d="m21 2-9.6 9.6"></path>
+                  <path d="m15.5 7.5 3 3L22 7l-3-3"></path>
+                </svg>
+              </div>
+              <span>Keamanan Kata Sandi (Password)</span>
+            </h2>
+
+            <form action="/pengaturan/password" method="POST" id="passwordForm">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+
+              <div class="form-group">
+                <label for="currentPassword" class="form-label">Password Saat Ini</label>
+                <div class="form-input-wrapper">
+                  <input type="password" id="currentPassword" name="current_password" class="form-input" placeholder="••••••••••••" required>
+                  <button type="button" class="input-action-btn" onclick="togglePassVisibility('currentPassword', this)" aria-label="Lihat Password" title="Tampilkan/Sembunyikan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group form-group-spaced">
+                <label for="newPassword" class="form-label">Password Baru (Minimal 8 Karakter)</label>
+                <div class="form-input-wrapper">
+                  <input type="password" id="newPassword" name="new_password" class="form-input" placeholder="••••••••••••" minlength="8" required>
+                  <button type="button" class="input-action-btn" onclick="togglePassVisibility('newPassword', this)" aria-label="Lihat Password" title="Tampilkan/Sembunyikan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group form-group-mb">
+                <label for="confirmPassword" class="form-label">Ulangi Password Baru</label>
+                <div class="form-input-wrapper">
+                  <input type="password" id="confirmPassword" name="confirm_password" class="form-input" placeholder="••••••••••••" minlength="8" required>
+                  <button type="button" class="input-action-btn" onclick="togglePassVisibility('confirmPassword', this)" aria-label="Lihat Password" title="Tampilkan/Sembunyikan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-holographic-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>Perbarui Kata Sandi</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- KARTU 3: PREFERENSI AI -->
+          <section class="settings-card">
+            <h2 class="card-heading">
+              <div class="heading-icon-capsule">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <span>Preferensi Penulisan &amp; Generate AI</span>
+            </h2>
+
+            <div class="generate-options-grid">
+              <div class="generate-option-box <%= (!currentUser || !currentUser.generation_mode || currentUser.generation_mode === 'sub_bab') ? 'active' : '' %>" id="modeSubBab" onclick="setGenerateMode('sub_bab')">
+                <span class="option-status-pill">⚡ AKTIF</span>
+                <span class="option-title">⚡ Per Sub-Bab (Direkomendasikan)</span>
+                <p class="option-desc">Sub-bab langsung tersaji utuh seketika proses komputasi naskah selesai — responsif, cepat, dan paling efisien untuk penyusunan draf skripsi/tesis.</p>
+              </div>
+
+              <div class="generate-option-box <%= (currentUser && currentUser.generation_mode === 'kata_per_kata') ? 'active' : '' %>" id="modeStreaming" onclick="setGenerateMode('kata_per_kata')">
+                <span class="option-status-pill">⚡ AKTIF</span>
+                <span class="option-title">✍️ Kata per Kata (Streaming Interaktif)</span>
+                <p class="option-desc">Teks diketik berirama menyerupai asistensi langsung secara real-time. Sangat estetik saat presentasi langsung atau perekaman layar.</p>
+              </div>
+            </div>
+
+            <p class="form-hint">
+              💡 Preferensi Anda tersinkronisasi langsung ke database server serta peramban lokal untuk memastikan konsistensi pengalaman riset Anda di seluruh perangkat.
+            </p>
+          </section>
+
+          <!-- KARTU 4: PRIVASI & KEPATUHAN UU PDP -->
+          <section class="settings-card">
+            <h2 class="card-heading">
+              <div class="heading-icon-capsule danger">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <span>Privasi &amp; Kepatuhan UU PDP (No. 27/2022)</span>
+            </h2>
+
+            <div class="settings-actions-wrap">
+              <form action="/logout" method="POST" class="settings-inline-form">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+                <button type="submit" class="btn-glass-outline">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                  <span>Keluar dari Sesi Riset</span>
+                </button>
+              </form>
+            </div>
+
+            <div class="danger-account-box">
+              <h3 class="danger-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <span>Hak Penghapusan Data Pribadi (Right to be Forgotten)</span>
+              </h3>
+              <p class="danger-desc">
+                Berdasarkan amanat <strong>Undang-Undang Republik Indonesia Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP)</strong>, Anda memiliki hak penuh untuk memusnahkan seluruh rekaman data identitas pribadi, draf naskah skripsi/tesis, serta riwayat ledger kredit Anda dari peladen DENTSHUB RISET secara permanen.
+              </p>
+              <button type="button" class="btn-holographic-danger" id="openDeleteAccountModalBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+                <span>Hapus Akun &amp; Seluruh Data Saya</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL KONFIRMASI HAPUS AKUN (GLASSMORPHISM) -->
+  <div class="custom-modal-backdrop" id="deleteAccountModal">
+    <div class="custom-modal-dialog">
+      <div class="modal-header-row">
+        <div class="modal-danger-icon-capsule">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <div>
+          <h3 class="modal-title">Konfirmasi Hapus Akun Permanen</h3>
+          <p class="modal-subtitle">Tindakan ini tidak dapat dibatalkan (Irreversible).</p>
+        </div>
+      </div>
+
+      <p class="modal-desc">
+        Sesuai regulasi UU PDP, pemusnahan ini akan menghapus akun login Anda, seluruh berkas proyek penelitian, draf bab skripsi/tesis, riwayat artikel ilmiah, dan sisa saldo kredit dari database secara permanen tanpa cadangan. Apakah Anda yakin ingin melanjutkan?
+      </p>
+
+      <form action="/pengaturan/delete-account" method="POST" id="deleteAccountForm">
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken || '' %>">
+        <div class="modal-footer-actions">
+          <button type="button" class="btn-glass-outline" id="cancelDeleteAccountBtn">
+            Batalkan
+          </button>
+          <button type="submit" class="btn-holographic-danger no-mt">
+            Ya, Hapus Akun Saya Sekarang
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING ACTION GROUP -->
+  <div class="floating-action-group">
+    <button type="button" class="floating-btn btn-help-chat" id="floatingHelpBtn" title="Pusat Bantuan &amp; Konsultasi Riset">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+    </button>
+
+    <a href="https://wa.me/6285338922586?text=Halo%20Admin%20DENTSHUB%20RISET,%20saya%20butuh%20bantuan%20mengenai%20akun%20dan%20layanan%20riset%20saya" target="_blank" rel="noopener noreferrer" class="floating-btn btn-wa-chat" title="Hubungi CS via WhatsApp">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.05 7.42C8.87 7.42 8.57 7.49 8.32 7.76C8.07 8.04 7.36 8.7 7.36 10.05C7.36 11.4 8.35 12.7 8.49 12.89C8.63 13.08 10.43 15.86 13.18 17.05C13.84 17.34 14.34 17.5 14.75 17.63C15.41 17.84 16.02 17.81 16.5 17.74C17.03 17.66 18.13 17.07 18.36 16.42C18.59 15.77 18.59 15.22 18.52 15.1C18.45 14.98 18.27 14.91 18 14.77C17.73 14.64 16.39 13.98 16.14 13.89C15.89 13.8 15.71 13.75 15.53 14.02C15.35 14.3 14.83 14.91 14.67 15.1C14.51 15.28 14.35 15.31 14.08 15.17C13.81 15.03 12.93 14.75 11.89 13.82C11.08 13.1 10.53 12.21 10.37 11.94C10.21 11.66 10.35 11.51 10.49 11.38C10.61 11.25 10.76 11.05 10.9 10.89C11.04 10.73 11.09 10.61 11.18 10.43C11.27 10.25 11.22 10.09 11.16 9.97C11.09 9.85 10.57 8.57 10.35 8.04C10.13 7.53 9.92 7.6 9.76 7.59C9.61 7.58 9.43 7.58 9.25 7.58L9.05 7.42Z" />
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    // Mobile Sidebar Toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const dashboardSidebar = document.getElementById('dashboardSidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (mobileMenuToggle && dashboardSidebar) {
+      mobileMenuToggle.addEventListener('click', () => {
+        dashboardSidebar.classList.toggle('open');
+        if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+      });
+    }
+
+    if (sidebarOverlay) {
+      sidebarOverlay.addEventListener('click', () => {
+        if (dashboardSidebar) dashboardSidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+      });
+    }
+
+    // Toggle Password Visibility
+    function togglePassVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const isPass = input.type === 'password';
+      input.type = isPass ? 'text' : 'password';
+      btn.style.color = isPass ? '#38bdf8' : 'var(--text-light)';
+    }
+
+    // Tampilan Generate Mode (Sync LocalStorage & Server)
+    const boxSubBab = document.getElementById('modeSubBab');
+    const boxStreaming = document.getElementById('modeStreaming');
+
+    function setGenerateMode(mode) {
+      localStorage.setItem('dentshub_generate_mode', mode);
+      if (mode === 'kata_per_kata') {
+        if (boxStreaming) boxStreaming.classList.add('active');
+        if (boxSubBab) boxSubBab.classList.remove('active');
+      } else {
+        if (boxSubBab) boxSubBab.classList.add('active');
+        if (boxStreaming) boxStreaming.classList.remove('active');
+      }
+
+      // Sync ke backend secara asynchronous
+      const csrf = '<%= locals.csrfToken || "" %>';
+      fetch('/pengaturan/generation-mode', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'CSRF-Token': csrf,
+        },
+        body: JSON.stringify({ mode: mode, _csrf: csrf })
+      }).catch(err => console.log('Preferensi tersimpan di peramban:', err));
+    }
+
+    // Avatar Upload & Base64 Converter Preview
+    const avatarInput = document.getElementById('avatarFileInput');
+    const previewContainer = document.getElementById('profileAvatarPreview');
+    const sidebarAvatar = document.getElementById('sidebarAvatarPreview');
+    const hiddenAvatarUrl = document.getElementById('avatarUrlHidden');
+
+    if (avatarInput) {
+      avatarInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 8 * 1024 * 1024) {
+          alert('Ukuran berkas gambar melebihi batas maksimal 8 MB.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (evt) {
+          const base64Img = evt.target.result;
+          if (hiddenAvatarUrl) hiddenAvatarUrl.value = base64Img;
+          if (previewContainer) {
+            previewContainer.innerHTML = `<img src="${base64Img}" alt="Avatar">`;
+          }
+          if (sidebarAvatar) {
+            sidebarAvatar.innerHTML = `<img src="${base64Img}" alt="Avatar" class="avatar-sidebar-img">`;
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Modal Konfirmasi Hapus Akun
+    const deleteModal = document.getElementById('deleteAccountModal');
+    const openDeleteBtn = document.getElementById('openDeleteAccountModalBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteAccountBtn');
+
+    if (openDeleteBtn && deleteModal) {
+      openDeleteBtn.addEventListener('click', () => {
+        deleteModal.classList.add('show');
+      });
+    }
+
+    if (cancelDeleteBtn && deleteModal) {
+      cancelDeleteBtn.addEventListener('click', () => {
+        deleteModal.classList.remove('show');
+      });
+    }
+
+    if (deleteModal) {
+      deleteModal.addEventListener('click', (e) => {
+        if (e.target === deleteModal) {
+          deleteModal.classList.remove('show');
+        }
+      });
+    }
+
+    // Floating Help Modal
+    const helpBtn = document.getElementById('floatingHelpBtn');
+    if (helpBtn) {
+      helpBtn.addEventListener('click', () => {
+        const helpModal = document.createElement('div');
+        helpModal.className = 'custom-modal-backdrop show';
+        helpModal.innerHTML = `
+          <div class="custom-modal-dialog">
+            <h3 class="modal-title">Pusat Bantuan &amp; Konsultasi Riset</h3>
+            <p class="modal-desc">
+              Layanan pendampingan riset &amp; asistensi metodologi ilmiah DENTSHUB RISET aktif setiap hari kerja pukul 08.00 - 22.00 WITA. Anda dapat berkonsultasi langsung dengan tim akademik kami via WhatsApp untuk respon cepat.
+            </p>
+            <div class="modal-footer-actions">
+              <button type="button" class="btn-holographic-submit btn-help-close" id="closeHelpModalBtn">Tutup</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(helpModal);
+        document.getElementById('closeHelpModalBtn').addEventListener('click', () => helpModal.remove());
+        helpModal.addEventListener('click', (evt) => {
+          if (evt.target === helpModal) helpModal.remove();
+        });
+      });
+    }
+  </script>
+</body>
+</html>
